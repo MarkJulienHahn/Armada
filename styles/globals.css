@@ -2,17 +2,59 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: "Giallo", serif;
+  font-variation-settings: "wght" 500;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+@font-face {
+  font-family: "Giallo";
+  font-style: normal;
+  src: url(../public/fonts/GialloRoman_VF.ttf) format("woff2");
 }
 
 * {
   box-sizing: border-box;
+}
+
+/* VARIABLES */
+
+:root {
+  --margin-XL: 400px;
+  --margin-L: 200px;
+  --margin-M: 30px;
+  --margin-S: 12px;
+
+  --fontXSmallSize: 25px;
+  --fontXSmallLineHeight: 30px;
+  --fontXSmallLetterSpacing: 0;
+
+  --fontSmallSize: 35px;
+  --fontSmallLineHeight: 40px;
+  --fontSmallLetterSpacing: -0.5px;
+
+  --fontMediumSize: 65px;
+  --fontMediumLineHeight: 70px;
+  --fontMediumLetterSpacing: -1px;
+
+  --fontLargeSize: 130px;
+  --fontLargeLineHeight: 150px;
+  --fontLargeLetterSpacing: -2px;
+}
+
+@media only screen and (max-width: 600px) {
+  :root {
+    --margin-XL: 200px;
+    --margin-M: 15px;
+    --margin-S: 10px;
+
+    --pgSmallSize: 6.5pt;
+    --pgSmallLineHeight: 10pt;
+    --pgSmallLetterSpacing: 1.2px;
+
+    --gialloSmallSize: 8.5pt;
+    --gialloSmallLineHeight: 11pt;
+    --gialloSmallLetterSpacing: 1.5px;
+  }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -23,4 +65,231 @@ a {
     color: white;
     background: black;
   }
+}
+
+/* MAIN */
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: font-variation-settings 0.3s ease-out;
+}
+
+a:hover {
+  font-variation-settings: "wght" 800;
+}
+
+p {
+  font-size: var(--fontSmallSize);
+  line-height: var(--fontSmallLineHeight);
+  letter-spacing: var(--fontSmallLetterSpacing);
+  margin: 0;
+}
+
+h1 {
+  font-size: var(--fontLargeSize);
+  line-height: var(--fontLargeLineHeight);
+  letter-spacing: var(--fontLargeLetterSpacing);
+  margin: 0;
+}
+
+h2 {
+  font-size: var(--fontMediumSize);
+  line-height: var(--fontMediumLineHeight);
+  letter-spacing: var(--fontMediumLetterSpacing);
+  margin: 0;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+.mainWrapper {
+  margin: var(--margin-XL) var(--margin-M) var(--margin-M) var(--margin-M);
+}
+
+.fontXS {
+  font-size: var(--fontXSmallSize);
+  line-height: var(--fontXSmallLineHeight);
+  letter-spacing: var(--fontXSmallLetterSpacing);
+}
+
+/* HOME */
+
+.homeHome {
+  position: fixed;
+  top: var(--margin-M);
+  left: var(--margin-M);
+  margin: 0;
+  cursor: default;
+}
+
+.homeLogo {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  font-size: 17vw;
+  line-height: 14vw;
+  pointer-events: none;
+  z-index: 50;
+}
+
+.homeImageRow1 {
+  position: fixed;
+  bottom: 0;
+  z-index: 100;
+}
+
+.homeImageJeep {
+  transform: translate(10vw, -5vw);
+  width: 30vw;
+}
+
+.homeJeepDriving {
+  animation: driveOut 2s cubic-bezier(0.51, 0, 1, -0.09);
+  animation-fill-mode: forwards;
+}
+
+.homeSmoke {
+  position: absolute;
+  bottom: 0;
+  mix-blend-mode: multiply;
+  -webkit-mix-blend-mode: multiply;
+}
+
+@keyframes driveOut {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-80vw);
+  }
+}
+
+/* RUNNINGTITLE */
+
+.runningTitleWrapper {
+  position: fixed;
+  top: var(--margin-M);
+  width: 50vw;
+  display: flex;
+  height: 30px;
+  z-index: 1001;
+}
+
+.runningTitleHome {
+  transition: all 0.3s ease-out;
+}
+
+.runningTitleCurrent {
+  display: flex;
+  justify-content: flex-start;
+  cursor: default;
+}
+
+.runningTitleHidden {
+  width: 0px;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.runningTitleShown {
+  width: 270px;
+  pointer-events: auto;
+  opacity: 1;
+  cursor: pointer;
+}
+
+/* AKTUELLES */
+
+.aktWrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.aktPost {
+  width: 50%;
+  margin-bottom: var(--margin-L);
+  cursor: pointer;
+}
+
+.aktPost:hover h2 {
+  font-variation-settings: "wght" 800;
+}
+
+.aktPost p,
+.aktPost h1,
+.aktPost h2 {
+  margin: 20px 0;
+  transition: font-variation-settings 0.3s ease-out;
+}
+
+.aktSubline {
+  font-size: var(--fontXSmallSize);
+  line-height: var(--fontXSmallLineHeight);
+  letter-spacing: var(--fontXSmallLetterSpacing);
+}
+
+/* PROJEKTE */
+
+.projWrapper {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.projPost {
+  width: calc(50% - 8px);
+  margin-bottom: var(--margin-L);
+}
+
+.projImageWrapper {
+  height: 50%;
+  overflow: hidden;
+  /* display: flex;
+  align-items: center; */
+  margin-bottom: 10px;
+}
+
+.projImageWrapper span {
+  width: 100% !important;
+  height: initial !important;
+}
+
+/* ARMADA */
+
+.armdWrapper {
+  margin: 0 10vw;
+}
+
+.armdIntro h2 {
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+.armdListe {
+  margin-top: var(--margin-L);
+}
+
+.armdListe h1 {
+  text-align: center;
+}
+
+/* FOOTER */
+
+.footerWrapper {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  margin-top: var(--margin-XL);
+}
+
+.footerWrapper p {
+  font-size: var(--fontXSmallSize);
+  line-height: var(--fontXSmallLineHeight);
+  letter-spacing: var(--fontXSmallLetterSpacing);
 }
