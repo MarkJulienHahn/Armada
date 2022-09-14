@@ -161,6 +161,12 @@ ul {
   -webkit-mix-blend-mode: multiply;
 }
 
+.homeJeepPreloader {
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+}
+
 @keyframes driveOut {
   0% {
     transform: translateX(0);

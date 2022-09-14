@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import Image from "next/image";
+import Head from "next/head";
 
 import image01 from "../../public/images/Jeep_Leerlauf.gif";
 import image02 from "../../public/images/Jeep_Fahrt.gif";
@@ -10,20 +11,26 @@ const Jeep = () => {
   const [active, setActive] = useState(false);
 
   return (
-    <div onClick={() => setActive(true)}>
-      {!active ? (
-        <Image src={image01} />
-      ) : (
-        <>
-          <div className="homeJeepDriving">
-            <Image src={image02} priority={true} />
-          </div>
-          <div className="homeSmoke">
-            <Image src={image03} />
-          </div>
-        </>
-      )}
-    </div>
+    <>
+      <div className="homeJeepPreloader">
+        <Image src={image02} width="800" height="600" priority={true} />
+      </div>
+
+      <div onClick={() => setActive(true)}>
+        {!active ? (
+          <Image src={image01} />
+        ) : (
+          <>
+            <div className="homeJeepDriving">
+              <Image src={image02} width="800" height="600" priority={true} />
+            </div>
+            <div className="homeSmoke">
+              <Image src={image03} />
+            </div>
+          </>
+        )}
+      </div>
+    </>
   );
 };
 
