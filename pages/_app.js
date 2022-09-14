@@ -1,4 +1,3 @@
-import { useRouter } from "next/router";
 import Nav from "../components/Nav";
 
 import { AnimatePresence, motion } from "framer-motion";
@@ -6,8 +5,6 @@ import { AnimatePresence, motion } from "framer-motion";
 import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
-  const location = useRouter();
-
   return (
     <>
       <Nav />
