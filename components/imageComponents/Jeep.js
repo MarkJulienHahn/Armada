@@ -11,18 +11,19 @@ const Jeep = () => {
 
   return (
     <div onClick={() => setActive(true)}>
-      {!active ? (
+      <div style={active ? { display: "none" } : { display: "auto" }}>
+        {" "}
         <Image src={image01} />
-      ) : (
-        <>
-          <div className="homeJeepDriving">
-            <Image src={image02} />
-          </div>
-          <div className="homeSmoke">
-            <Image src={image03} />
-          </div>
-        </>
-      )}
+      </div>
+
+      <div style={!active ? { display: "none" } : { display: "block" }}>
+        <div className="homeJeepDriving">
+          <Image src={image02} />
+        </div>
+        <div className="homeSmoke">
+          <Image src={image03} />
+        </div>
+      </div>
     </div>
   );
 };
