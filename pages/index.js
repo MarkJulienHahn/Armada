@@ -1,6 +1,7 @@
 import React from "react";
 
 import Jeep from "../components/imageComponents/Jeep"
+import Faesser from "../components/imageComponents/Faesser";
 
 export default function Home() {
   return (
@@ -9,6 +10,9 @@ export default function Home() {
       <div className={"homeImageRow1"}>
         <div className={"homeImageJeep"}>
           <Jeep />
+        </div>
+        <div className={"homeImageFaesser"}>
+          <Faesser />
         </div>
       </div>
 

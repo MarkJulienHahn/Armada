@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
 import Image from "next/image";
-import Head from "next/head";
 
 import image01 from "../../public/images/Jeep_Leerlauf.gif";
 import image02 from "../../public/images/Jeep_Fahrt.gif";
@@ -12,7 +11,7 @@ const Jeep = () => {
 
   return (
     <>
-      <div className="homeJeepPreloader">
+      <div className="homePreloader">
         <Image src={image02} width="800" height="600" priority={true} />
       </div>
 
@@ -23,7 +22,8 @@ const Jeep = () => {
           <>
             <div className="homeJeepDriving">
               <Image src={image02} width="800" height="600" priority={true} />
-            </div>
+            </div> 
+            
             <div className="homeSmoke">
               <Image src={image03} />
             </div>
