@@ -1,7 +1,11 @@
 import React from "react";
 
+import Image from "next/image";
+
 import RunningTitle from "../components/RunningTitle";
 import Footer from "../components/Footer";
+
+import image01 from "../public/images/image-2.jpg";
 
 const aktuelles = () => {
   return (
@@ -34,6 +38,13 @@ const aktuelles = () => {
           <p className="aktSubline">
             Gefördert vom Fonds Darstellende Künste aus Mitteln der Beauftragten
             der Bundesregierung für Kultur und Medien
+          </p>
+          <div className="aktImage">
+            <Image src={image01} />
+          </div>
+          <p className="aktSubline">
+            Recherche ”Im Land der letzten Dinge“<br/>
+            (c) Armada Theater
           </p>
         </div>
 

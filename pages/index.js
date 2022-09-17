@@ -3,6 +3,8 @@ import React from "react";
 import Jeep from "../components/imageComponents/Jeep"
 import Faesser from "../components/imageComponents/Faesser";
 
+import Footer from "../components/Footer";
+
 export default function Home() {
   return (
     <>
@@ -21,6 +23,11 @@ export default function Home() {
         <br />
         Theater
       </div>
+
+      <div className={"homeLegals"}>
+        <Footer />
+      </div>
+
     </>
   );
 }
