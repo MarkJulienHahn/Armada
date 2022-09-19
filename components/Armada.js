@@ -58,6 +58,7 @@ const Armada = () => {
               name={person.name}
               text={person.text}
               contact={person.contact}
+              key={i}
             />
           ))}
         </div>
