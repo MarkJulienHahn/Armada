@@ -29,6 +29,7 @@ const TermineYearsVergangen = ({ sorted, year }) => {
           </div>
           {months.map((val) => (
             <TermineMonthsVergangen
+              key={i}
               sorted={sortedByYear}
               month={val[0]}
               monthNmbr={val[1]}

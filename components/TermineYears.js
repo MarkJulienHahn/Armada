@@ -27,8 +27,9 @@ const TermineYears = ({ sorted, year }) => {
           <div className="termineRow">
             <h1>{year}</h1>
           </div>
-          {months.map((val) => (
+          {months.map((val, i) => (
             <TermineMonths
+              key={i}
               sorted={sortedByYear}
               month={val[0]}
               monthNmbr={val[1]}

@@ -20,9 +20,9 @@ const Projekt = ({ projekt }) => {
             src={projekt.attributes.Videolink}
             width="640"
             height="360"
-            frameborder="0"
+            frameBorder="0"
             allow="autoplay; fullscreen; picture-in-picture"
-            allowfullscreen
+            allowFullScreen
           ></iframe>
         </div>
       ) : (
@@ -42,7 +42,7 @@ const Projekt = ({ projekt }) => {
                 {projekt.attributes.Termine
                   ? projekt.attributes.Termine.map((termin, i) =>
                       termin.Premiere ? (
-                        <div>
+                        <div key={i}>
                           <Date timestamp={termin.Datum} />
                           <p>{termin.Spielort}</p>
                         </div>
@@ -75,7 +75,7 @@ const Projekt = ({ projekt }) => {
         <p>Beteiligte</p>
         <div className="projSingleDataWrapper">
           {projekt.attributes.Beteiligte.map((beteiligte, i) => (
-            <div className="projSingleDataCol2">
+            <div className="projSingleDataCol2" key={i}>
               <div>
                 <p>{beteiligte.Rolle}</p>
 
@@ -106,7 +106,11 @@ const Projekt = ({ projekt }) => {
                 {projekt.attributes.Presse.Link ? (
                   <p>
                     <br />
-                    <a href={projekt.attributes.Presse.Link} target="_blank" rel="noreferrer">
+                    <a
+                      href={projekt.attributes.Presse.Link}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
                       Hier gibt’s mehr zu Lesen.
                     </a>
                   </p>
@@ -125,8 +129,8 @@ const Projekt = ({ projekt }) => {
 
               {projekt.attributes.Termine
                 ? projekt.attributes.Termine.map((termin, i) => (
-                    <div>
-                      <Date timestamp={termin.Datum} />
+                    <div key={i}>
+                      <Date key={i} timestamp={termin.Datum} />
                       <p>{termin.Spielort}</p>
                     </div>
                   ))
@@ -142,7 +146,7 @@ const Projekt = ({ projekt }) => {
 
               {projekt.attributes.Downloadcontent
                 ? projekt.attributes.Downloadcontent.map((content, i) => (
-                    <span className="projDownloadlink">
+                    <span key={i} className="projDownloadlink">
                       <a
                         href={`${process.env.NEXT_PUBLIC_STRAPI_URL}${content.File.data[0].attributes.url}`}
                       >
@@ -168,7 +172,7 @@ const Projekt = ({ projekt }) => {
           className="mySwiper"
         >
           {projekt.attributes.Fotos.data.map((foto, i) => (
-            <SwiperSlide>
+            <SwiperSlide key={i}>
               <div className="projImage">
                 <ProjectSwiperImage foto={foto.attributes} />
               </div>
@@ -180,7 +184,7 @@ const Projekt = ({ projekt }) => {
       {projekt.attributes.Logos.data ? (
         <div className="projLogos">
           {projekt.attributes.Logos.data.map((logo, i) => (
-            <div className="projLogo">
+            <div className="projLogo" key={i}>
               <Image
                 placeholder="blur"
                 blurDataURL="../public/images/image.jpg"

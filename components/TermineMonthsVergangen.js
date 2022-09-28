@@ -43,7 +43,7 @@ const TermineMonthsVergangen = ({ sorted, month, monthNmbr }) => {
                 </h2>
                 <p className="termineLocation">
                   {row.spielortlink ? (
-                    <a href={row.spielortlink} target="_blank">{row.location}</a>
+                    <a href={row.spielortlink} target="_blank" rel="noreferrer">{row.location}</a>
                   ) : (
                     row.location
                   )}
