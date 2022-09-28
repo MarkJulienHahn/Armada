@@ -1,71 +1,72 @@
 import React from "react";
 
-import Image from "next/image";
+import client from "../client";
 
 import RunningTitle from "../components/RunningTitle";
+import AktuellesPost from "../components/AktuellesPost";
 import Footer from "../components/Footer";
 
-import image01 from "../public/images/image-2.jpg";
+const aktuelles = ({ aktuelles }) => {
+  console.log(aktuelles[0].title, aktuelles);
 
-const aktuelles = () => {
+  function formatPrimitive(value) {
+    return new Date(value)[Symbol.toPrimitive]("number");
+  }
+
+  function compare(a, b) {
+    if (
+      formatPrimitive(a.veroeffentlichungsdatum) >
+      formatPrimitive(b.veroeffentlichungsdatum)
+    ) {
+      return -1;
+    }
+    if (
+      formatPrimitive(a.veroeffentlichungsdatum) <
+      formatPrimitive(b.veroeffentlichungsdatum)
+    ) {
+      return 1;
+    }
+    return 0;
+  }
+
+  const sorted = aktuelles.sort(compare);
+
+  console.log(aktuelles)
+
   return (
     <div className="mainWrapper">
       <RunningTitle current={"Aktuelles"} />
 
       <div className="aktWrapper">
-        <div className="aktPost">
-          <p>12 / 10 / 22</p>
-          <h2>DWDW 2 — bald geht’s los bald geht’s los</h2>
-          <p>
-            Bald ist es wieder so weit! Während um sie herum die Wälder brennen,
-            bewahren Bobby Kim und ihr Team kühlen Kopf und sind mitten in ihren
-            Recherchen für die nächste Show DA
-          </p>
-          <p className="aktSubline">
-            Premiere im Maschinenhaus <br />
-            28.Oktober 2022
-          </p>
-        </div>
-
-        <div className="aktPost">
-          <p>10 / 9 / 22</p>
-          <h2>Im Land der letzten Dinge</h2>
-          <p>
-            Trotz geschlossener Theater sind wir aktiv. In der Recherche “Im
-            Land der letzten Dinge” untersuchen wir die manigfaltigen Spielorte,
-            die sich mit Ton kreiieren lassen. #takeCare
-          </p>
-          <p className="aktSubline">
-            Gefördert vom Fonds Darstellende Künste aus Mitteln der Beauftragten
-            der Bundesregierung für Kultur und Medien
-          </p>
-          <div className="aktImage">
-            <Image src={image01} />
-          </div>
-          <p className="aktSubline">
-            Recherche ”Im Land der letzten Dinge“<br/>
-            (c) Armada Theater
-          </p>
-        </div>
-
-        <div className="aktPost">
-          <p>12 / 10 / 22</p>
-          <h2>DWDW 2 — bald geht’s los bald geht’s los</h2>
-          <p>
-            Bald ist es wieder so weit! Während um sie herum die Wälder brennen,
-            bewahren Bobby Kim und ihr Team kühlen Kopf und sind mitten in ihren
-            Recherchen für die nächste Show DA
-          </p>
-          <p className="aktSubline">
-            Premiere im Maschinenhaus <br />
-            28.Oktober 2022
-          </p>
-        </div>
+        {sorted.map((post, i) => (
+          <AktuellesPost
+            key={i}
+            titel={post.title}
+            haupttext={post.haupttext}
+            subtext={post.subtext}
+            bildunterschrift={post.bildunterschrift}
+            bild={post.bild}
+            datum={post.veroeffentlichungsdatum}
+          />
+        ))}
       </div>
 
       <Footer />
     </div>
   );
 };
+
+export async function getStaticProps(context) {
+  const aktuelles = await client.fetch(`
+  *[_type == "aktuelles"]{
+    title, "haupttext": haupttext[0].children[0].text, "subtext": subtext[0].children[0].text, bildunterschrift, veroeffentlichungsdatum, "bild": bild.asset->
+  }   
+  `);
+  return {
+    props: {
+      aktuelles,
+    },
+  };
+}
 
 export default aktuelles;

@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 
 import Image from "next/image";
 
-import image01 from "../public/images/clara.png";
-
 const ArmadaPerson = ({
   setActiveIndex,
   activeIndex,
@@ -11,10 +9,9 @@ const ArmadaPerson = ({
   name,
   text,
   contact,
+  portrait
 }) => {
   const [active, setActive] = useState(false);
-
-  console.log(activeIndex, index, active);
 
   useEffect(() => {
     index === activeIndex ? setActive(true) : setActive(false);
@@ -41,7 +38,7 @@ const ArmadaPerson = ({
           <div onClick={() => setActive(!active)}>
             <div className="armdImageWrapper">
               <div className="armdImage">
-                <Image src={image01} />
+                <Image placeholder="blur" blurDataURL="../public/images/image.jpg" src={portrait.url} layout="responsive" width={portrait.metadata.dimensions.width} height={portrait.metadata.dimensions.height}/>
               </div>
             </div>
             <p>{text}</p>

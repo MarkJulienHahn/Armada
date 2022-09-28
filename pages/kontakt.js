@@ -11,7 +11,7 @@ const kontakt = () => {
         <div className="kontakt">
           <h2>Armada Theater</h2>
           <p>
-            Teststraße 31
+            Kuhstraße 31
             <br />
             42555 Velbert
             <br />

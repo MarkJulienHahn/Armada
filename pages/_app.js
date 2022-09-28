@@ -19,10 +19,10 @@ function MyApp({ Component, pageProps }) {
         <motion.div
           location={location}
           key={location.pathname}
-          initial={{ y: 0, opacity: 0 }}
+          initial={{ y: 0, opacity: 1 }}
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 0, opacity: 0 }}
-          transition={{ duration: 0.3, ease: "easeOut" }}
+          transition={{ duration: 0.5, ease: [0.19, 1, 0.22, 1] }}
         >
           <Component {...pageProps} />
         </motion.div>
