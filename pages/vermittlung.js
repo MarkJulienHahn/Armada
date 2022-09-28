@@ -13,11 +13,11 @@ import Footer from "../components/Footer";
 import { fetcher } from "../lib/api";
 
 const vermittlung = ({ vermittlung, projekte }) => {
-  const swiper = useSwiper();
+  // const swiper = useSwiper();
 
   return (
     <>
-      <div className="mainWrapper">
+      {/* <div className="mainWrapper">
         <RunningTitle current={"Vermittlung"} />
         <div className="vermWrapper">
           <div className="vermInfo">
@@ -70,7 +70,7 @@ const vermittlung = ({ vermittlung, projekte }) => {
           ))}
         </div>
         <Footer />
-      </div>
+      </div> */}
     </>
   );
 };

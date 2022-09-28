@@ -3,12 +3,11 @@ import React from "react";
 import RunningTitle from "../components/RunningTitle";
 import Footer from "../components/Footer"
 
-import { fetcher } from "../lib/api";
+import client from "../client";
 
 import Image from "next/image";
 
 const archiv = ({ archiv }) => {
-  console.log(archiv);
 
   return (
     <div className="mainWrapper">
@@ -18,21 +17,22 @@ const archiv = ({ archiv }) => {
         {archiv.map((post, i) => (
           <>
             <div className="archText">
-              <p>{post.attributes.Datum}</p>
-              <p>{post.attributes.Headline}</p>
+              <p>{post.datum}</p>
+              <p>{post.titel}</p>
             </div>
 
-            {post.attributes.Medien.data.map((foto, i) => (
+            {post.fotos.map((foto, i) => (
 
               <div style={{ height: "100%", position: "relative", padding: "0 2px 80px 2px" }}>
 
                 <Image
+                    key={i}
                     placeholder="blur"
                     blurDataURL="../public/images/image.jpg"
-                    src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${foto.attributes.url}`}
+                    src={foto.url}
                     // layout="fill"
-                    width={foto.attributes.width}
-                    height={foto.attributes.height}
+                    width={foto.metadata.dimensions.width}
+                    height={foto.metadata.dimensions.height}
                     // objectFit="contain"
                   />
               </div>
@@ -47,13 +47,18 @@ const archiv = ({ archiv }) => {
 
 export default archiv;
 
-export async function getStaticProps() {
-  const response = await fetcher(
-    `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/archivs?populate=*`
-  );
+export async function getStaticProps(context) {
+  const archiv = await client.fetch(`
+
+  *   [_type == "archiv"] | order(!datum) 
+  {  "titel": titel,
+     "datum": datum,
+     "fotos": fotos[].asset->
+  }
+  `);
   return {
     props: {
-      archiv: response.data,
+      archiv,
     },
   };
 }

@@ -18,7 +18,7 @@ const impressum = () => {
         <br />
         Gestaltung und Programmierung
         <br />
-        <a href="https://stereo-typefaces.com" target="_blank">
+        <a href="https://stereo-typefaces.com" target="_blank" rel="noreferrer">
           Stereo Typefaces
         </a>
         <br />
@@ -26,7 +26,7 @@ const impressum = () => {
         Schriftarten
         <br />
         Giallo Roman&nbsp; 
-        <a href="https://stereo-typefaces.com" target="_blank">
+        <a href="https://stereo-typefaces.com" target="_blank" rel="noreferrer">
            (Stereo Typefaces)
         </a>
       </p>

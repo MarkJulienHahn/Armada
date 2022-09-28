@@ -13,11 +13,11 @@ const Footer = () => {
           Impressum
         </Link>{" "}
         |{" "}
-        <Link href="/datenschutz" target="_blank">
+        <Link href="/datenschutz" target="_blank" rel="noreferrer">
           Datenschutz
         </Link>{" "}
         |{" "}
-        <a href="https://www.instagram.com/armada.theater/" target="_blank">
+        <a href="https://www.instagram.com/armada.theater/" target="_blank" rel="noreferrer">
           Instagram
         </a>
       </p>

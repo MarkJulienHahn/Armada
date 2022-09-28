@@ -106,7 +106,7 @@ const Projekt = ({ projekt }) => {
                 {projekt.attributes.Presse.Link ? (
                   <p>
                     <br />
-                    <a href={projekt.attributes.Presse.Link} target="_blank">
+                    <a href={projekt.attributes.Presse.Link} target="_blank" rel="noreferrer">
                       Hier gibt’s mehr zu Lesen.
                     </a>
                   </p>

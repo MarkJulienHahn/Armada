@@ -42,8 +42,6 @@ const projekte = ({ projekte }) => {
 
   const projekteSortiert = projekte.sort(compare);
 
-
-
   return (
     <div className="mainWrapper">
       <RunningTitle current={"Projekte"} />
@@ -52,11 +50,12 @@ const projekte = ({ projekte }) => {
         {projekte.map((project, i) => (
           <Link href={`/projekte/${project.slug}`}>
             <div className="projLink">
-            <ProjektPreview
-              titel={project.titel}
-              kurzbeschreibung={project.kurzbeschreibung}
-              bild={project.vorschaubild}
-            />
+              <ProjektPreview
+                key={i}
+                titel={project.titel}
+                kurzbeschreibung={project.kurzbeschreibung}
+                bild={project.vorschaubild}
+              />
             </div>
           </Link>
         ))}
@@ -69,7 +68,6 @@ export default projekte;
 
 export async function getStaticProps(context) {
   const projekte = await client.fetch(`
-  
 
   *   [_type == "projekte"] | order(erstauffuehrung) 
   {  "titel": titel,
