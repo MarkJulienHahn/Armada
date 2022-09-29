@@ -22,6 +22,7 @@ const archiv = ({ archiv }) => {
 
             {post.fotos.map((foto, i) => (
               <div
+                key={i}
                 style={{
                   height: "100%",
                   position: "relative",
