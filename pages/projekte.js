@@ -6,6 +6,8 @@ import client from "../client";
 import RunningTitle from "../components/RunningTitle";
 import ProjektPreview from "../components/ProjektPreview";
 
+import { CrossingImagePapagai } from "../components/imageComponents/CrossingImagePapagai";
+
 const projekte = ({ projekte }) => {
 
   function formatPrimitive(value) {
@@ -33,6 +35,8 @@ const projekte = ({ projekte }) => {
   return (
     <div className="mainWrapper">
       <RunningTitle current={"Projekte"} />
+
+      <CrossingImagePapagai />
 
       <div className="projWrapper">
         {projekte.map((project, i) => (

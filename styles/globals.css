@@ -249,7 +249,7 @@ ul {
   top: var(--margin-M);
   display: flex;
   height: 30px;
-  z-index:100;
+  z-index: 100;
 }
 
 .runningTitleHome {
@@ -460,7 +460,7 @@ ul {
 }
 
 .armdIntro p {
-  margin-bottom: var(--margin-L)
+  margin-bottom: var(--margin-L);
 }
 
 .armdListe {
@@ -517,7 +517,7 @@ ul {
 }
 
 .archWrapper div {
-  width: 400px;
+  width: 300px;
 }
 
 .archWrapper .archText {
@@ -526,6 +526,12 @@ ul {
 
 .archText:first-child {
   margin-left: 0 !important;
+}
+
+.archText p {
+  font-size: var(--fontXSmallSize);
+  line-height: var(--fontXSmallLineHeight);
+  letter-spacing: var(--fontXSmallLetterSpacing);
 }
 
 .archSingle {
@@ -570,7 +576,7 @@ ul {
 }
 
 .vermInfo hr {
-  border: 2px solid 
+  border: 2px solid;
 }
 
 .vermDownloadHeader {
@@ -594,7 +600,7 @@ ul {
 }
 
 .vermMitnehmenSingle div {
-width: 50%;
+  width: 50%;
 }
 
 /* TERMINE */
@@ -643,20 +649,20 @@ width: 50%;
   width: 15vw;
 }
 
-.termineSwitch p{
+.termineSwitch p {
   cursor: pointer;
-  transition: font-variation-settings 0.5s ease-out
+  transition: font-variation-settings 0.5s ease-out;
 }
 
 .termineSwitch p:hover {
-  font-variation-settings: "wght" 1000
+  font-variation-settings: "wght" 1000;
 }
 
 /* KONTAKT */
 
 .kontaktWrapper {
   height: 100%;
-  width: 100vw;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -691,4 +697,58 @@ width: 50%;
 
 .imprWrapper {
   padding: var(--margin-M);
+}
+
+/* CROSSING */
+
+.crossingWrapperDino {
+  position: fixed;
+  top: 80%;
+  right: 0;
+  animation: ltr 100s linear;
+  pointer-events: none;
+  animation-fill-mode: forwards;
+  animation-delay: 0s;
+}
+
+@keyframes ltr {
+  0% {
+    transform: translateX(0);
+  }
+  /* 20% {
+    transform: translateX(0)
+  } */
+  100% {
+    transform: translateX(-200vw);
+  }
+}
+
+.crossingWrapperPapagei {
+  position: fixed;
+  top: 80%;
+  left: 0;
+  animation: rtl 30s ease;
+  pointer-events: none;
+  animation-fill-mode: forwards;
+  animation-delay: 0s;
+  z-index: 1000;
+  transform: scale(80%)
+}
+
+@keyframes rtl {
+  0% {
+    transform: translate(-50vw, 0vh);
+  }
+  /* 20% {
+    transform: translateX(0)
+  } */
+  30% {
+    transform: translate(200vw, -50vh);
+  }
+  60% {
+    transform: translate(-50vw, 20vh);
+  }
+  100% {
+    transform: translate(200vw, 10vh);
+  }
 }

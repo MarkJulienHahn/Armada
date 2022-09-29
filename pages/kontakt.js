@@ -1,11 +1,14 @@
 import React from "react";
 
 import RunningTitle from "../components/RunningTitle";
+
+import { CrossingImageDino } from "../components/imageComponents/CrossingImageDino";
 import Footer from "../components/Footer";
 
 const kontakt = () => {
   return (
     <div className="mainWrapper">
+      <CrossingImageDino/>
       <RunningTitle current={"Kontakt"} />
       <div className="kontaktWrapper">
         <div className="kontakt">

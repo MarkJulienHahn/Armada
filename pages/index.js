@@ -5,6 +5,8 @@ import Faesser from "../components/imageComponents/Faesser";
 import Vogel from "../components/imageComponents/Vogel";
 import Fernseher from "../components/imageComponents/Fernseher";
 
+import { CrossingImageDino } from "../components/imageComponents/CrossingImageDino";
+
 import Footer from "../components/Footer";
 
 export default function Home() {
@@ -50,6 +52,9 @@ export default function Home() {
   return (
     <>
       <h2 className={"homeHome"}>Home</h2>
+
+      <CrossingImageDino />
+
       <div className={"homeImageRow1"} style={row1}>
         <div className={"homeImageJeep"}>
           <Jeep />
