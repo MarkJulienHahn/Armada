@@ -45,8 +45,8 @@ const vermittlung = ({ vermittlung, projekte }) => {
           className="mySwiper"
         >
           {vermittlung[0].bilder.map((foto, i) => (
-            <>
-              <SwiperSlide>
+
+              <SwiperSlide key={i}>
                 <div className="vermImage">
                   <div style={{ height: "100%", position: "relative" }}>
                     {/* {console.log(foto.attributes.url)} */}
@@ -54,7 +54,7 @@ const vermittlung = ({ vermittlung, projekte }) => {
                   </div>
                 </div>
               </SwiperSlide>
-            </>
+            
           ))}
         </Swiper>
       </div>
@@ -62,14 +62,14 @@ const vermittlung = ({ vermittlung, projekte }) => {
       <div className="mainWrapper">
         <div className="vermInfo">
           <h2>Zum Mitnehmen</h2>
-          {projekte.map((projekt) => (
-            <div className="vermMitnehmenSingle">
+          {projekte.map((projekt, i) => (
+            <div className="vermMitnehmenSingle" key={i}>
               <div>
                 <p>{projekt.titel}</p>
               </div>
               <div>
-                {projekt.downloads.map((content) => (
-                  <p>
+                {projekt.downloads.map((content, i) => (
+                  <p key={i}>
                     <a href={content.url}>{content.filename}</a>
                   </p>
                 ))}

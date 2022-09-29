@@ -1,5 +1,3 @@
-import { useRouter } from "next/router";
-
 import RunningTitleDouble from "../../components/RunningTitleDouble";
 import Projekt from "../../components/Projekt";
 
@@ -41,7 +39,6 @@ export async function getStaticProps(context) {
 }
 
 const projekt = ({ projekte }) => {
-  const router = useRouter();
 
   return (
     <>
