@@ -61,7 +61,7 @@ const Projekt = ({ projekt }) => {
               <p>Kooperationspartner</p>
               <div>
                 {projekt.attributes.Kooperationspartner.map((partner, i) => (
-                  <p>{partner.Repeater}</p>
+                  <p key={i}>{partner.Repeater}</p>
                 ))}
               </div>
             </div>
