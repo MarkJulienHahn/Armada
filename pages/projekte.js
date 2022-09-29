@@ -48,10 +48,9 @@ const projekte = ({ projekte }) => {
 
       <div className="projWrapper">
         {projekte.map((project, i) => (
-          <Link href={`/projekte/${project.slug}`}>
+          <Link key={i} href={`/projekte/${project.slug}`}>
             <div className="projLink">
               <ProjektPreview
-                key={i}
                 titel={project.titel}
                 kurzbeschreibung={project.kurzbeschreibung}
                 bild={project.vorschaubild}
