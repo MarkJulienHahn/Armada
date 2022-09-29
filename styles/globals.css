@@ -459,6 +459,10 @@ ul {
   padding-bottom: 10px;
 }
 
+.armdIntro p {
+  margin-bottom: var(--margin-L)
+}
+
 .armdListe {
   margin-top: var(--margin-L);
 }

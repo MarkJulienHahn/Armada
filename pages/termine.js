@@ -3,10 +3,12 @@ import React from "react";
 import RunningTitle from "../components/RunningTitle";
 import Footer from "../components/Footer";
 
-import { fetcher } from "../lib/api";
+import client from "../client";
 import Termine from "../components/Termine";
 
 const termine = ({ projekte }) => {
+
+  console.log(projekte)
   return (
     <div className="mainWrapper">
       <RunningTitle current={"Termine"} />
@@ -19,13 +21,18 @@ const termine = ({ projekte }) => {
 
 export default termine;
 
-export async function getStaticProps() {
-  const projekteResponse = await fetcher(
-    `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/projekte?populate=*`
-  );
+
+export async function getStaticProps(context) {
+  const projekte = await client.fetch(`
+
+  *   [_type == "projekte"]
+  {  "titel": titel,
+    "termine": termine
+  }
+  `);
   return {
     props: {
-      projekte: projekteResponse.data,
+      projekte,
     },
   };
 }

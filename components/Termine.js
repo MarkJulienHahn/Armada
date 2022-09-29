@@ -32,26 +32,24 @@ const Termine = ({ projekte }) => {
     return new Date(value).getFullYear();
   };
 
-  console.log(projekte);
-
   var weekdays = ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"];
 
   const dates = projekte.map((projekt) =>
-    projekt.attributes.Termine.map((date) => ({
-      titel: projekt.attributes.Titel,
-      slug: projekt.attributes.slug,
-      timestamp: formatPrimitive(date.Datum),
-      fullDate: formatMyDate(date.Datum),
-      time: formatMyTime(date.Datum),
-      day: outputDay(date.Datum),
-      dayWord: weekdays[outputDay(date.Datum)],
-      date: outputDate(date.Datum),
-      month: outputMonth(date.Datum),
-      year: outputYear(date.Datum),
-      location: date.Spielort,
-      spielortlink: date.Spielortlink,
-      premiere: date.Premiere,
-      Schulvorfuehrung: date.Schulvorfuehrung,
+    projekt.termine.map((date) => ({
+      titel: projekt.titel,
+      slug: projekt.slug,
+      timestamp: formatPrimitive(date.datum),
+      fullDate: formatMyDate(date.datum),
+      time: formatMyTime(date.datum),
+      day: outputDay(date.datum),
+      dayWord: weekdays[outputDay(date.datum)],
+      date: outputDate(date.datum),
+      month: outputMonth(date.datum),
+      year: outputYear(date.datum),
+      location: date.spielort,
+      spielortlink: date.spielortlink,
+      premiere: date.premiere,
+      Schulvorfuehrung: date.schulvorfuehrung,
     }))
   );
 

@@ -1,24 +1,12 @@
 import React from "react";
 
 import Link from "next/link";
-
 import client from "../client";
 
 import RunningTitle from "../components/RunningTitle";
 import ProjektPreview from "../components/ProjektPreview";
 
-import useSWR from "swr";
-
-import { fetcher } from "../lib/api";
-
 const projekte = ({ projekte }) => {
-  // const { data } = useSWR(
-  //   `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/projekte?populate=*`,
-  //   fetcher,
-  //   {
-  //     fallbackData: projekte,
-  //   }
-  // );
 
   function formatPrimitive(value) {
     return new Date(value)[Symbol.toPrimitive]("number");
@@ -48,7 +36,8 @@ const projekte = ({ projekte }) => {
 
       <div className="projWrapper">
         {projekte.map((project, i) => (
-          <Link key={i} href={`/projekte/${project.slug}`}>
+          <Link key={i} href={`/projekte/${project.slug.current}`}>
+
             <div className="projLink">
               <ProjektPreview
                 titel={project.titel}

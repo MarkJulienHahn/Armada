@@ -10,19 +10,27 @@ import RunningTitle from "../components/RunningTitle";
 import ProjectSwiperImage from "../components/ProjectSwiperImage";
 import Footer from "../components/Footer";
 
-import { fetcher } from "../lib/api";
+import client from "../client";
 
 const vermittlung = ({ vermittlung, projekte }) => {
   // const swiper = useSwiper();
 
+  function blocksToText(blocks) {
+    return blocks.map((block) =>
+      block.children.map((child) => child.text).join("")
+    );
+  }
+
+  console.log(vermittlung);
+
   return (
     <>
-      {/* <div className="mainWrapper">
+      <div className="mainWrapper">
         <RunningTitle current={"Vermittlung"} />
         <div className="vermWrapper">
           <div className="vermInfo">
             <h2>Vermittlung</h2>
-            <p>{vermittlung.attributes.Vermittlungstext}</p>
+            <p>{blocksToText(vermittlung[0].beschreibung)}</p>
           </div>
         </div>
       </div>
@@ -36,13 +44,13 @@ const vermittlung = ({ vermittlung, projekte }) => {
           loop={true}
           className="mySwiper"
         >
-          {vermittlung.attributes.Vermittlungsbilder.data.map((foto, i) => (
+          {vermittlung[0].bilder.map((foto, i) => (
             <>
               <SwiperSlide>
                 <div className="vermImage">
                   <div style={{ height: "100%", position: "relative" }}>
-                    {console.log(foto.attributes.url)}
-                    <ProjectSwiperImage foto={foto.attributes} />
+                    {/* {console.log(foto.attributes.url)} */}
+                    <ProjectSwiperImage foto={foto.data} />
                   </div>
                 </div>
               </SwiperSlide>
@@ -57,12 +65,12 @@ const vermittlung = ({ vermittlung, projekte }) => {
           {projekte.map((projekt) => (
             <div className="vermMitnehmenSingle">
               <div>
-                <p>{projekt.attributes.Titel}</p>
+                <p>{projekt.titel}</p>
               </div>
               <div>
-                {projekt.attributes.Downloadcontent.map((content) => (
+                {projekt.downloads.map((content) => (
                   <p>
-                    <a>{content.Filename}</a>
+                    <a href={content.url}>{content.filename}</a>
                   </p>
                 ))}
               </div>
@@ -70,24 +78,32 @@ const vermittlung = ({ vermittlung, projekte }) => {
           ))}
         </div>
         <Footer />
-      </div> */}
+      </div>
     </>
   );
 };
 
 export default vermittlung;
 
-export async function getStaticProps() {
-  const vermittlungResponse = await fetcher(
-    `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/vermittlung?populate=*`
-  );
-  const projekteResponse = await fetcher(
-    `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/projekte?populate=*`
-  );
+export async function getStaticProps(context) {
+  const vermittlung = await client.fetch(`
+
+  *[_type == "vermittlung"]
+  {...,  
+    "files": files[]{"files": files.asset->{url}, "filename": filename},
+    "bilder": bilder[]{"data": asset->{url, "metadata": metadata}}
+  }
+  `);
+  const projekte = await client.fetch(`
+
+  *   [_type == "projekte"] | order(erstauffuehrung) 
+  {  "titel": titel,
+     "slug": slug.current,
+     "downloads": downloads[]{"url": file.asset->{url}, "filename": filename}
+  }`);
   return {
     props: {
-      vermittlung: vermittlungResponse.data,
-      projekte: projekteResponse.data,
+      vermittlung, projekte
     },
   };
 }

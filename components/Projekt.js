@@ -7,17 +7,27 @@ import Date from "./Date";
 import Image from "next/image";
 import Link from "next/link";
 
+import "swiper/css";
+
 const Projekt = ({ projekt }) => {
-  console.log(projekt);
+  console.log("PROJEKT", projekt);
+
+  function blocksToText(blocks) {
+    return blocks.map((block) =>
+      block.children.map((child) => child.text).join("")
+    );
+  }
+
+  const beschreibung = blocksToText(projekt.beschreibung);
 
   return (
     <div className="projSingleWrapper">
-      <h1>{projekt.attributes.Titel}</h1>
+      <h1>{projekt.titel}</h1>
 
-      {projekt.attributes.Videolink ? (
+      {projekt.videolink ? (
         <div className="embed-container">
           <iframe
-            src={projekt.attributes.Videolink}
+            src={projekt.videolink}
             width="640"
             height="360"
             frameBorder="0"
@@ -30,21 +40,21 @@ const Projekt = ({ projekt }) => {
       )}
 
       <div className="projSingleText">
-        <p>{projekt.attributes.Beschreibung}</p>
+        <p>{beschreibung}</p>
       </div>
 
       <div className="projSingleData">
         <div className="projSingleDataWrapper">
-          {projekt.attributes.Presse ? (
+          {projekt.termine ? (
             <div className="projSingleDataCol">
               <p>Premiere</p>
               <div>
-                {projekt.attributes.Termine
-                  ? projekt.attributes.Termine.map((termin, i) =>
-                      termin.Premiere ? (
+                {projekt.termine
+                  ? projekt.termine.map((termin, i) =>
+                      termin.premiere ? (
                         <div key={i}>
-                          <Date timestamp={termin.Datum} />
-                          <p>{termin.Spielort}</p>
+                          <Date timestamp={termin.datum} />
+                          <p>{termin.spielort}</p>
                         </div>
                       ) : (
                         ""
@@ -56,12 +66,12 @@ const Projekt = ({ projekt }) => {
           ) : (
             ""
           )}
-          {projekt.attributes.Presse ? (
+          {projekt.kooperationspartner ? (
             <div className="projSingleDataCol">
               <p>Kooperationspartner</p>
               <div>
-                {projekt.attributes.Kooperationspartner.map((partner, i) => (
-                  <p key={i}>{partner.Repeater}</p>
+                {projekt.kooperationspartner.map((partner, i) => (
+                  <p key={i}>{partner}</p>
                 ))}
               </div>
             </div>
@@ -74,22 +84,20 @@ const Projekt = ({ projekt }) => {
       <div className="projSingleData">
         <p>Beteiligte</p>
         <div className="projSingleDataWrapper">
-          {projekt.attributes.Beteiligte.map((beteiligte, i) => (
+          {projekt.beteiligte.map((beteiligter, i) => (
             <div className="projSingleDataCol2" key={i}>
               <div>
-                <p>{beteiligte.Rolle}</p>
+                <p>{beteiligter.position}</p>
 
-                {beteiligte.teammembers.data[0] ? (
+                {beteiligter.member ? (
                   <p>
-                    <Link href="/armada">
-                      {beteiligte.teammembers.data[0].attributes.Name}
-                    </Link>
+                    <Link href="/armada">{beteiligter.member.name}</Link>
                   </p>
                 ) : (
                   ""
                 )}
 
-                <p>{beteiligte.Externe}</p>
+                <p>{beteiligter.externe}</p>
               </div>
             </div>
           ))}
@@ -98,59 +106,54 @@ const Projekt = ({ projekt }) => {
 
       <div className="projSingleData">
         <div className="projSingleDataWrapper">
-          {projekt.attributes.Presse ? (
+          {projekt.presse ? (
             <div className="projSingleDataCol">
               <p>Presse</p>
               <div>
-                <p>{projekt.attributes.Presse.Text}</p>
-                {projekt.attributes.Presse.Link ? (
-                  <p>
-                    <br />
-                    <a
-                      href={projekt.attributes.Presse.Link}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      Hier gibt’s mehr zu Lesen.
-                    </a>
-                  </p>
-                ) : (
-                  ""
-                )}
+                {projekt.presse.map((artikel, i) => (
+                  <div key={i}>
+                    <p>{blocksToText(artikel.text)}</p>
+                    {artikel.link ? (
+                      <p>
+                        <br />
+                        <a href={artikel.link} target="_blank" rel="noreferrer">
+                          Hier gibt’s mehr zu Lesen.
+                        </a>
+                      </p>
+                    ) : (
+                      ""
+                    )}
+                  </div>
+                ))}
               </div>
             </div>
           ) : (
             ""
           )}
 
-          {projekt.attributes.Termine ? (
+          {projekt.termine ? (
             <div className="projSingleDataCol">
               <p>Spieltermine</p>
-
-              {projekt.attributes.Termine
-                ? projekt.attributes.Termine.map((termin, i) => (
-                    <div key={i}>
-                      <Date key={i} timestamp={termin.Datum} />
-                      <p>{termin.Spielort}</p>
-                    </div>
-                  ))
-                : ""}
+              {projekt.termine.map((termin, i) => (
+                <div key={i}>
+                  <Date timestamp={termin.datum} />
+                  <p>{termin.spielort}</p>
+                </div>
+              ))}
             </div>
           ) : (
             ""
           )}
 
-          {projekt.attributes.Downloadcontent ? (
+          {projekt.downloads ? (
             <div className="projSingleDataCol">
               <p>Zum Mitnehmen</p>
 
-              {projekt.attributes.Downloadcontent
-                ? projekt.attributes.Downloadcontent.map((content, i) => (
+              {projekt.downloads
+                ? projekt.downloads.map((content, i) => (
                     <span key={i} className="projDownloadlink">
-                      <a
-                        href={`${process.env.NEXT_PUBLIC_STRAPI_URL}${content.File.data[0].attributes.url}`}
-                      >
-                        <p>{content.Filename}</p>
+                      <a href={content.file.url}>
+                        <p>{content.filename}</p>
                       </a>
                     </span>
                   ))
@@ -171,26 +174,26 @@ const Projekt = ({ projekt }) => {
           speed={300}
           className="mySwiper"
         >
-          {projekt.attributes.Fotos.data.map((foto, i) => (
+          {projekt.fotos.map((foto, i) => (
             <SwiperSlide key={i}>
               <div className="projImage">
-                <ProjectSwiperImage foto={foto.attributes} />
+                <ProjectSwiperImage foto={foto.foto} />
               </div>
             </SwiperSlide>
           ))}
         </Swiper>
       </div>
 
-      {projekt.attributes.Logos.data ? (
+      {projekt.logos ? (
         <div className="projLogos">
-          {projekt.attributes.Logos.data.map((logo, i) => (
+          {projekt.logos.map((logo, i) => (
             <div className="projLogo" key={i}>
               <Image
                 placeholder="blur"
                 blurDataURL="../public/images/image.jpg"
-                src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${logo.attributes.url}`}
-                width={logo.attributes.width}
-                height={logo.attributes.height}
+                src={logo.data.url}
+                width={logo.data.metadata.dimensions.width}
+                height={logo.data.metadata.dimensions.height}
                 onClick={() => swiper.slideNext()}
               />
             </div>
