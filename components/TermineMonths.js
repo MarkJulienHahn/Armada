@@ -12,7 +12,7 @@ const TermineMonths = ({ sorted, month, monthNmbr }) => {
       {current.length !== 0 ? (
         <>
           <div className="termineRow">
-            <h1 className="termineDate">{month}</h1>
+            <h2 className="termineDate">{month}</h2>
           </div>
           {current.map((row) => (
             <>

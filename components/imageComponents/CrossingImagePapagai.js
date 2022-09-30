@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import Image from "next/image";
 
-import papagei from "../../public/images/Kontakt_Papagei.gif";
+import papagei from "../../public/images/One_World.gif";
 
 export const CrossingImagePapagai = () => {
   const [x, setX] = useState();

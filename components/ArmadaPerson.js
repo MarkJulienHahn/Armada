@@ -67,7 +67,7 @@ const ArmadaPerson = ({
                           width={projekt.image.metadata.width}
                           height={projekt.image.metadata.height}
                         />
-                        <p>{projekt.titel}</p>
+                        <p >{projekt.titel}</p>
                       </div>
                     ) : (
                       ""

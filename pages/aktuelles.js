@@ -2,6 +2,8 @@ import React from "react";
 
 import client from "../client";
 
+import Marquee from "react-fast-marquee";
+
 import RunningTitle from "../components/RunningTitle";
 import AktuellesPost from "../components/AktuellesPost";
 import Footer from "../components/Footer";
@@ -31,24 +33,33 @@ const aktuelles = ({ aktuelles }) => {
 
   const sorted = aktuelles.sort(compare);
 
-  console.log(aktuelles)
+  console.log(aktuelles);
 
   return (
     <div className="mainWrapper">
       <RunningTitle current={"Aktuelles"} />
 
       <div className="aktWrapper">
-        {sorted.map((post, i) => (
-          <AktuellesPost
-            key={i}
-            titel={post.title}
-            haupttext={post.haupttext}
-            subtext={post.subtext}
-            bildunterschrift={post.bildunterschrift}
-            bild={post.bild}
-            datum={post.veroeffentlichungsdatum}
-          />
-        ))}
+        <div className="aktMarqueeWrapper">
+          <Marquee gradient={false} speed={150}>
+            <h2 >
+            <span style={{color: "blue"}}> *** Breaking ***  </span>Premiere von
+              <a> DWDW — Die Sache mit dem Wasser </a> am 28.10.22 im <a>Maschinenhaus Essen</a>&nbsp;
+            </h2>
+          </Marquee>
+        </div>        <div className="aktFeed">
+          {sorted.map((post, i) => (
+            <AktuellesPost
+              key={i}
+              titel={post.title}
+              haupttext={post.haupttext}
+              subtext={post.subtext}
+              bildunterschrift={post.bildunterschrift}
+              bild={post.bild}
+              datum={post.veroeffentlichungsdatum}
+            />
+          ))}
+        </div>
       </div>
 
       <Footer />

@@ -8,6 +8,7 @@ import Footer from "../components/Footer";
 const kontakt = () => {
   return (
     <div className="mainWrapper">
+
       <CrossingImageDino/>
       <RunningTitle current={"Kontakt"} />
       <div className="kontaktWrapper">
