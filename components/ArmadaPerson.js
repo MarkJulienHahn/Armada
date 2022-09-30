@@ -9,7 +9,8 @@ const ArmadaPerson = ({
   name,
   text,
   contact,
-  portrait
+  portrait,
+  projekte,
 }) => {
   const [active, setActive] = useState(false);
 
@@ -36,12 +37,49 @@ const ArmadaPerson = ({
       >
         {active ? (
           <div onClick={() => setActive(!active)}>
-            <div className="armdImageWrapper">
-              <div className="armdImage">
-                <Image placeholder="blur" blurDataURL="../public/images/image.jpg" src={portrait.url} layout="responsive" width={portrait.metadata.dimensions.width} height={portrait.metadata.dimensions.height}/>
+            {portrait ? (
+              <div className="armdImageWrapper">
+                <div className="armdImage">
+                  <Image
+                    placeholder="blur"
+                    blurDataURL="../public/images/image.jpg"
+                    src={portrait.url}
+                    layout="responsive"
+                    width={portrait.metadata.dimensions.width}
+                    height={portrait.metadata.dimensions.height}
+                  />
+                </div>
               </div>
-            </div>
+            ) : (
+              ""
+            )}
+
             <p>{text}</p>
+
+            <div className="armdReferenceImagesWrapper">
+              {projekte.map((projekt) =>
+                projekt.beteiligte.map((member, i) =>
+                  member ? (
+                    member.name == name ? (
+                      <div className="armdReferenceImage">
+                        <Image
+                          src={projekt.image.url}
+                          width={projekt.image.metadata.width}
+                          height={projekt.image.metadata.height}
+                        />
+                        <p>{projekt.titel}</p>
+                      </div>
+                    ) : (
+                      ""
+                    )
+                  ) : (
+                    ""
+                  )
+                )
+              )}
+            </div>
+            {console.log(projekte)}
+
             <h2>
               <a href="">{contact}</a>
             </h2>

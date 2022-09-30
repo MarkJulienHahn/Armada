@@ -7,8 +7,6 @@ import client from "../client";
 import Termine from "../components/Termine";
 
 const termine = ({ projekte }) => {
-
-  console.log(projekte)
   return (
     <div className="mainWrapper">
       <RunningTitle current={"Termine"} />
@@ -27,7 +25,8 @@ export async function getStaticProps(context) {
 
   *   [_type == "projekte"]
   {  "titel": titel,
-    "termine": termine
+    "termine": termine,
+    "slug": slug
   }
   `);
   return {

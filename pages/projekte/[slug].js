@@ -23,11 +23,12 @@ export async function getStaticProps(context) {
   const slug = context.params.slug;
   const projekte = await client.fetch(`
 
-  *[slug.current == "dwdw-die-sache-mit-dem-wasser"]
+  *[slug.current == "${slug}"]
     {..., 
     "beteiligte": beteiligte[]{"position": position, "member": member->{name}, "externe": externe}, 
     "downloads": downloads[]{"filename": filename, "file": file.asset->{url}},
     "fotos": fotos[]{"foto": asset->{url, metadata}},
+    "vorschaubild": vorschaubild.asset->{url,metadata},
     "logos": logos[]{"data": asset->{url, metadata}}
   }
   `);

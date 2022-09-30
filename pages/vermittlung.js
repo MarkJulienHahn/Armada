@@ -21,7 +21,7 @@ const vermittlung = ({ vermittlung, projekte }) => {
     );
   }
 
-  console.log(vermittlung);
+  console.log(projekte);
 
   return (
     <>
@@ -45,16 +45,14 @@ const vermittlung = ({ vermittlung, projekte }) => {
           className="mySwiper"
         >
           {vermittlung[0].bilder.map((foto, i) => (
-
-              <SwiperSlide key={i}>
-                <div className="vermImage">
-                  <div style={{ height: "100%", position: "relative" }}>
-                    {/* {console.log(foto.attributes.url)} */}
-                    <ProjectSwiperImage foto={foto.data} />
-                  </div>
+            <SwiperSlide key={i}>
+              <div className="vermImage">
+                <div style={{ height: "100%", position: "relative" }}>
+                  {/* {console.log(foto.attributes.url)} */}
+                  <ProjectSwiperImage foto={foto.data} />
                 </div>
-              </SwiperSlide>
-            
+              </div>
+            </SwiperSlide>
           ))}
         </Swiper>
       </div>
@@ -62,21 +60,26 @@ const vermittlung = ({ vermittlung, projekte }) => {
       <div className="mainWrapper">
         <div className="vermInfo">
           <h2>Zum Mitnehmen</h2>
-          {projekte.map((projekt, i) => (
-            <div className="vermMitnehmenSingle" key={i}>
-              <div>
-                <p>{projekt.titel}</p>
+          {projekte.map((projekt, i) =>
+            projekt.downloads ? (
+              <div className="vermMitnehmenSingle" key={i}>
+                <div>
+                  <p>{projekt.titel}</p>
+                </div>
+                <div>
+                  {projekt.files.map((content, i) => (
+                    <p key={i}>
+                      <a href={content.files.url}>{content.filename}</a>
+                    </p>
+                  ))}
+                </div>
               </div>
-              <div>
-                {projekt.downloads.map((content, i) => (
-                  <p key={i}>
-                    <a href={content.url}>{content.filename}</a>
-                  </p>
-                ))}
-              </div>
-            </div>
-          ))}
+            ) : (
+              ""
+            )
+          )}
         </div>
+
         <Footer />
       </div>
     </>
@@ -103,7 +106,8 @@ export async function getStaticProps(context) {
   }`);
   return {
     props: {
-      vermittlung, projekte
+      vermittlung,
+      projekte,
     },
   };
 }

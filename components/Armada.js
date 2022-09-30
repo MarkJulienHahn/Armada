@@ -4,10 +4,8 @@ import Image from "next/image";
 
 import ArmadaPerson from "../components/ArmadaPerson";
 
-const Armada = ({ teammembers, armadaIntro }) => {
+const Armada = ({ teammembers, armadaIntro, projekte }) => {
   const [activeIndex, setActiveIndex] = useState(null);
-
-  console.log(activeIndex);
 
   return (
     <div>
@@ -31,6 +29,7 @@ const Armada = ({ teammembers, armadaIntro }) => {
               text={person.biografie}
               contact={person.email}
               portrait={person.bild}
+              projekte={projekte}
               key={i}
             />
           ))}

@@ -36,7 +36,17 @@ const Projekt = ({ projekt }) => {
           ></iframe>
         </div>
       ) : (
-        ""
+        <div className="projHeaderImage">
+          <Image
+            placeholder="blur"
+            blurDataURL="../public/images/image.jpg"
+            src={projekt.vorschaubild.url}
+            width={projekt.vorschaubild.metadata.dimensions.width}
+            height={projekt.vorschaubild.metadata.dimensions.height}
+            onClick={() => swiper.slideNext()}
+            layout="responsive"
+          />
+        </div>
       )}
 
       <div className="projSingleText">
@@ -165,24 +175,28 @@ const Projekt = ({ projekt }) => {
         </div>
       </div>
 
-      <div className="projSwiper">
-        <Swiper
-          slidesPerView={1.5}
-          centeredSlides={true}
-          spaceBetween={5}
-          loop={true}
-          speed={300}
-          className="mySwiper"
-        >
-          {projekt.fotos.map((foto, i) => (
-            <SwiperSlide key={i}>
-              <div className="projImage">
-                <ProjectSwiperImage foto={foto.foto} />
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </div>
+      {projekt.fotos ? (
+        <div className="projSwiper">
+          <Swiper
+            slidesPerView={1.5}
+            centeredSlides={true}
+            spaceBetween={5}
+            loop={true}
+            speed={300}
+            className="mySwiper"
+          >
+            {projekt.fotos.map((foto, i) => (
+              <SwiperSlide key={i}>
+                <div className="projImage">
+                  <ProjectSwiperImage foto={foto.foto} />
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+      ) : (
+        ""
+      )}
 
       {projekt.logos ? (
         <div className="projLogos">

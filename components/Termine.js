@@ -65,6 +65,8 @@ const Termine = ({ projekte }) => {
     return 0;
   }
 
+  console.log(dates)
+
   const merged = [].concat(...dates);
   const sorted = merged.sort(compare);
 

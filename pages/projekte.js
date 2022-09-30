@@ -9,21 +9,24 @@ import ProjektPreview from "../components/ProjektPreview";
 import { CrossingImagePapagai } from "../components/imageComponents/CrossingImagePapagai";
 
 const projekte = ({ projekte }) => {
+  console.log;
 
   function formatPrimitive(value) {
     return new Date(value)[Symbol.toPrimitive]("number");
   }
 
+  console.log(projekte[0].erstauffuehrung)
+
   function compare(a, b) {
     if (
-      formatPrimitive(a.attributes.Erstauffuehrung) >
-      formatPrimitive(b.attributes.Erstauffuehrung)
+      formatPrimitive(a.erstauffuehrung) >
+      formatPrimitive(b.erstauffuehrung)
     ) {
       return -1;
     }
     if (
-      formatPrimitive(a.attributes.Erstauffuehrung) <
-      formatPrimitive(b.attributes.Erstauffuehrung)
+      formatPrimitive(a.erstauffuehrung) <
+      formatPrimitive(b.erstauffuehrung)
     ) {
       return 1;
     }
@@ -39,18 +42,21 @@ const projekte = ({ projekte }) => {
       <CrossingImagePapagai />
 
       <div className="projWrapper">
-        {projekte.map((project, i) => (
-          <Link key={i} href={`/projekte/${project.slug.current}`}>
-
-            <div className="projLink">
-              <ProjektPreview
-                titel={project.titel}
-                kurzbeschreibung={project.kurzbeschreibung}
-                bild={project.vorschaubild}
-              />
-            </div>
-          </Link>
-        ))}
+        {projekteSortiert.map((project, i) =>
+          project.slug.current ? (
+            <Link key={i} href={`/projekte/${project.slug.current}`}>
+              <div className="projLink">
+                <ProjektPreview
+                  titel={project.titel}
+                  kurzbeschreibung={project.kurzbeschreibung}
+                  bild={project.vorschaubild}
+                />
+              </div>
+            </Link>
+          ) : (
+            ""
+          )
+        )}
       </div>
     </div>
   );
@@ -61,7 +67,7 @@ export default projekte;
 export async function getStaticProps(context) {
   const projekte = await client.fetch(`
 
-  *   [_type == "projekte"] | order(erstauffuehrung) 
+  *   [_type == "projekte"] | order(!erstauffuehrung) 
   {  "titel": titel,
      "erstauffuehrung": erstauffuehrung,
      "kurzbeschreibung": kurzbeschreibung,

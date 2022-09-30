@@ -5,6 +5,8 @@ const TermineMonths = ({ sorted, month, monthNmbr }) => {
     (date) => date.month == monthNmbr && date.timestamp > Date.now()
   );
 
+    console.log(current)
+
   return (
     <>
       {current.length !== 0 ? (
@@ -21,7 +23,7 @@ const TermineMonths = ({ sorted, month, monthNmbr }) => {
                 </h1>
                 <p className="termineLocation">{row.time} Uhr</p>
                 <h2 className="termineTitle">
-                  <a href={`/projekte/${row.slug}`}>{row.titel}</a>
+                  <a href={`/projekte/${row.slug.current}`}>{row.titel}</a>
                   {row.Schulvorfuehrung ? (
                     <span style={{ color: "green" }}>
                       <br />
