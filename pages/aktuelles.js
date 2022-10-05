@@ -8,9 +8,7 @@ import RunningTitle from "../components/RunningTitle";
 import AktuellesPost from "../components/AktuellesPost";
 import Footer from "../components/Footer";
 
-const aktuelles = ({ aktuelles }) => {
-  console.log(aktuelles[0].title, aktuelles);
-
+const aktuelles = ({ aktuelles, aktuellesHighlight }) => {
   function formatPrimitive(value) {
     return new Date(value)[Symbol.toPrimitive]("number");
   }
@@ -33,7 +31,11 @@ const aktuelles = ({ aktuelles }) => {
 
   const sorted = aktuelles.sort(compare);
 
-  console.log(aktuelles);
+  function formatMyDate(value, locale = "gb-GB") {
+    return new Date(value).toLocaleDateString(locale);
+  }
+
+  const breaking = console.log(aktuellesHighlight, aktuellesHighlight.projekt);
 
   return (
     <div className="mainWrapper">
@@ -42,12 +44,31 @@ const aktuelles = ({ aktuelles }) => {
       <div className="aktWrapper">
         <div className="aktMarqueeWrapper">
           <Marquee gradient={false} speed={150}>
-            <h2 >
-            <span style={{color: "blue"}}> *** Breaking ***  </span>Premiere von
-              <a> DWDW — Die Sache mit dem Wasser </a> am 28.10.22 im <a>Maschinenhaus Essen</a>&nbsp;
+            <h2>
+              <span style={{ color: "blue" }}> *** Breaking *** </span>Premiere
+              von
+              {aktuellesHighlight[0].projekt.termine.map((proj, i) =>
+                proj.premiere ? (
+                  <>
+                    <a
+                      href={`projekte/${aktuellesHighlight[0].projekt.slug.current}`}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      {" "}
+                      {aktuellesHighlight[0].projekt.titel}{" "}
+                    </a>am&nbsp;
+                    {formatMyDate(proj.datum)}. Location:&nbsp;
+                    <a href={proj.spielortlink}>{proj.spielort}</a>&nbsp;
+                  </>
+                ) : (
+                  ""
+                )
+              )}
             </h2>
           </Marquee>
-        </div>        <div className="aktFeed">
+        </div>
+        <div className="aktFeed">
           {sorted.map((post, i) => (
             <AktuellesPost
               key={i}
@@ -73,9 +94,13 @@ export async function getStaticProps(context) {
     title, "haupttext": haupttext[0].children[0].text, "subtext": subtext[0].children[0].text, bildunterschrift, veroeffentlichungsdatum, "bild": bild.asset->
   }   
   `);
+  const aktuellesHighlight = await client.fetch(`
+  *[_type == "aktuellesHighlight"]{..., "projekt": projekt->{"slug": slug, "titel": titel, "termine": termine}}
+  `);
   return {
     props: {
       aktuelles,
+      aktuellesHighlight,
     },
   };
 }

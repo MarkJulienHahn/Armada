@@ -19,18 +19,20 @@ body {
 /* VARIABLES */
 
 :root {
-  --margin-XL: 400px;
-  --margin-L: 200px;
+  --margin-XXL: 400px;
+  --margin-XL: 200px;
+  --margin-L: 80px;
   --margin-M: 30px;
   --margin-S: 12px;
 
-  --fontXSmallSize: 20px;
-  --fontXSmallLineHeight: 25px;
+  --fontXSmallSize: 23px;
+  --fontXSmallLineHeight: 27px;
   --fontXSmallLetterSpacing: 0;
 
-  --fontSmallSize: 30px;
-  --fontSmallLineHeight: 38px;
-  --fontSmallLetterSpacing: -0.5px;
+  --fontSmallSize: 35px;
+  --fontSmallLineHeight: 44px;
+  --fontSmallLetterSpacing: -0.6px;
+  --fontSmallWordSpacing: -0.6px;
 
   --fontMediumSize: 50px;
   --fontMediumLineHeight: 50px;
@@ -90,6 +92,7 @@ p {
   font-size: var(--fontSmallSize);
   line-height: var(--fontSmallLineHeight);
   letter-spacing: var(--fontSmallLetterSpacing);
+  word-spacing: var(--fontSmallWordSpacing);
   margin: 0;
 }
 
@@ -113,7 +116,7 @@ ul {
 }
 
 .mainWrapper {
-  margin: var(--margin-XL) var(--margin-M) var(--margin-M) var(--margin-M);
+  margin: var(--margin-XXL) var(--margin-M) var(--margin-M) var(--margin-M);
 }
 
 .fontXS {
@@ -139,11 +142,19 @@ ul {
   align-items: center;
   width: 100vw;
   height: 100vh;
-  font-size: 17vw;
-  line-height: 14vw;
-  letter-spacing: -0.4vw;
+  font-size: 23vw;
+  line-height: 18vw;
+  letter-spacing: -0.7vw;
   pointer-events: none;
   z-index: 50;
+}
+
+.homeImageRow0 {
+  position: fixed;
+  bottom: 0;
+  z-index: 100;
+  width: 100vw;
+  z-index: 110;
 }
 
 .homeImageRow1 {
@@ -174,6 +185,11 @@ ul {
   z-index: 0;
   width: 100vw;
   transform: translateY(-40vh);
+}
+
+.homeImageFisch {
+  opacity: 0.9;
+  transform: scale(60%) translate(50vw, 25vh);
 }
 
 .homeImageJeep {
@@ -207,7 +223,7 @@ ul {
 .homeImageFaesser {
   position: absolute;
   bottom: 0;
-  transform: translate(75vw, -10vw);
+  transform: translate(80vw, -5vw);
   width: 30vw;
 }
 
@@ -288,7 +304,6 @@ ul {
 /* AKTUELLES */
 
 .aktWrapper {
-
 }
 
 .aktMarqueeWrapper {
@@ -298,7 +313,7 @@ ul {
 }
 
 .aktFeed {
-  padding-top: var(--margin-L);
+  padding-top: var(--margin-XL);
   display: flex;
   flex-wrap: wrap;
 }
@@ -342,29 +357,33 @@ ul {
 }
 
 .projSingleText {
-  margin: var(--margin-M) 10vw calc(5 * var(--margin-M));
+  margin: var(--margin-L) 10vw var(--margin-XL);
 }
 
-.projSingleData {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
+.projSingleText p {
+  padding-top: 37px;
+}
+
+.projSingleDataCol {
+  width: 50%;
 }
 
 .projSingleDataWrapper {
   width: 100%;
   display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
   padding: var(--margin-M) 10vw;
 }
 
-.projSingleDataCol {
+.projSingleDataWrapper p {
+  width: 100%;
+  text-align: center;
+}
+
+/* .projSingleDataCol {
   width: 50%;
   padding-right: 50px;
   margin-bottom: calc(2 * var(--margin-M));
-}
+} */
 
 .projSingleDataCol2 {
   width: 50%;
@@ -374,16 +393,16 @@ ul {
 
 .projSingleDataCol > p,
 .projSingleDataCol2 > p {
-  padding-bottom: var(--margin-M);
+  padding: var(--margin-L) 0 var(--margin-M) 0;
   text-align: center;
 }
 
-.projSingleDataCol div {
-  padding-bottom: 30px;
+.projSingleInner {
+  padding-top: var(--margin-M);
 }
 
-.projSingleDataCol div p,
-.projSingleDataCol2 div p {
+.projSingleInner p {
+  text-align: left;
   font-size: var(--fontXSmallSize);
   line-height: var(--fontXSmallLineHeight);
   letter-spacing: var(--fontXSmallLetterSpacing);
@@ -418,6 +437,7 @@ ul {
 .projSwiper {
   width: 100vw;
   height: 100%;
+  margin: var(--margin-XL) 0;
 }
 
 /* .swiper-slide img {
@@ -454,6 +474,7 @@ ul {
 }
 
 .projDownloadlink a p {
+  text-align: left;
   font-size: var(--fontXSmallSize);
   line-height: var(--fontXSmallLineHeight);
   letter-spacing: var(--fontXSmallLetterSpacing);
@@ -471,7 +492,7 @@ ul {
 
 .armdWrapper {
   margin: 0 10vw;
-  padding-bottom: var(--margin-XL);
+  padding-bottom: var(--margin-XXL);
 }
 
 .armdIntro h2 {
@@ -644,7 +665,7 @@ ul {
 /* TERMINE */
 
 .termineWrapper {
-  margin-bottom: var(--margin-XL);
+  margin-bottom: var(--margin-XXL);
 }
 
 .termineRow {
@@ -769,7 +790,6 @@ ul {
   pointer-events: none;
   animation-fill-mode: forwards;
   animation-delay: 0s;
-  z-index: 1000;
 }
 
 @keyframes rtl {

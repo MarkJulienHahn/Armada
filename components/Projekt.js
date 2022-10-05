@@ -1,8 +1,10 @@
 import React from "react";
 
+import { PortableText } from "@portabletext/react";
+
 import { Swiper, SwiperSlide } from "swiper/react";
 import ProjectSwiperImage from "../components/ProjectSwiperImage";
-import Date from "./Date";
+import Datum from "./Datum";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -18,7 +20,9 @@ const Projekt = ({ projekt }) => {
     );
   }
 
-  const beschreibung = blocksToText(projekt.beschreibung);
+  function formatPrimitive(value) {
+    return new Date(value)[Symbol.toPrimitive]("number");
+  }
 
   return (
     <div className="projSingleWrapper">
@@ -50,53 +54,15 @@ const Projekt = ({ projekt }) => {
       )}
 
       <div className="projSingleText">
-        <p>{beschreibung}</p>
+        <PortableText value={projekt.beschreibung} />
       </div>
 
-      <div className="projSingleData">
-        <div className="projSingleDataWrapper">
-          {projekt.termine ? (
-            <div className="projSingleDataCol">
-              <p>Premiere</p>
-              <div>
-                {projekt.termine
-                  ? projekt.termine.map((termin, i) =>
-                      termin.premiere ? (
-                        <div key={i}>
-                          <Date timestamp={termin.datum} />
-                          <p>{termin.spielort}</p>
-                        </div>
-                      ) : (
-                        ""
-                      )
-                    )
-                  : ""}
-              </div>
-            </div>
-          ) : (
-            ""
-          )}
-          {projekt.kooperationspartner ? (
-            <div className="projSingleDataCol">
-              <p>Kooperationspartner</p>
-              <div>
-                {projekt.kooperationspartner.map((partner, i) => (
-                  <p key={i}>{partner}</p>
-                ))}
-              </div>
-            </div>
-          ) : (
-            ""
-          )}
-        </div>
-      </div>
-
-      <div className="projSingleData">
-        <p>Beteiligte</p>
-        <div className="projSingleDataWrapper">
+      <div className="projSingleDataWrapper">
+        <div className="projSingleDataCol">
+          <p>Beteiligte</p>
           {projekt.beteiligte.map((beteiligter, i) => (
-            <div className="projSingleDataCol2" key={i}>
-              <div>
+            <>
+              <div className="projSingleInner">
                 <p>{beteiligter.position}</p>
 
                 {beteiligter.member ? (
@@ -109,19 +75,15 @@ const Projekt = ({ projekt }) => {
 
                 <p>{beteiligter.externe}</p>
               </div>
-            </div>
+            </>
           ))}
-        </div>
-      </div>
 
-      <div className="projSingleData">
-        <div className="projSingleDataWrapper">
           {projekt.presse ? (
-            <div className="projSingleDataCol">
+            <>
               <p>Presse</p>
               <div>
                 {projekt.presse.map((artikel, i) => (
-                  <div key={i}>
+                  <div className="projSingleInner" key={i}>
                     <p>{blocksToText(artikel.text)}</p>
                     {artikel.link ? (
                       <p>
@@ -136,39 +98,87 @@ const Projekt = ({ projekt }) => {
                   </div>
                 ))}
               </div>
-            </div>
+            </>
           ) : (
             ""
           )}
+        </div>
 
-          {projekt.termine ? (
-            <div className="projSingleDataCol">
-              <p>Spieltermine</p>
-              {projekt.termine.map((termin, i) => (
-                <div key={i}>
-                  <Date timestamp={termin.datum} />
-                  <p>{termin.spielort}</p>
+        <div className="projSingleDataCol">
+          <p>Termine</p>
+          <div>
+            {projekt.termine.map((termin, i) =>
+              termin.premiere || formatPrimitive(termin.datum) >= Date.now() ? (
+                <div className="projSingleInner" key={i}>
+                  <Datum timestamp={termin.datum} premiere={termin.premiere} />
+                  <p>
+                    <a
+                      href={termin.spielortling}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      {termin.spielort}
+                    </a>
+                  </p>
+                </div>
+              ) : (
+                ""
+              )
+            )}
+          </div>
+
+          <p>Kooperationspartner*innen und Förderer*innen</p>
+
+          <div className="projSingleDataCol">
+            <div>
+              {projekt.kooperationspartner?.map((partner, i) => (
+                <div className="projSingleInner" key={i}>
+                  <p key={i}>{partner}</p>
                 </div>
               ))}
             </div>
+          </div>
+
+          <div>
+            {projekt.foerderer?.map((foerderer, i) => (
+              <div className="projSingleInner" key={i}>
+                <p>{foerderer.name}</p>
+              </div>
+            ))}
+          </div>
+
+          {projekt.downloads ? (
+            <>
+              <p>Zum Mitnehmen</p>
+
+              <div className="projSingleDataCol">
+                {projekt.downloads.map((content, i) => (
+                  <span key={i} className="projDownloadlink">
+                    <a href={content.file.url}>
+                      <p>{content.filename}</p>
+                    </a>
+                  </span>
+                ))}
+              </div>
+            </>
           ) : (
             ""
           )}
 
-          {projekt.downloads ? (
-            <div className="projSingleDataCol">
-              <p>Zum Mitnehmen</p>
+          {projekt.videos ? (
+            <>
+              <p>Videos</p>
 
-              {projekt.downloads
-                ? projekt.downloads.map((content, i) => (
-                    <span key={i} className="projDownloadlink">
-                      <a href={content.file.url}>
-                        <p>{content.filename}</p>
-                      </a>
-                    </span>
-                  ))
-                : ""}
-            </div>
+
+                {projekt.videos.map((video, i) => (
+                  <div key={i} className="projSingleInner">
+                    <a href={video.videolink} target="_blank" rel="noreferrer">
+                      <p>{video.videotitel}</p>
+                    </a>
+                  </div>
+                ))}
+
+            </>
           ) : (
             ""
           )}
@@ -198,17 +208,16 @@ const Projekt = ({ projekt }) => {
         ""
       )}
 
-      {projekt.logos ? (
+      {projekt.foerderer ? (
         <div className="projLogos">
-          {projekt.logos.map((logo, i) => (
+          {projekt.foerderer.map((logo, i) => (
             <div className="projLogo" key={i}>
               <Image
                 placeholder="blur"
                 blurDataURL="../public/images/image.jpg"
-                src={logo.data.url}
-                width={logo.data.metadata.dimensions.width}
-                height={logo.data.metadata.dimensions.height}
-                onClick={() => swiper.slideNext()}
+                src={logo.logo.url}
+                width={logo.logo.dimensions.width}
+                height={logo.logo.dimensions.height}
               />
             </div>
           ))}

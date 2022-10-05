@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@portabletext/react": "^1.0.6",
     "@react-three/drei": "^9.23.4",
     "@react-three/fiber": "^8.6.0",
     "@sanity/client": "^3.4.1",

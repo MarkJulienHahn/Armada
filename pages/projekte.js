@@ -6,8 +6,6 @@ import client from "../client";
 import RunningTitle from "../components/RunningTitle";
 import ProjektPreview from "../components/ProjektPreview";
 
-import { CrossingImagePapagai } from "../components/imageComponents/CrossingImagePapagai";
-
 const projekte = ({ projekte }) => {
   console.log;
 
@@ -38,8 +36,6 @@ const projekte = ({ projekte }) => {
   return (
     <div className="mainWrapper">
       <RunningTitle current={"Projekte"} />
-
-      <CrossingImagePapagai />
 
       <div className="projWrapper">
         {projekteSortiert.map((project, i) =>
@@ -73,7 +69,7 @@ export async function getStaticProps(context) {
      "kurzbeschreibung": kurzbeschreibung,
      "slug": slug,
      "vorschaubild": vorschaubild.asset->{url,metadata},
-     "fotos": fotos[].asset->
+     "fotos": fotos[].asset->,
   }
   `);
   return {

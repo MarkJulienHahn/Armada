@@ -4,6 +4,7 @@ import Jeep from "../components/imageComponents/Jeep";
 import Faesser from "../components/imageComponents/Faesser";
 import Vogel from "../components/imageComponents/Vogel";
 import Fernseher from "../components/imageComponents/Fernseher";
+import Fisch from "../components/imageComponents/Fisch"
 
 import { CrossingImagePapagai } from "../components/imageComponents/CrossingImagePapagai";
 
@@ -24,6 +25,13 @@ export default function Home() {
       window.removeEventListener("touchmove", update);
     };
   }, [setX, setY]);
+
+
+  const row0 = {
+    position: "fixed",
+    bottom: y * 0.08,
+    left: x * -0.15,
+  };
 
   const row1 = {
     position: "fixed",
@@ -54,6 +62,13 @@ export default function Home() {
       <h2 className={"homeHome"}>Home</h2>
 
       <CrossingImagePapagai />
+
+
+      <div className={"homeImageRow0"} style={row0}>
+        <div className={"homeImageFisch"}>
+          <Fisch />
+        </div>
+      </div>
 
       <div className={"homeImageRow1"} style={row1}>
         <div className={"homeImageJeep"}>
