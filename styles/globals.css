@@ -155,6 +155,7 @@ ul {
   z-index: 100;
   width: 100vw;
   z-index: 110;
+  pointer-events: none;
 }
 
 .homeImageRow1 {
@@ -162,6 +163,7 @@ ul {
   bottom: 0;
   z-index: 100;
   width: 100vw;
+  pointer-events: none;
 }
 
 .homeImageRow2 {
@@ -169,6 +171,7 @@ ul {
   bottom: 0;
   z-index: 100;
   width: 100vw;
+  pointer-events: none;
 }
 
 .homeImageRow3 {
@@ -177,6 +180,7 @@ ul {
   z-index: 0;
   width: 100vw;
   transform: translateY(-40vh);
+  pointer-events: none;
 }
 
 .homeImageRow4 {
@@ -185,16 +189,21 @@ ul {
   z-index: 0;
   width: 100vw;
   transform: translateY(-40vh);
+  pointer-events: none;
 }
 
 .homeImageFisch {
-  opacity: 0.9;
-  transform: scale(60%) translate(50vw, 25vh);
+  width: 30vw;
+  transform: translate(50vw, 5vh);
+  pointer-events: auto;
+  cursor: pointer;
 }
 
 .homeImageJeep {
   transform: translate(10vw, -5vw);
   width: 30vw;
+  pointer-events: auto;
+  cursor: pointer;
 }
 
 .homeJeepDriving {
@@ -207,11 +216,14 @@ ul {
   bottom: 0;
   mix-blend-mode: multiply;
   -webkit-mix-blend-mode: multiply;
+  pointer-events: none;
 }
 
 .homeImageFernseher {
   transform: translate(30vw, -10vw);
   width: 30vw;
+  pointer-events: auto;
+  cursor: pointer;
 }
 
 .homePreloader {
@@ -225,6 +237,8 @@ ul {
   bottom: 0;
   transform: translate(80vw, -5vw);
   width: 30vw;
+  pointer-events: auto;
+  cursor: pointer;
 }
 
 .homeImageVogel {
@@ -232,6 +246,8 @@ ul {
   bottom: 0;
   transform: translate(75vw, -15vw);
   width: 20vw;
+  pointer-events: auto;
+  cursor: pointer;
 }
 
 .homeLegals {
@@ -255,7 +271,7 @@ ul {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-80vw);
+    transform: translateX(-200vw);
   }
 }
 
@@ -790,6 +806,7 @@ ul {
   pointer-events: none;
   animation-fill-mode: forwards;
   animation-delay: 0s;
+  z-index: 1000
 }
 
 @keyframes rtl {

@@ -4,7 +4,7 @@ import Jeep from "../components/imageComponents/Jeep";
 import Faesser from "../components/imageComponents/Faesser";
 import Vogel from "../components/imageComponents/Vogel";
 import Fernseher from "../components/imageComponents/Fernseher";
-import Fisch from "../components/imageComponents/Fisch"
+import Fisch from "../components/imageComponents/Fisch";
 
 import { CrossingImagePapagai } from "../components/imageComponents/CrossingImagePapagai";
 
@@ -26,6 +26,7 @@ export default function Home() {
     };
   }, [setX, setY]);
 
+  const [arrayPos, setArrayPos] = useState([0, 1, 2, 3, 4]);
 
   const row0 = {
     position: "fixed",
@@ -53,9 +54,36 @@ export default function Home() {
 
   const row4 = {
     position: "fixed",
+    bottom: y * 0.005,
+    left: x * -0.01,
+  };
+
+  const row5 = {
+    position: "fixed",
     bottom: y * 0.002,
     left: x * -0.004,
   };
+
+  const imagesArray = [
+    <Jeep />,
+    <Faesser />,
+    <Vogel />,
+    <Fernseher />,
+    <Fisch />,
+  ];
+
+  function shuffle(array) {
+    array.sort(() => Math.random() - 0.5);
+  }
+
+  const shuffleArray = () => {
+    shuffle(arrayPos);
+  };
+
+  useEffect(() => {
+    shuffleArray();
+  }, []);
+
 
   return (
     <>
@@ -63,35 +91,24 @@ export default function Home() {
 
       <CrossingImagePapagai />
 
-
       <div className={"homeImageRow0"} style={row0}>
-        <div className={"homeImageFisch"}>
-          <Fisch />
-        </div>
+        <div className={"homeImageFisch"}>{imagesArray[arrayPos[0]]}</div>
       </div>
 
       <div className={"homeImageRow1"} style={row1}>
-        <div className={"homeImageJeep"}>
-          <Jeep />
-        </div>
+        <div className={"homeImageJeep"}>{imagesArray[arrayPos[1]]}</div>
       </div>
 
       <div className={"homeImageRow2"} style={row2}>
-        <div className={"homeImageFaesser"}>
-          <Faesser />
-        </div>
+        <div className={"homeImageFaesser"}>{imagesArray[arrayPos[2]]}</div>
       </div>
 
       <div className={"homeImageRow3"} style={row4}>
-        <div className={"homeImageFernseher"}>
-          <Fernseher />
-        </div>
+        <div className={"homeImageFernseher"}>{imagesArray[arrayPos[3]]}</div>
       </div>
 
-      <div className={"homeImageRow4"} style={row4}>
-        <div className={"homeImageVogel"}>
-          <Vogel />
-        </div>
+      <div className={"homeImageRow4"} style={row5}>
+        <div className={"homeImageVogel"}>{imagesArray[arrayPos[4]]}</div>
       </div>
 
       <div className={"homeLogo"} style={row3}>

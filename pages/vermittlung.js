@@ -21,8 +21,6 @@ const vermittlung = ({ vermittlung, projekte }) => {
     );
   }
 
-  console.log(projekte);
-
   return (
     <>
       <div className="mainWrapper">
@@ -60,24 +58,22 @@ const vermittlung = ({ vermittlung, projekte }) => {
       <div className="mainWrapper">
         <div className="vermInfo">
           <h2>Zum Mitnehmen</h2>
-          {projekte.map((projekt, i) =>
-            projekt.downloads ? (
-              <div className="vermMitnehmenSingle" key={i}>
-                <div>
-                  <p>{projekt.titel}</p>
-                </div>
-                <div>
-                  {projekt.files.map((content, i) => (
-                    <p key={i}>
-                      <a href={content.files.url}>{content.filename}</a>
-                    </p>
-                  ))}
-                </div>
+          {projekte.map((projekt, i) => (
+            // console.log(projekt.downloads[0]?.filename)
+            <div className="vermMitnehmenSingle" key={i}>
+              <div>
+                <p>{projekt.titel}</p>
               </div>
-            ) : (
-              ""
-            )
-          )}
+              <div>
+                {projekt.downloads?.map((content, i) => (
+
+                  <p key={i}>
+                    <a href={content.url.url}>{content.filename}</a>
+                  </p>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
 
         <Footer />

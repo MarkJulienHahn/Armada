@@ -14,7 +14,6 @@ const Fernseher = () => {
   const addIteration = () => {
     iteration != images.length - 1 ? setIteration(iteration + 1) : setIteration(0);
   };
-  console.log(iteration)
 
   const images = [image01, image02, image03, image04, image05];
 
