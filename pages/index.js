@@ -65,11 +65,11 @@ export default function Home() {
   };
 
   const imagesArray = [
-    <Jeep />,
-    <Faesser />,
-    <Vogel />,
-    <Fernseher />,
-    <Fisch />,
+    <Jeep key={1}/>,
+    <Faesser key={2}/>,
+    <Vogel key={3}/>,
+    <Fernseher key={4}/>,
+    <Fisch key={5}/>,
   ];
 
   function shuffle(array) {
@@ -83,7 +83,6 @@ export default function Home() {
   useEffect(() => {
     shuffleArray();
   }, []);
-
 
   return (
     <>
