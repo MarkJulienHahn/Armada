@@ -1,16 +1,18 @@
-import React from "react";
+import React, {useEffect} from "react";
 
-import RunningTitle from "../components/RunningTitle";
 import Footer from "../components/Footer";
 
 import client from "../client";
 import Termine from "../components/Termine";
 
-const termine = ({ projekte }) => {
+const termine = ({ projekte, setRunningTitle }) => {
+
+  useEffect(() => {
+    setRunningTitle("Termine")
+  },[])
+
   return (
     <div className="mainWrapper">
-      <RunningTitle current={"Termine"} />
-
       <Termine projekte={projekte} />
       <Footer />
     </div>

@@ -1,16 +1,18 @@
-import React from "react";
+import React, {useEffect} from "react";
 
 import client from "../client";
 
 import Armada from "../components/Armada";
-
-import RunningTitle from "../components/RunningTitle";
 import Footer from "../components/Footer";
 
-const armada = ({ teammembers, armadaIntro, projekte }) => {
+const armada = ({ teammembers, armadaIntro, projekte, setRunningTitle }) => {
+
+  useEffect(() => {
+    setRunningTitle("Die Armada")
+  },[])
+
   return (
     <div className="mainWrapper">
-      <RunningTitle current={"Die Armada"} />
 
       <Armada
         teammembers={teammembers}
@@ -26,7 +28,7 @@ const armada = ({ teammembers, armadaIntro, projekte }) => {
 export async function getStaticProps() {
   const teammembers = await client.fetch(`
   *[_type == "dieArmada"]{
-    name, "biografie": biografie[0].children[0].text, "bild": bild.asset->, email
+    name, "biografie": biografie, "bild": bild.asset->, email
   }  
   `);
   const armadaIntro = await client.fetch(`

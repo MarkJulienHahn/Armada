@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 
+
+import { PortableText } from "@portabletext/react";
+
 import Image from "next/image";
 
 const ArmadaPerson = ({
@@ -54,21 +57,20 @@ const ArmadaPerson = ({
               ""
             )}
 
-            <p>{text}</p>
+<PortableText value={text} />
 
-            <div className="armdReferenceImagesWrapper">
+            <div className="armdReferenceWrapper">
               {projekte.map((projekt) =>
                 projekt.beteiligte.map((member, i) =>
                   member ? (
                     member.name == name ? (
-                      <div className="armdReferenceImage">
-                        <Image
-                          src={projekt.image.url}
-                          width={projekt.image.metadata.width}
-                          height={projekt.image.metadata.height}
-                        />
-                        <p >{projekt.titel}</p>
-                      </div>
+                      <>
+                        <h2>
+                          <a href={`/projekte/${projekt.slug.current}`}>
+                            {projekt.titel}
+                          </a>
+                        </h2>
+                      </>
                     ) : (
                       ""
                     )
@@ -77,12 +79,13 @@ const ArmadaPerson = ({
                   )
                 )
               )}
+              <div className="armdReferenceHeader">
+                {contact ? "Kontakt" : ""}
+              </div>
+              <p>
+                <a href="">{contact}</a>
+              </p>
             </div>
-            {console.log(projekte)}
-
-            <h2>
-              <a href="">{contact}</a>
-            </h2>
           </div>
         ) : (
           ""

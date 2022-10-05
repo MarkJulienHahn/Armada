@@ -1,16 +1,19 @@
-import React from "react";
+import React, {useEffect} from "react";
 
 import RunningTitle from "../components/RunningTitle";
 
 import { CrossingImageDino } from "../components/imageComponents/CrossingImageDino";
 import Footer from "../components/Footer";
 
-const kontakt = () => {
+const kontakt = ( {setRunningTitle}) => {
+
+  useEffect(() => {
+    setRunningTitle("Kontakt")
+  },[])
+
   return (
     <div className="mainWrapper">
-
       <CrossingImageDino/>
-      <RunningTitle current={"Kontakt"} />
       <div className="kontaktWrapper">
         <div className="kontakt">
           <h2>Armada Theater</h2>

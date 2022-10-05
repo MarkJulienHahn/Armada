@@ -1,19 +1,16 @@
-import React from "react";
+import React, {useEffect} from "react";
 
 import Link from "next/link";
 import client from "../client";
 
-import RunningTitle from "../components/RunningTitle";
+import Footer from "../components/Footer";
 import ProjektPreview from "../components/ProjektPreview";
 
-const projekte = ({ projekte }) => {
-  console.log;
+const projekte = ({ projekte, setRunningTitle}) => {
 
   function formatPrimitive(value) {
     return new Date(value)[Symbol.toPrimitive]("number");
   }
-
-  console.log(projekte[0].erstauffuehrung)
 
   function compare(a, b) {
     if (
@@ -33,9 +30,13 @@ const projekte = ({ projekte }) => {
 
   const projekteSortiert = projekte.sort(compare);
 
+  useEffect(() => {
+    setRunningTitle("Projekte")
+  },[])
+
+
   return (
     <div className="mainWrapper">
-      <RunningTitle current={"Projekte"} />
 
       <div className="projWrapper">
         {projekteSortiert.map((project, i) =>
@@ -54,6 +55,7 @@ const projekte = ({ projekte }) => {
           )
         )}
       </div>
+      <Footer />
     </div>
   );
 };
@@ -72,9 +74,12 @@ export async function getStaticProps(context) {
      "fotos": fotos[].asset->,
   }
   `);
+
+
+
   return {
     props: {
-      projekte,
+      projekte
     },
   };
 }

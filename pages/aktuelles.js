@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 
 import client from "../client";
 
@@ -8,7 +8,7 @@ import RunningTitle from "../components/RunningTitle";
 import AktuellesPost from "../components/AktuellesPost";
 import Footer from "../components/Footer";
 
-const aktuelles = ({ aktuelles, aktuellesHighlight }) => {
+const aktuelles = ({ aktuelles, aktuellesHighlight, setRunningTitle }) => {
   function formatPrimitive(value) {
     return new Date(value)[Symbol.toPrimitive]("number");
   }
@@ -37,9 +37,13 @@ const aktuelles = ({ aktuelles, aktuellesHighlight }) => {
 
   const breaking = console.log(aktuellesHighlight, aktuellesHighlight.projekt);
 
+  useEffect(() => {
+    setRunningTitle("Aktuelles")
+  },[])
+
+
   return (
     <div className="mainWrapper">
-      <RunningTitle current={"Aktuelles"} />
 
       <div className="aktWrapper">
         <div className="aktMarqueeWrapper">

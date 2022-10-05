@@ -8,7 +8,7 @@ const Armada = ({ teammembers, armadaIntro, projekte }) => {
   const [activeIndex, setActiveIndex] = useState(null);
 
   return (
-    <div>
+    <>
       <div className="armdWrapper">
         <div className="armdIntro">
           <h2>Armada Theater</h2>
@@ -19,7 +19,8 @@ const Armada = ({ teammembers, armadaIntro, projekte }) => {
             height={armadaIntro.gruppenbild.metadata.dimensions.height}
           />
         </div>
-        <div className="armdListe">
+      </div>
+      <div className="armdListe">
           {teammembers.map((person, i) => (
             <ArmadaPerson
               setActiveIndex={setActiveIndex}
@@ -34,8 +35,7 @@ const Armada = ({ teammembers, armadaIntro, projekte }) => {
             />
           ))}
         </div>
-      </div>
-    </div>
+    </>
   );
 };
 

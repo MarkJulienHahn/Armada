@@ -1,44 +1,60 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 
-import RunningTitle from "../components/RunningTitle";
 import Footer from "../components/Footer";
+import Lightbox from "../components/Lightbox";
 
 import client from "../client";
 
-import Image from "next/image";
+import ArchivImage from "../components/ArchivImage";
 
-const archiv = ({ archiv }) => {
+const archiv = ({ archiv, setRunningTitle }) => {
+
+const [image, setImage] = useState("")
+
+  useEffect(() => {
+    setRunningTitle("Archiv")
+  },[])
+
+  function formatPrimitive(value) {
+    return new Date(value)[Symbol.toPrimitive]("number");
+  }
+
+  function compare(a, b) {
+    if (
+      formatPrimitive(a.datum) >
+      formatPrimitive(b.datum)
+    ) {
+      return -1;
+    }
+    if (
+      formatPrimitive(a.datum) <
+      formatPrimitive(b.datum)
+    ) {
+      return 1;
+    }
+    return 0;
+  }
+
+  archiv.sort(compare)
+
   return (
     <div className="mainWrapper">
-      <RunningTitle current={"Archiv"} />
+
+    <Lightbox image={image} setImage={setImage} />
 
       <div className="archWrapper">
         {archiv.map((post, i) => (
           <>
             <div key={i} className="archText">
+              {console.log(post)}
               <p>{post.datum}</p>
+              <p><a href={`/projekte/${post.projekt?.slug}`}>{post.projekt?.titel}</a></p>
               <p>{post.titel}</p>
             </div>
 
             {post.fotos.map((foto, i) => (
-              <div
-                key={i}
-                style={{
-                  height: "100%",
-                  position: "relative",
-                  padding: "0 2px 80px 2px",
-                }}
-              >
-                <Image
-                  key={i}
-                  placeholder="blur"
-                  blurDataURL="../public/images/image.jpg"
-                  src={foto.url}
-                  // layout="fill"
-                  width={foto.metadata.dimensions.width}
-                  height={foto.metadata.dimensions.height}
-                  // objectFit="contain"
-                />
+              <div key={i} onClick={() => setImage(foto)}>
+                <ArchivImage foto={foto} />
               </div>
             ))}
           </>
@@ -53,11 +69,11 @@ export default archiv;
 
 export async function getStaticProps(context) {
   const archiv = await client.fetch(`
-
-  *   [_type == "archiv"] | order(!datum) 
-  {  "titel": titel,
+  *   [_type == "archiv"]
+  {  "projekt": projekt->{titel, "slug": slug.current}, 
+     "titel": titel,
      "datum": datum,
-     "fotos": fotos[].asset->
+     "fotos": fotos[]{"foto": foto.asset->{url, "metadata": metadata.dimensions}, "bildunterschrift": bildunterschrift},
   }
   `);
   return {

@@ -11,9 +11,7 @@ import Link from "next/link";
 
 import "swiper/css";
 
-const Projekt = ({ projekt }) => {
-  console.log("PROJEKT", projekt);
-
+const Projekt = ({ projekt, links }) => {
   function blocksToText(blocks) {
     return blocks.map((block) =>
       block.children.map((child) => child.text).join("")
@@ -60,7 +58,7 @@ const Projekt = ({ projekt }) => {
       <div className="projSingleDataWrapper">
         <div className="projSingleDataCol">
           <p>Beteiligte</p>
-          {projekt.beteiligte.map((beteiligter, i) => (
+          {projekt.beteiligte?.map((beteiligter, i) => (
             <>
               <div className="projSingleInner">
                 <p>{beteiligter.position}</p>
@@ -107,19 +105,16 @@ const Projekt = ({ projekt }) => {
         <div className="projSingleDataCol">
           <p>Termine</p>
           <div>
-            {projekt.termine.map((termin, i) =>
+            {projekt.termine?.map((termin, i) =>
               termin.premiere || formatPrimitive(termin.datum) >= Date.now() ? (
                 <div className="projSingleInner" key={i}>
-                  <Datum timestamp={termin.datum} premiere={termin.premiere} />
-                  <p>
-                    <a
-                      href={termin.spielortling}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      {termin.spielort}
-                    </a>
-                  </p>
+                  <a href="/termine" rel="noreferrer">
+                    <Datum
+                      timestamp={termin.datum}
+                      premiere={termin.premiere}
+                    />
+                    <p>{termin.spielort}</p>
+                  </a>
                 </div>
               ) : (
                 ""
@@ -169,15 +164,13 @@ const Projekt = ({ projekt }) => {
             <>
               <p>Videos</p>
 
-
-                {projekt.videos.map((video, i) => (
-                  <div key={i} className="projSingleInner">
-                    <a href={video.videolink} target="_blank" rel="noreferrer">
-                      <p>{video.videotitel}</p>
-                    </a>
-                  </div>
-                ))}
-
+              {projekt.videos.map((video, i) => (
+                <div key={i} className="projSingleInner">
+                  <a href={video.videolink} target="_blank" rel="noreferrer">
+                    <p>{video.videotitel}</p>
+                  </a>
+                </div>
+              ))}
             </>
           ) : (
             ""
@@ -200,6 +193,7 @@ const Projekt = ({ projekt }) => {
                 <div className="projImage">
                   <ProjectSwiperImage foto={foto.foto} />
                 </div>
+                <p className="projBildunterschrift">{foto.bildunterschrift}</p>
               </SwiperSlide>
             ))}
           </Swiper>
@@ -225,6 +219,21 @@ const Projekt = ({ projekt }) => {
       ) : (
         ""
       )}
+
+      <div className="projWeitereProjekte">
+        <p className="fontXS">Weitere Projekte</p>
+        {links.map((link, i) =>
+          link.titel != projekt.titel ? (
+            <div key={i}>
+              <h2>
+                <a href={`/projekte/${link.slug.current}`}> {link.titel}</a>
+              </h2>
+            </div>
+          ) : (
+            ""
+          )
+        )}
+      </div>
     </div>
   );
 };

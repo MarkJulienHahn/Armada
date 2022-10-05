@@ -10,7 +10,7 @@ import { CrossingImagePapagai } from "../components/imageComponents/CrossingImag
 
 import Footer from "../components/Footer";
 
-export default function Home() {
+export default function Home( { setRunningTitle}) {
   const [x, setX] = useState();
   const [y, setY] = useState();
   useEffect(() => {
@@ -65,11 +65,11 @@ export default function Home() {
   };
 
   const imagesArray = [
-    <Jeep key={1}/>,
-    <Faesser key={2}/>,
-    <Vogel key={3}/>,
-    <Fernseher key={4}/>,
-    <Fisch key={5}/>,
+    <Jeep key={1} />,
+    <Faesser key={2} />,
+    <Vogel key={3} />,
+    <Fernseher key={4} />,
+    <Fisch key={5} />,
   ];
 
   function shuffle(array) {
@@ -81,7 +81,7 @@ export default function Home() {
   };
 
   useEffect(() => {
-    shuffleArray();
+    shuffleArray(), setRunningTitle(null);
   }, []);
 
   return (
