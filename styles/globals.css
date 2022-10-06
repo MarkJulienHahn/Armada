@@ -40,9 +40,9 @@ body {
   --fontMediumLineHeight: 50px;
   --fontMediumLetterSpacing: -1px;
 
-  --fontLargeSize: 8vw;
-  --fontLargeLineHeight: 8.5vw;
-  --fontLargeLetterSpacing: -0.2vw;
+  --fontLargeSize: clamp(30px, 8vw, 140px);
+  --fontLargeLineHeight: clamp(40px, 8.5vw, 140px);
+  --fontLargeLetterSpacing: clamp(-5px, -0.2vw, 140px);
 }
 
 ::selection {
@@ -50,20 +50,46 @@ body {
   background: black;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 800px) {
   :root {
-    --margin-XL: 200px;
-    --margin-M: 15px;
-    --margin-S: 10px;
+    --margin-XXL: 100px;
+    --margin-XL: 50px;
+    --margin-L: 20px;
+    --margin-M: 18px;
+    --margin-S: 15px;
 
-    --pgSmallSize: 6.5pt;
-    --pgSmallLineHeight: 10pt;
-    --pgSmallLetterSpacing: 1.2px;
+    --fontXSmallSize: 16px;
+    --fontXSmallLineHeight: 20px;
+    --fontXSmallLetterSpacing: 0;
 
-    --gialloSmallSize: 8.5pt;
-    --gialloSmallLineHeight: 11pt;
-    --gialloSmallLetterSpacing: 1.5px;
+    --fontSmallSize: 16px;
+    --fontSmallLineHeight: 20px;
+    --fontSmallLetterSpacing: -0px;
+    --fontSmallWordSpacing: -0.6px;
+
+    --fontMediumSize: 25px;
+    --fontMediumLineHeight: 25px;
+    --fontMediumLetterSpacing: -0.5px;
+
+    --fontLargeSize: 8vw;
+    --fontLargeLineHeight: 8.5vw;
+    --fontLargeLetterSpacing: -0.2vw;
   }
+
+  a:hover {
+    font-variation-settings: "wght" 500;
+  }
+
+  .playmo {
+    display: none;
+  }
+
+  .fontXXS {
+    font-size: 16px !important;
+    line-height: 20px !important;
+    letter-spacing: 0 !important;
+  }
+
 }
 
 /* MAIN */
@@ -320,15 +346,20 @@ ul {
   cursor: pointer;
 }
 
+@media only screen and (max-width: 800px) {
+  .runningTitleWrapper {
+    display: none;
+  }
+}
+
 /* AKTUELLES */
 
-.aktWrapper {
-}
 
 .aktMarqueeWrapper {
   margin-bottom: var(--margin-L);
   position: absolute;
   left: 0;
+  width: 100vw;
 }
 
 .aktFeed {
@@ -354,6 +385,23 @@ ul {
 .aktImage {
   margin-top: var(--margin-S);
   width: 50%;
+}
+
+@media only screen and (max-width: 800px) {
+  .aktPost {
+    width: 100%;
+    margin-right: 0; 
+    margin-bottom: var(--margin-XL)
+  }
+  .aktPost h2 {
+    margin: var(--margin-S) 0;
+  }
+  .aktImage {
+    width: 100%;
+  }
+  .aktFeed {
+    padding-top: var(--margin-XXL)
+  }
 }
 
 /* PROJEKTE */
@@ -565,6 +613,16 @@ ul {
   padding-bottom: var(--margin-M);
 }
 
+@media only screen and (max-width: 800px) {
+  .projLink {
+    width: 100%;
+  }
+  .projPost:hover {
+    font-variation-settings: "wght" 500;
+  }
+  
+}
+
 /* ARMADA */
 
 .armdWrapper {
@@ -637,6 +695,16 @@ ul {
   font-size: var(--fontXSmallSize);
   line-height: var(--fontXSmallLineHeight);
   letter-spacing: var(--fontXSmallLetterSpacing);
+}
+
+@media only screen and (max-width: 800px) {
+  .armdWrapper {
+    margin: 0;
+  }
+
+  .armdPersonWrapper {
+    padding: 0
+  }
 }
 
 /* ARCHIV */
@@ -723,6 +791,20 @@ ul {
   width: auto;
 }
 
+@media only screen and (max-width: 800px) {
+  .archText {
+    padding-bottom: var(--margin-M);
+    height: unset;
+    margin-left: 0 !important;
+  }
+  .archWrapper div {
+    width: unset;
+  }
+  .lightboxWrapper {
+    display: none;
+  }
+}
+
 /* VERMITTLUNG */
 
 .vermInfo h2 {
@@ -760,6 +842,16 @@ ul {
 
 .vermMitnehmenSingle div {
   width: 50%;
+}
+
+@media only screen and (max-width: 800px) {
+  .vermInfo {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .vermImage {
+    height: 210px;
+  }
 }
 
 /* TERMINE */
@@ -818,6 +910,12 @@ ul {
   font-variation-settings: "wght" 1000;
 }
 
+@media only screen and (max-width: 800px) {
+  .termineDay {
+    line-height: unset
+  }
+}
+
 /* KONTAKT */
 
 .kontaktWrapper {
@@ -851,6 +949,7 @@ ul {
   font-size: var(--fontXSmallSize);
   line-height: var(--fontXSmallLineHeight);
   letter-spacing: var(--fontXSmallLetterSpacing);
+  text-align: center;
 }
 
 /* IMPRESSUM */

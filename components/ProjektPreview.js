@@ -10,7 +10,7 @@ const ProjektPreview = ({ titel, kurzbeschreibung, bild  }) => {
       <div className="projImageWrapper">
       <Image placeholder="blur" blurDataURL="../public/images/image.jpg" src={bild.url} layout="responsive" width={bild.metadata.dimensions.width} height={bild.metadata.dimensions.height}/>
       </div>
-      <p>{titel}</p>
+      <h2>{titel}</h2>
       <p className="fontXS projText">{kurzbeschreibung} (...)</p>
     </div>
 

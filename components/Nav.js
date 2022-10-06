@@ -15,7 +15,7 @@ const Nav = () => {
       style={isActive ? { pointerEvents: "none" } : { pointerEvents: "auto" }}
     >
       <div
-        onClick={!isActive ?  ToggleClass  : () => {}}
+        onClick={!isActive ? ToggleClass : () => {}}
         className={styles.navButtons}
       >
         <div onClick={ToggleClass}>{isActive ? "Menü" : "Schließen"}</div>
@@ -25,6 +25,9 @@ const Nav = () => {
         <>
           <div className={styles.navList} onClick={ToggleClass}>
             <ul>
+              <Link href="/" scroll={false} >
+                <li className={`${styles.navButton} ${styles.homeButton}`}>Home</li>
+              </Link>
               <Link href="/aktuelles" scroll={false}>
                 <li className={styles.navButton}>Aktuelles</li>
               </Link>

@@ -4,7 +4,6 @@
   height: 100vh;
   width: 100vw;
   z-index: 1000;
-
 }
 
 .navButtons {
@@ -35,6 +34,9 @@
 .navButtons div:hover {
   font-variation-settings: "wght" 800;
 }
+.homeButton {
+  display: none;
+}
 
 .navList {
   position: absolute;
@@ -48,7 +50,7 @@
   letter-spacing: var(--fontLargeLetterSpacing);
   pointer-events: none;
   backdrop-filter: blur(30px);
-  background: rgba(255,255,255,0.2);
+  background: rgba(255, 255, 255, 0.2);
   animation: fadeIn 0.3s ease-out;
 }
 
@@ -63,5 +65,24 @@
   }
   100% {
     opacity: 1;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .navButtons {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .navList {
+    font-size: 50px;
+    line-height: 50px;
+    letter-spacing: var(--fontLargeLetterSpacing);
+    height: 100vh;
+    padding-top: 30px;
+  }
+  .homeButton {
+    display: block;
   }
 }
