@@ -2,10 +2,12 @@ import client from "../client";
 
 import Armada from "../components/Armada";
 import Footer from "../components/Footer";
+import { CrossingImageNilpferd } from "../components/imageComponents/CrossingImageNilpferd";
 
 const armada = ({ teammembers, armadaIntro, projekte, setRunningTitle }) => {
   return (
     <div className="mainWrapper">
+      <CrossingImageNilpferd />
       <Armada
         teammembers={teammembers}
         armadaIntro={armadaIntro[0]}

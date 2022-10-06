@@ -1,14 +1,15 @@
 import React, { useEffect } from "react";
 
-import Link from "next/link";
 import client from "../client";
 
 import Footer from "../components/Footer";
 import ProjektOverview from "../components/ProjektOverview";
+import { CrossingImageFisch } from "../components/imageComponents/CrossingImageFisch";
 
 const projekte = ({ projekte, setRunningTitle }) => {
   return (
     <div className="mainWrapper">
+      <CrossingImageFisch />
       <ProjektOverview projekte={projekte} setRunningTitle={setRunningTitle} />
 
       <Footer />

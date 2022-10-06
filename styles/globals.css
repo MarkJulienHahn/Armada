@@ -14,6 +14,8 @@ body {
 
 * {
   box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* VARIABLES */
@@ -101,6 +103,7 @@ h1 {
   line-height: var(--fontLargeLineHeight);
   letter-spacing: var(--fontLargeLetterSpacing);
   margin: 0;
+  font-weight: normal;
 }
 
 h2 {
@@ -108,6 +111,7 @@ h2 {
   line-height: var(--fontMediumLineHeight);
   letter-spacing: var(--fontMediumLetterSpacing);
   margin: 0;
+  font-weight: normal;
 }
 
 ul {
@@ -714,7 +718,6 @@ ul {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
   height: 100vh;
   z-index: 500;
   display: flex;
@@ -725,6 +728,7 @@ ul {
 
 .lightboxInner {
   pointer-events: auto;
+  width: auto;
 }
 
 /* VERMITTLUNG */
@@ -865,6 +869,17 @@ ul {
 
 /* CROSSING */
 
+.crossingWrapperNilpferd {
+  position: fixed;
+  top: 50%;
+  right: 0;
+  animation: rtl 30s linear;
+  pointer-events: none;
+  animation-fill-mode: forwards;
+  animation-delay: 0s;
+  z-index: 50;
+}
+
 .crossingWrapperDino {
   position: fixed;
   top: 80%;
@@ -894,8 +909,33 @@ ul {
   animation: ltr 40s linear;
   pointer-events: none;
   animation-fill-mode: forwards;
-  animation-delay: 0s;
+  animation-delay: 2s;
   z-index: 1000;
+  transform: translate(-50vw, 0vh);
+}
+
+.crossingWrapperFisch {
+  position: fixed;
+  top: 80%;
+  left: 0;
+  animation: ltr 5s linear;
+  pointer-events: none;
+  animation-fill-mode: forwards;
+  animation-delay: 3s;
+  z-index: 1000;
+  transform: translate(-50vw, 0vh) scale(50%);
+}
+
+.crossingWrapperSturm {
+  position: fixed;
+  top: 80%;
+  left: 0;
+  animation: ltr 20s linear;
+  pointer-events: none;
+  animation-fill-mode: forwards;
+  animation-delay: 2s;
+  z-index: 1000;
+  transform: translate(-50vw, 0vh);
 }
 
 @keyframes ltr {

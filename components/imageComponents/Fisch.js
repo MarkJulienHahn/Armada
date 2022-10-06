@@ -11,7 +11,7 @@ const Fisch = () => {
   return (
     <>
       <div className="homePreloader">
-        <Image src={image02} width="640" height="360" priority={true} />
+        <Image src={image02} width="640" height="360" priority />
       </div>
 
       <div onClick={() => setActive(!active)}>
@@ -20,7 +20,7 @@ const Fisch = () => {
         ) : (
           <>
             <div>
-              <Image src={image02} priority={true} />
+              <Image src={image02} priority />
             </div> 
             
           </>

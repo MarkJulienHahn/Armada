@@ -1,10 +1,12 @@
 import Footer from "../components/Footer";
 import client from "../client";
 import Archiv from "../components/Archiv";
+import { CrossingImageSturm } from "../components/imageComponents/CrossingImageSturm";
 
 const archiv = ({ archiv, setRunningTitle }) => {
   return (
     <div className="mainWrapper">
+      <CrossingImageSturm />
       <Archiv archiv={archiv} setRunningTitle={setRunningTitle} />
       <Footer />
     </div>
