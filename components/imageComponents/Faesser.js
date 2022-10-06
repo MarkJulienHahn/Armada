@@ -34,7 +34,11 @@ const Faesser = () => {
         <Image src={image04} width="800" height="600" priority={true} />
       </div>
 
-      <div onClick={() => {addIteration(true)}}>
+      <div
+        onClick={() => {
+          addIteration(true);
+        }}
+      >
         <Image src={images[iteration]} />
       </div>
     </>
