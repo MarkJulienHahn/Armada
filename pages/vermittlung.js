@@ -1,9 +1,11 @@
 import Vermittlung from "../components/Vermittlung";
 import client from "../client";
+import { CrossingImageCan } from "../components/imageComponents/CrossingImageCan";
 
 const vermittlung = ({ vermittlung, projekte, setRunningTitle }) => {
   return (
     <>
+      <CrossingImageCan />
       <Vermittlung
         vermittlung={vermittlung}
         projekte={projekte}

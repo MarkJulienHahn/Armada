@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 
 import Image from "next/image";
 
-import papagei from "../../public/images/Papagei_500px.gif";
+import can from "../../public/images/Spielkalender_Spruehdose.gif";
 
-export const CrossingImagePapagai = () => {
+export const CrossingImageCan = () => {
   const [x, setX] = useState();
   const [y, setY] = useState();
   useEffect(() => {
@@ -28,9 +28,9 @@ export const CrossingImagePapagai = () => {
   };
 
   return (
-    <div className="crossingWrapperPapagei">
+    <div className="crossingWrapperCan">
       <div className={"homeImageRow1"} style={row3}>
-        <Image src={papagei} />
+        <Image src={can} />
       </div>
     </div>
   );
