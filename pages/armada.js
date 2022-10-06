@@ -1,23 +1,16 @@
-import React, {useEffect} from "react";
-
 import client from "../client";
 
 import Armada from "../components/Armada";
 import Footer from "../components/Footer";
 
 const armada = ({ teammembers, armadaIntro, projekte, setRunningTitle }) => {
-
-  useEffect(() => {
-    setRunningTitle("Die Armada")
-  },[])
-
   return (
     <div className="mainWrapper">
-
       <Armada
         teammembers={teammembers}
         armadaIntro={armadaIntro[0]}
         projekte={projekte}
+        setRunningTitle={setRunningTitle}
       />
 
       <Footer />
@@ -40,8 +33,10 @@ export async function getStaticProps() {
   {titel, slug, "image": vorschaubild.asset->{url, "metadata": metadata.dimensions}, "beteiligte": beteiligte[].member->}`);
   return {
     props: {
-      teammembers, armadaIntro, projekte
-    }
+      teammembers,
+      armadaIntro,
+      projekte,
+    },
   };
 }
 

@@ -869,13 +869,13 @@ ul {
   position: fixed;
   top: 80%;
   right: 0;
-  animation: ltr 100s linear;
+  animation: rtl 100s linear;
   pointer-events: none;
   animation-fill-mode: forwards;
   animation-delay: 0s;
 }
 
-@keyframes ltr {
+@keyframes rtl {
   0% {
     transform: translateX(0);
   }
@@ -891,18 +891,44 @@ ul {
   position: fixed;
   top: 80%;
   left: 0;
-  animation: rtl 40s linear;
+  animation: ltr 40s linear;
   pointer-events: none;
   animation-fill-mode: forwards;
   animation-delay: 0s;
   z-index: 1000;
 }
 
-@keyframes rtl {
+@keyframes ltr {
   0% {
     transform: translate(-50vw, 0vh);
   }
   100% {
     transform: translate(200vw, 10vh);
   }
+}
+
+.crossingWrapperStift {
+  position: fixed;
+  top: 80%;
+  right: 0;
+  animation: rtl 20s linear;
+  pointer-events: none;
+  animation-fill-mode: forwards;
+  animation-delay: 0s;
+}
+
+.playmo {
+  position: fixed;
+  bottom: -20vh;
+  left: 40%;
+  z-index: 10;
+  transition: transform 0.5s ease;
+}
+
+.playmoActive {
+  transform: translateY(0)
+}
+
+.playmoGone {
+  transform: translateY(30vw)
 }

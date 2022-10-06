@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 
-
 import { PortableText } from "@portabletext/react";
 
 import Image from "next/image";
@@ -57,28 +56,35 @@ const ArmadaPerson = ({
               ""
             )}
 
-<PortableText value={text} />
+            <PortableText value={text} />
 
             <div className="armdReferenceWrapper">
-              {projekte.map((projekt) =>
-                projekt.beteiligte.map((member, i) =>
-                  member ? (
-                    member.name == name ? (
-                      <>
-                        <h2>
-                          <a href={`/projekte/${projekt.slug.current}`}>
-                            {projekt.titel}
-                          </a>
-                        </h2>
-                      </>
-                    ) : (
-                      ""
+              {projekte.beteiligte ? (
+                <>
+                  {projekte.map((projekt) =>
+                    projekt.beteiligte.map((member, i) =>
+                      member ? (
+                        member.name == name ? (
+                          <>
+                            <h2>
+                              <a href={`/projekte/${projekt.slug.current}`}>
+                                {projekt.titel}
+                              </a>
+                            </h2>
+                          </>
+                        ) : (
+                          ""
+                        )
+                      ) : (
+                        ""
+                      )
                     )
-                  ) : (
-                    ""
-                  )
-                )
+                  )}
+                </>
+              ) : (
+                ""
               )}
+
               <div className="armdReferenceHeader">
                 {contact ? "Kontakt" : ""}
               </div>

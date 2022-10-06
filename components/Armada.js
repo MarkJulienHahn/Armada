@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
 
 import Image from "next/image";
 
 import ArmadaPerson from "../components/ArmadaPerson";
 
-const Armada = ({ teammembers, armadaIntro, projekte }) => {
+const Armada = ({ teammembers, armadaIntro, projekte, setRunningTitle }) => {
   const [activeIndex, setActiveIndex] = useState(null);
 
+  useEffect(() => {
+    setRunningTitle("Die Armada");
+  }, []);
   return (
     <>
       <div className="armdWrapper">
@@ -21,20 +24,20 @@ const Armada = ({ teammembers, armadaIntro, projekte }) => {
         </div>
       </div>
       <div className="armdListe">
-          {teammembers.map((person, i) => (
-            <ArmadaPerson
-              setActiveIndex={setActiveIndex}
-              activeIndex={activeIndex}
-              index={i}
-              name={person.name}
-              text={person.biografie}
-              contact={person.email}
-              portrait={person.bild}
-              projekte={projekte}
-              key={i}
-            />
-          ))}
-        </div>
+        {teammembers.map((person, i) => (
+          <ArmadaPerson
+            setActiveIndex={setActiveIndex}
+            activeIndex={activeIndex}
+            index={i}
+            name={person.name}
+            text={person.biografie}
+            contact={person.email}
+            portrait={person.bild}
+            projekte={projekte}
+            key={i}
+          />
+        ))}
+      </div>
     </>
   );
 };

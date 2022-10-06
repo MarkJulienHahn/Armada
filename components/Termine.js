@@ -1,11 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import { fetcher } from "../lib/api";
+import { CrossingImageStift } from "./imageComponents/CrossingImageStift";
 import TermineYears from "./TermineYears";
 import TermineYearsVergangen from "./TermineYearsVergangen";
 
-const Termine = ({ projekte }) => {
+const Termine = ({ projekte, setRunningTitle }) => {
   const [active, setActive] = useState(true);
+
+  useEffect(() => {
+    setRunningTitle("Termine")
+  },[])
 
   function formatMyDate(value, locale = "gb-GB") {
     return new Date(value).toLocaleDateString(locale);
@@ -74,6 +79,9 @@ const Termine = ({ projekte }) => {
 
   return (
     <div className="termineWrapper">
+
+      <CrossingImageStift />
+
       <div className="termineSwitch">
         <p onClick={() => setActive(!active)}>
           {active ? "Vergangene Vorführungen" : "Aktuelle Verführungen"}

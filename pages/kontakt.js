@@ -1,32 +1,15 @@
-import React, {useEffect} from "react";
-
-import RunningTitle from "../components/RunningTitle";
+import React, { useEffect } from "react";
 
 import { CrossingImageDino } from "../components/imageComponents/CrossingImageDino";
+import Kontakt from "../components/Kontakt";
 import Footer from "../components/Footer";
 
-const kontakt = ( {setRunningTitle}) => {
-
-  useEffect(() => {
-    setRunningTitle("Kontakt")
-  },[])
-
+const kontakt = ({ setRunningTitle }) => {
   return (
     <div className="mainWrapper">
-      <CrossingImageDino/>
-      <div className="kontaktWrapper">
-        <div className="kontakt">
-          <h2>Armada Theater</h2>
-          <p>
-            Kuhstraße 31
-            <br />
-            42555 Velbert
-            <br />
-            +49 711 – 20 32 0<br />
-            <a>info@armada-theater.com</a>
-          </p>
-        </div>
-      </div>
+      <CrossingImageDino />
+      <Kontakt setRunningTitle={setRunningTitle} />
+
       <div className="kontaktFooter">
         <Footer />
       </div>

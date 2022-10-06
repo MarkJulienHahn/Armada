@@ -1,60 +1,16 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 
 import Link from "next/link";
 import client from "../client";
 
 import Footer from "../components/Footer";
-import ProjektPreview from "../components/ProjektPreview";
+import ProjektOverview from "../components/ProjektOverview";
 
-const projekte = ({ projekte, setRunningTitle}) => {
-
-  function formatPrimitive(value) {
-    return new Date(value)[Symbol.toPrimitive]("number");
-  }
-
-  function compare(a, b) {
-    if (
-      formatPrimitive(a.erstauffuehrung) >
-      formatPrimitive(b.erstauffuehrung)
-    ) {
-      return -1;
-    }
-    if (
-      formatPrimitive(a.erstauffuehrung) <
-      formatPrimitive(b.erstauffuehrung)
-    ) {
-      return 1;
-    }
-    return 0;
-  }
-
-  const projekteSortiert = projekte.sort(compare);
-
-  useEffect(() => {
-    setRunningTitle("Projekte")
-  },[])
-
-
+const projekte = ({ projekte, setRunningTitle }) => {
   return (
     <div className="mainWrapper">
+      <ProjektOverview projekte={projekte} setRunningTitle={setRunningTitle} />
 
-      <div className="projWrapper">
-        {projekteSortiert.map((project, i) =>
-          project.slug.current ? (
-            <Link key={i} href={`/projekte/${project.slug.current}`}>
-              <div className="projLink">
-                <ProjektPreview
-                  titel={project.titel}
-                  kurzbeschreibung={project.kurzbeschreibung}
-                  bild={project.vorschaubild}
-                />
-              </div>
-            </Link>
-          ) : (
-            ""
-          )
-        )}
-      </div>
       <Footer />
     </div>
   );
@@ -75,11 +31,9 @@ export async function getStaticProps(context) {
   }
   `);
 
-
-
   return {
     props: {
-      projekte
+      projekte,
     },
   };
 }

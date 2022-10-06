@@ -108,13 +108,15 @@ const Projekt = ({ projekt, links }) => {
             {projekt.termine?.map((termin, i) =>
               termin.premiere || formatPrimitive(termin.datum) >= Date.now() ? (
                 <div className="projSingleInner" key={i}>
-                  <a href="/termine" rel="noreferrer">
-                    <Datum
-                      timestamp={termin.datum}
-                      premiere={termin.premiere}
-                    />
-                    <p>{termin.spielort}</p>
-                  </a>
+                  <Link href="/termine" rel="noreferrer">
+                    <a>
+                      <Datum
+                        timestamp={termin.datum}
+                        premiere={termin.premiere}
+                      />
+                      <p>{termin.spielort}</p>
+                    </a>
+                  </Link>
                 </div>
               ) : (
                 ""
