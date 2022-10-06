@@ -1,10 +1,6 @@
-import RunningTitleDouble from "../../components/RunningTitleDouble";
 import Projekt from "../../components/Projekt";
-
 import client from "../../client";
-
 import Footer from "../../components/Footer";
-import { useEffect } from "react";
 
 export async function getStaticPaths() {
   const res = await client.fetch(`*[_type == "projekte"]`);
@@ -53,20 +49,15 @@ const projektSingle = ({
   setRunningTitle,
   setRunningTitleDouble,
 }) => {
-
-
-
-  useEffect(() => {
-    setRunningTitle(null), setRunningTitleDouble(projekte[0].titel);
-    return () => {
-      setRunningTitleDouble(null);
-    };
-  }, []);
-
   return (
     <>
       <div className="mainWrapper">
-        <Projekt projekt={projekte[0]} links={links} />
+        <Projekt
+          projekt={projekte[0]}
+          links={links}
+          setRunningTitle={setRunningTitle}
+          setRunningTitleDouble={setRunningTitleDouble}
+        />
         <Footer />
       </div>
     </>

@@ -1,4 +1,4 @@
-import React from "react";
+import {useEffect} from "react";
 
 import { PortableText } from "@portabletext/react";
 
@@ -11,7 +11,7 @@ import Link from "next/link";
 
 import "swiper/css";
 
-const Projekt = ({ projekt, links }) => {
+const Projekt = ({ projekt, links, setRunningTitle, setRunningTitleDouble }) => {
   function blocksToText(blocks) {
     return blocks.map((block) =>
       block.children.map((child) => child.text).join("")
@@ -21,6 +21,13 @@ const Projekt = ({ projekt, links }) => {
   function formatPrimitive(value) {
     return new Date(value)[Symbol.toPrimitive]("number");
   }
+
+  useEffect(() => {
+    setRunningTitle(null), setRunningTitleDouble(projekt.titel);
+    return () => {
+      setRunningTitleDouble(null);
+    };
+  }, []);
 
   return (
     <div className="projSingleWrapper">
