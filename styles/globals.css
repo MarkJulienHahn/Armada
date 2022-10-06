@@ -66,16 +66,6 @@ body {
   }
 }
 
-/* @media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: white;
-    background: black;
-  }
-} */
-
 /* MAIN */
 
 a {
@@ -166,6 +156,7 @@ ul {
   width: 100vw;
   z-index: 110;
   pointer-events: none;
+  transform: scale(150%);
 }
 
 .homeImageRow1 {
@@ -174,6 +165,7 @@ ul {
   z-index: 100;
   width: 100vw;
   pointer-events: none;
+  transform: scale(120%);
 }
 
 .homeImageRow2 {
@@ -189,7 +181,7 @@ ul {
   bottom: 0;
   z-index: 0;
   width: 100vw;
-  transform: translateY(-40vh);
+  transform: translateY(-40vh) scale(90%);
   pointer-events: none;
 }
 
@@ -198,7 +190,7 @@ ul {
   bottom: 0;
   z-index: 0;
   width: 100vw;
-  transform: translateY(-40vh);
+  transform: translateY(-40vh) scale(80%);
   pointer-events: none;
 }
 
@@ -707,7 +699,7 @@ ul {
 }
 
 .archImageInner:hover .fontXXS {
-  opacity: 1
+  opacity: 1;
 }
 
 .archBig {
@@ -979,9 +971,66 @@ ul {
 }
 
 .playmoActive {
-  transform: translateY(0)
+  transform: translateY(0);
 }
 
 .playmoGone {
-  transform: translateY(30vw)
+  transform: translateY(30vw);
+}
+
+/* COOKIES */
+
+.cookiesWrapper {
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  backdrop-filter: blur(15px);
+  animation: fadeIn 0.3s ease-out 1s forwards;
+  opacity: 0;
+}
+
+.cookiesText {
+  position: absolute;
+  bottom: var(--margin-M);
+  width: 80vw;
+  text-align: center;
+}
+
+.cookiesText div {
+  margin-top: var(--margin-M);
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.cookieButton h2 {
+  cursor: pointer;
+  transition: font-variation-settings 0.5s ease-out;
+}
+
+.cookieButton:hover h2 {
+  font-variation-settings: "wght" 1000;
+}
+
+.cookieYes {
+  color: green;
+}
+
+.cookieNo {
+  color: red;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }

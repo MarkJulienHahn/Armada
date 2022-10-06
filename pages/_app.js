@@ -4,9 +4,10 @@ import Nav from "../components/Nav";
 import { AnimatePresence, motion } from "framer-motion";
 
 import "../styles/globals.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import RunningTitle from "../components/RunningTitle";
 import RunningTitleDouble from "../components/RunningTitleDouble";
+import Cookies from "../components/Cookies";
 
 function MyApp({ Component, pageProps }) {
   const location = useRouter();
@@ -14,8 +15,23 @@ function MyApp({ Component, pageProps }) {
   const [runningTitle, setRunningTitle] = useState("");
   const [runningTitleDouble, setRunningTitleDouble] = useState("");
 
+  const [cookieActive, setCookieActive] = useState(true);
+
+  const acceptCookie = () => {
+    setCookieActive(false), localStorage.setItem("cookieSeen", "true");
+  }
+
+  useEffect( () => {
+    const data = localStorage.getItem("cookieSeen");
+    if (data) {
+      acceptCookie(data);
+    }
+  }, []);
+
   return (
     <>
+      {cookieActive ? <Cookies setCookieActive={acceptCookie} /> : ""}
+
       <Nav />
 
       <RunningTitle current={runningTitle} />

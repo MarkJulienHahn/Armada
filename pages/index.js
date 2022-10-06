@@ -11,7 +11,7 @@ import { CrossingImageNilpferd } from "../components/imageComponents/CrossingIma
 
 import Footer from "../components/Footer";
 
-export default function Home( { setRunningTitle}) {
+export default function Home({ setRunningTitle }) {
   const [x, setX] = useState();
   const [y, setY] = useState();
   useEffect(() => {
@@ -33,6 +33,7 @@ export default function Home( { setRunningTitle}) {
     position: "fixed",
     bottom: y * 0.08,
     left: x * -0.15,
+
   };
 
   const row1 = {
