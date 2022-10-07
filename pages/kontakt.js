@@ -6,7 +6,7 @@ import Footer from "../components/Footer";
 
 const kontakt = ({ setRunningTitle }) => {
   return (
-    <div className="mainWrapper">
+    <div className="kontaktWrapper">
       <CrossingImageDino />
       <Kontakt setRunningTitle={setRunningTitle} />
 

@@ -131,7 +131,7 @@ const Projekt = ({ projekt, links, setRunningTitle, setRunningTitleDouble }) => 
             )}
           </div>
 
-          <p>Kooperationspartner*innen und Förderer*innen</p>
+          <p>Partner:innen und Förderer:innen</p>
 
           <div className="projSingleDataCol">
             <div>

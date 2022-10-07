@@ -7,11 +7,6 @@ const ArchivImage = ({ foto }) => {
     <>
       <div
         className="archImageInner"
-        style={{
-          height: "100%",
-          position: "relative",
-          padding: "0 2px 80px 2px",
-        }}
       >
         <Image
           placeholder="blur"

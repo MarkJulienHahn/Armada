@@ -5,7 +5,7 @@ const Kontakt = ({ setRunningTitle }) => {
     setRunningTitle("Kontakt");
   }, []);
   return (
-    <div className="kontaktWrapper">
+
       <div className="kontakt">
         <h2>Armada Theater</h2>
         <p>
@@ -17,7 +17,7 @@ const Kontakt = ({ setRunningTitle }) => {
           <a>info@armada-theater.com</a>
         </p>
       </div>
-    </div>
+
   );
 };
 

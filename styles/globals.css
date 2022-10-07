@@ -89,7 +89,6 @@ body {
     line-height: 20px !important;
     letter-spacing: 0 !important;
   }
-
 }
 
 /* MAIN */
@@ -273,7 +272,7 @@ ul {
   position: absolute;
   bottom: 0;
   transform: translate(75vw, -15vw);
-  width: 20vw;
+  width: 30vw;
   pointer-events: auto;
   cursor: pointer;
 }
@@ -300,6 +299,35 @@ ul {
   }
   100% {
     transform: translateX(-200vw);
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .homeHome {
+    display: none;
+  }
+  .homeLegals {
+    display: none;
+  }
+  .homeImageFisch {
+    transform: translate(46vw, -1vh);
+    width: 50vw;
+  }
+  .homeImageJeep {
+    transform: translate(10vw, -25vw);
+    width: 40vw;
+  }
+  .homeImageFaesser {
+    transform: translate(52vw, -61vw);
+    width: 60vw;
+  }
+  .homeImageFernseher {
+    transform: translate(10vw, -42vw);
+    width: 50vw;
+  }
+  .homeImageVogel {
+    transform: translate(63vw, -77vw);
+    width: 42vw;
   }
 }
 
@@ -354,7 +382,6 @@ ul {
 
 /* AKTUELLES */
 
-
 .aktMarqueeWrapper {
   margin-bottom: var(--margin-L);
   position: absolute;
@@ -390,8 +417,8 @@ ul {
 @media only screen and (max-width: 800px) {
   .aktPost {
     width: 100%;
-    margin-right: 0; 
-    margin-bottom: var(--margin-XL)
+    margin-right: 0;
+    margin-bottom: var(--margin-XL);
   }
   .aktPost h2 {
     margin: var(--margin-S) 0;
@@ -400,7 +427,7 @@ ul {
     width: 100%;
   }
   .aktFeed {
-    padding-top: var(--margin-XXL)
+    padding-top: var(--margin-XXL);
   }
 }
 
@@ -620,7 +647,34 @@ ul {
   .projPost:hover {
     font-variation-settings: "wght" 500;
   }
-  
+  .projSingleText {
+    margin: 0;
+  }
+  .projSingleDataWrapper {
+    flex-direction: column;
+    padding: var(--margin-XL) 0;
+  }
+  .projSingleDataCol {
+    width: 100%;
+  }
+  .projSingleDataCol > p{
+    font-size: var(--fontLargeSize);
+    line-height: var(--fontLargeLineHeight);
+    padding-top: var(--margin-XL)
+  }
+  .projImage {
+    height: 300px;
+  }
+  .projLogos {
+    flex-direction: column;
+    align-items: center;
+  }
+  .projLogos span {
+    max-width: 60vw !important;
+  }
+  .projLogo {
+    margin: 10vw !important;
+  }
 }
 
 /* ARMADA */
@@ -703,7 +757,7 @@ ul {
   }
 
   .armdPersonWrapper {
-    padding: 0
+    padding: 0;
   }
 }
 
@@ -761,6 +815,12 @@ ul {
   width: 800px;
 }
 
+.archImageInner {
+  height: 100%;
+  position: relative;
+  padding: 0 2px 80px 2px;
+}
+
 .archImageInner p {
   opacity: 0;
   transition: opacity 0.5s ease;
@@ -794,14 +854,23 @@ ul {
 @media only screen and (max-width: 800px) {
   .archText {
     padding-bottom: var(--margin-M);
+    padding-top: var(--margin-M);
     height: unset;
     margin-left: 0 !important;
   }
   .archWrapper div {
     width: unset;
   }
+  .archWrapper {
+    padding-bottom: var(--margin-XXL);
+  }
   .lightboxWrapper {
     display: none;
+  }
+  .archImageInner {
+    height: 100%;
+    position: relative;
+    padding: 0 2px 5px 2px;
   }
 }
 
@@ -912,14 +981,37 @@ ul {
 
 @media only screen and (max-width: 800px) {
   .termineDay {
-    line-height: unset
+    line-height: unset;
+  }
+  .termineSwitch {
+    text-align: center;
+  }
+  .termineRow2,
+  .termineRow {
+    border-bottom: 2px solid black;
+    text-align: center;
+  }
+  .termineRow {
+    padding-top: 12px;
+  }
+  .termineRow2 {
+    flex-direction: column;
+  }
+  .termineDay,
+  .termineLocation,
+  .termineTitle {
+    width: 100%;
+    padding: 0;
+  }
+  .termineLocation {
+    padding: 5px 0;
   }
 }
 
 /* KONTAKT */
 
 .kontaktWrapper {
-  height: 100%;
+  height: 100vh;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -989,7 +1081,7 @@ ul {
     transform: translateX(0)
   } */
   100% {
-    transform: translateX(-200vw);
+    transform: translateX(-250vw);
   }
 }
 
@@ -1014,7 +1106,7 @@ ul {
   animation-fill-mode: forwards;
   animation-delay: 3s;
   z-index: 1000;
-  transform: translate(-50vw, 0vh) scale(50%);
+  transform: translate(-60vw, 0vh) scale(50%);
 }
 
 .crossingWrapperSturm {
@@ -1044,7 +1136,7 @@ ul {
 
 @keyframes ltr {
   0% {
-    transform: translate(-50vw, 0vh);
+    transform: translate(-60vw, 0vh);
   }
   100% {
     transform: translate(200vw, 10vh);
@@ -1074,7 +1166,7 @@ ul {
 }
 
 .playmoGone {
-  transform: translateY(30vw);
+  transform: translateY(40vw);
 }
 
 /* COOKIES */
@@ -1136,7 +1228,7 @@ ul {
 
 @media only screen and (max-width: 800px) {
   .cookiesText {
-top: var(--margin-L);
-bottom: unset;
+    top: var(--margin-L);
+    bottom: unset;
   }
 }

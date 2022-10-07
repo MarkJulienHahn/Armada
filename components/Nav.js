@@ -2,6 +2,8 @@ import styles from "../styles/Nav.module.css";
 import Link from "next/link";
 import React, { useState } from "react";
 
+import Footer from "./Footer";
+
 const Nav = () => {
   const [isActive, setActive] = useState("false");
 
@@ -25,8 +27,10 @@ const Nav = () => {
         <>
           <div className={styles.navList} onClick={ToggleClass}>
             <ul>
-              <Link href="/" scroll={false} >
-                <li className={`${styles.navButton} ${styles.homeButton}`}>Home</li>
+              <Link href="/" scroll={false}>
+                <li className={`${styles.navButton} ${styles.homeButton}`}>
+                  Home
+                </li>
               </Link>
               <Link href="/aktuelles" scroll={false}>
                 <li className={styles.navButton}>Aktuelles</li>
@@ -50,6 +54,9 @@ const Nav = () => {
                 <li className={styles.navButton}>Kontakt</li>
               </Link>
             </ul>
+            <div className={styles.mobileFooter}>
+              <Footer />
+            </div>
           </div>
         </>
       ) : (
