@@ -5,8 +5,6 @@ const TermineMonthsVergangen = ({ sorted, month, monthNmbr }) => {
     (date) => date.month == monthNmbr && date.timestamp < Date.now()
   );
 
-  console.log(sorted);
-
   return (
     <>
       {current.length !== 0 ? (

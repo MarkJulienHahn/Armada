@@ -1,8 +1,6 @@
 import Image from "next/image";
 
 const Lightbox = ({ image, setImage }) => {
-  console.log(image);
-
   return (
     <div className="lightboxWrapper">
       {image ? (

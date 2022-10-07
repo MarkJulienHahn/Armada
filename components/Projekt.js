@@ -1,23 +1,23 @@
-import {useEffect} from "react";
+import { useEffect } from "react";
 
 import { PortableText } from "@portabletext/react";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import ProjectSwiperImage from "../components/ProjectSwiperImage";
 import Datum from "./Datum";
+import { CrossingImageBallon } from "./imageComponents/CrossingImageBallon";
 
 import Image from "next/image";
 import Link from "next/link";
 
 import "swiper/css";
 
-const Projekt = ({ projekt, links, setRunningTitle, setRunningTitleDouble }) => {
-  function blocksToText(blocks) {
-    return blocks.map((block) =>
-      block.children.map((child) => child.text).join("")
-    );
-  }
-
+const Projekt = ({
+  projekt,
+  links,
+  setRunningTitle,
+  setRunningTitleDouble,
+}) => {
   function formatPrimitive(value) {
     return new Date(value)[Symbol.toPrimitive]("number");
   }
@@ -31,6 +31,12 @@ const Projekt = ({ projekt, links, setRunningTitle, setRunningTitleDouble }) => 
 
   return (
     <div className="projSingleWrapper">
+      <CrossingImageBallon
+        ab4={projekt.ab4}
+        ab8={projekt.ab8}
+        ab12={projekt.ab12}
+      />
+
       <h1>{projekt.titel}</h1>
 
       {projekt.videolink ? (
@@ -70,15 +76,26 @@ const Projekt = ({ projekt, links, setRunningTitle, setRunningTitleDouble }) => 
               <div className="projSingleInner">
                 <p>{beteiligter.position}</p>
 
-                {beteiligter.member ? (
-                  <p>
-                    <Link href="/armada">{beteiligter.member.name}</Link>
-                  </p>
-                ) : (
-                  ""
-                )}
+                <p>
+                  {beteiligter.member ? (
+                    <>
+                      {beteiligter.member
+                        ? beteiligter.member.map((member, i) => (
+                            <Link href="/armada" key={i}>
+                              <a>
+                                {member.name}
+                                {i + 1 < beteiligter.member.length ? ", " : " "}
+                              </a>
+                            </Link>
+                          ))
+                        : ""}
+                    </>
+                  ) : (
+                    ""
+                  )}
 
-                <p>{beteiligter.externe}</p>
+                  {beteiligter.externe}
+                </p>
               </div>
             </>
           ))}
@@ -89,7 +106,7 @@ const Projekt = ({ projekt, links, setRunningTitle, setRunningTitleDouble }) => 
               <div>
                 {projekt.presse.map((artikel, i) => (
                   <div className="projSingleInner" key={i}>
-                    <p>{blocksToText(artikel.text)}</p>
+                    <PortableText value={artikel.text} />
                     {artikel.link ? (
                       <p>
                         <br />

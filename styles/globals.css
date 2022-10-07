@@ -409,9 +409,14 @@ ul {
   width: 80%;
 }
 
-.aktImage {
+.aktImageHochkant {
   margin-top: var(--margin-S);
   width: 50%;
+}
+
+.aktImageQuerformat {
+  margin-top: var(--margin-S);
+  width: 75%;
 }
 
 @media only screen and (max-width: 800px) {
@@ -459,6 +464,15 @@ ul {
   padding-top: 37px;
 }
 
+.projSingleText h1,
+.projSingleText h2,
+.projSingleText h3 {
+  padding-top: 37px;
+  font-size: var(--fontXSmallSize);
+  line-height: var(--fontXSmallLineHeight);
+  letter-spacing: var(--fontXSmallLetterSpacing);
+}
+
 .projSingleDataCol {
   width: 50%;
 }
@@ -473,12 +487,6 @@ ul {
   width: 100%;
   text-align: center;
 }
-
-/* .projSingleDataCol {
-  width: 50%;
-  padding-right: 50px;
-  margin-bottom: calc(2 * var(--margin-M));
-} */
 
 .projSingleDataCol2 {
   width: 50%;
@@ -583,13 +591,6 @@ ul {
   cursor: e-resize;
 }
 
-/* .swiper-slide img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-} */
-
 .projLink {
   cursor: pointer;
   width: calc(50% - 8px);
@@ -608,7 +609,7 @@ ul {
   width: 100vw;
   height: auto;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 
 .projLogos span {
@@ -657,10 +658,10 @@ ul {
   .projSingleDataCol {
     width: 100%;
   }
-  .projSingleDataCol > p{
+  .projSingleDataCol > p {
     font-size: var(--fontLargeSize);
     line-height: var(--fontLargeLineHeight);
-    padding-top: var(--margin-XL)
+    padding-top: var(--margin-XL);
   }
   .projImage {
     height: 300px;
@@ -1117,6 +1118,16 @@ ul {
   pointer-events: none;
   animation-fill-mode: forwards;
   animation-delay: 2s;
+  z-index: 1000;
+  transform: translate(-50vw, 0vh);
+}
+.crossingWrapperBallon {
+  position: fixed;
+  top: 80%;
+  left: 0;
+  animation: ltr 10s linear;
+  pointer-events: none;
+  animation-fill-mode: forwards;
   z-index: 1000;
   transform: translate(-50vw, 0vh);
 }

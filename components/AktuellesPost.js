@@ -11,15 +11,13 @@ const AktuellesPost = ({
   datum,
 }) => {
 
-  console.log(bild)
-
   return (
     <div className="aktPost">
       <p>{datum}</p>
       <h2>{titel}</h2>
       <p>{haupttext}</p>
       <p className="aktSubline">{subtext}</p>
-      <div className="aktImage">
+      <div className={bild.metadata.dimensions.aspectRatio < 1 ? "aktImageHochkant" : "aktImageQuerformat" }>
         {bild ? (
           <Image
             placeholder="blur"
