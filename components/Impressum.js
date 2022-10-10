@@ -14,7 +14,7 @@ const Impressum = ({ setRunningTitle }) => {
       Clara Gohmert <br />
       Kuhstraße 31
       <br /> 42555 Velbert
-      <br /> <a href="mailto:info@armada-theater.com">info@armada-theater.com</a>
+      <br /> <a href="mailto:info@armada-theater.de">info@armada-theater.de</a>
       <br />
       <br />
       Gestaltung und Programmierung
@@ -30,6 +30,9 @@ const Impressum = ({ setRunningTitle }) => {
       <a href="https://stereo-typefaces.com" target="_blank" rel="noreferrer">
         (Stereo Typefaces)
       </a>
+
+
+
     </p>
   );
 };
