@@ -5,6 +5,7 @@ import Footer from "../components/Footer";
 import { CrossingImageNilpferd } from "../components/imageComponents/CrossingImageNilpferd";
 
 const armada = ({ teammembers, armadaIntro, projekte, setRunningTitle }) => {
+  console.log(teammembers)
   return (
     <div className="mainWrapper">
       <CrossingImageNilpferd />
@@ -20,11 +21,13 @@ const armada = ({ teammembers, armadaIntro, projekte, setRunningTitle }) => {
   );
 };
 
+
+
 export async function getStaticProps() {
   const teammembers = await client.fetch(`
-  *[_type == "dieArmada"]{
-    name, "biografie": biografie, "bild": bild.asset->, email
-  }  
+  *[_type == "dieArmada"]{...,
+    name, "biografie": biografie, "bild": bild.asset->, email, "stuecke": stuecke[]->{"titel": titel, "slug": slug}
+  }   
   `);
   const armadaIntro = await client.fetch(`
   *[_type == "armadaIntro"]

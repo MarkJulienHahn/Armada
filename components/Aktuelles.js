@@ -52,22 +52,23 @@ const Aktuelles = ({ aktuelles, aktuellesHighlight, setRunningTitle }) => {
       >
         <Marquee gradient={false} speed={150}>
           <h2>
-            <span style={{ color: "blue" }}> *** Breaking *** </span>Premiere
-            von
+            <span style={{ color: "blue" }}> *** Achtung Achtung *** </span>
+            Premiere von
             {aktuellesHighlight[0].projekt.termine.map((proj, i) =>
               proj.premiere ? (
                 <>
                   <a
                     href={`projekte/${aktuellesHighlight[0].projekt.slug.current}`}
-                    target="_blank"
-                    rel="noreferrer"
                   >
                     {" "}
                     {aktuellesHighlight[0].projekt.titel}{" "}
                   </a>
                   am&nbsp;
-                  {formatMyDate(proj.datum)}. Location:&nbsp;
-                  <a href={proj.spielortlink}>{proj.spielort}</a>&nbsp;
+                  {formatMyDate(proj.datum)}. Ort:&nbsp;
+                  <a href={proj.spielortlink} target="_blank" rel="noreferrer">
+                    {proj.spielort}
+                  </a>
+                  &nbsp;
                 </>
               ) : (
                 ""

@@ -33,7 +33,7 @@ const Armada = ({ teammembers, armadaIntro, projekte, setRunningTitle }) => {
             text={person.biografie}
             contact={person.email}
             portrait={person.bild}
-            projekte={projekte}
+            stuecke={person.stuecke}
             key={i}
           />
         ))}

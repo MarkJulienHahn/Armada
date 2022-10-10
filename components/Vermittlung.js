@@ -2,6 +2,8 @@ import { useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 
+import { PortableText } from "@portabletext/react";
+
 import ProjectSwiperImage from "../components/ProjectSwiperImage";
 import Footer from "../components/Footer";
 
@@ -22,7 +24,7 @@ const Vermittlung = ({ vermittlung, projekte, setRunningTitle }) => {
         <div className="vermWrapper">
           <div className="vermInfo">
             <h2>Vermittlung</h2>
-            <p>{blocksToText(vermittlung[0].beschreibung)}</p>
+            <PortableText value={vermittlung[0].beschreibung} />
           </div>
         </div>
         <div className="vermInfo">
@@ -35,7 +37,7 @@ const Vermittlung = ({ vermittlung, projekte, setRunningTitle }) => {
               <div>
                 {projekt.downloads?.map((content, i) => (
                   <p key={i}>
-                    <a href={content.url.url}>{content.filename}</a>
+                    <a href={content.url.url} target="_blank" rel="noreferrer">{content.filename}</a>
                   </p>
                 ))}
               </div>

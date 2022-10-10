@@ -10,10 +10,11 @@ const Impressum = ({ setRunningTitle }) => {
       Angaben gemäß § 5 TMG:
       <br />
       <br />
+      ARMADA GbR <br />
       Clara Gohmert <br />
       Kuhstraße 31
       <br /> 42555 Velbert
-      <br /> armada.theater@gmail.com
+      <br /> <a href="mailto:info@armada-theater.com">info@armada-theater.com</a>
       <br />
       <br />
       Gestaltung und Programmierung

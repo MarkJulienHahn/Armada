@@ -105,7 +105,7 @@ const Projekt = ({
               <p>Presse</p>
               <div>
                 {projekt.presse.map((artikel, i) => (
-                  <div className="projSingleInner" key={i}>
+                  <div className="projSingleInner formatted" key={i}>
                     <PortableText value={artikel.text} />
                     {artikel.link ? (
                       <p>
@@ -148,16 +148,14 @@ const Projekt = ({
             )}
           </div>
 
-          <p>Partner:innen und Förderer:innen</p>
+          <p>Förderer:innen</p>
 
-          <div className="projSingleDataCol">
-            <div>
-              {projekt.kooperationspartner?.map((partner, i) => (
-                <div className="projSingleInner" key={i}>
-                  <p key={i}>{partner}</p>
-                </div>
-              ))}
-            </div>
+          <div>
+            {projekt.kooperationspartner?.map((partner, i) => (
+              <div className="projSingleInner" key={i}>
+                <p key={i}>{partner}</p>
+              </div>
+            ))}
           </div>
 
           <div>
@@ -168,6 +166,22 @@ const Projekt = ({
             ))}
           </div>
 
+          {projekt.aufTour ? (
+            <>
+              <p>Auf Tour</p>
+
+              <div className="projSingleDataCol">
+                {projekt.aufTour.map((content, i) => (
+                  <span key={i} className="projSingleInner">
+                    <p>{content.location} {content.link ? <a href={content.link} target="_blank" rel="noreferrer">Mehr Infos</a> : ""}</p>
+                  </span>
+                ))}
+              </div>
+            </>
+          ) : (
+            ""
+          )}
+
           {projekt.downloads ? (
             <>
               <p>Zum Mitnehmen</p>
@@ -175,7 +189,7 @@ const Projekt = ({
               <div className="projSingleDataCol">
                 {projekt.downloads.map((content, i) => (
                   <span key={i} className="projDownloadlink">
-                    <a href={content.file.url}>
+                    <a href={content.file.url} target="_blank" rel="noreferrer">
                       <p>{content.filename}</p>
                     </a>
                   </span>

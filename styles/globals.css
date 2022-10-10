@@ -502,6 +502,7 @@ ul {
 
 .projSingleInner {
   padding-top: var(--margin-M);
+  padding-right: var(--margin-M);
 }
 
 .projSingleInner p {
@@ -534,6 +535,10 @@ ul {
   height: 50%;
   overflow: hidden;
   margin-bottom: 10px;
+}
+
+.formatted p {
+  padding-bottom: 20px !important;
 }
 
 @keyframes vibrate {
@@ -657,6 +662,9 @@ ul {
   }
   .projSingleDataCol {
     width: 100%;
+  }
+  .projSingleInner {
+    padding-right: 0;
   }
   .projSingleDataCol > p {
     font-size: var(--fontLargeSize);
@@ -1125,7 +1133,7 @@ ul {
   position: fixed;
   top: 80%;
   left: 0;
-  animation: ltr 10s linear;
+  animation: ltr 15s linear;
   pointer-events: none;
   animation-fill-mode: forwards;
   z-index: 1000;

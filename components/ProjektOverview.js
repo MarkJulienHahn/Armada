@@ -24,6 +24,8 @@ const ProjektOverview = ({ projekte, setRunningTitle }) => {
 
   const projekteSortiert = projekte.sort(compare);
 
+
+
   useEffect(() => {
     setRunningTitle("Projekte");
   }, []);

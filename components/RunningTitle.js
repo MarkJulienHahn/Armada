@@ -1,20 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 
 const RunningTitle = ({ current }) => {
   const [active, setActive] = useState(false);
 
-  const ToggleActive = () => {
-    setActive(!active);
-  };
+  useEffect(() => {
+    setActive(false)
+    return setActive(false);
+  }, []);
 
   return (
     <>
       {current ? (
         <div
           className="runningTitleWrapper"
-          onMouseEnter={ToggleActive}
-          onMouseLeave={ToggleActive}
+          onMouseEnter={() => setActive(true)}
+          onMouseLeave={() => setActive(false)}
         >
           <div
             className={

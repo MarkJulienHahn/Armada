@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 import { PortableText } from "@portabletext/react";
 
@@ -12,20 +12,36 @@ const ArmadaPerson = ({
   text,
   contact,
   portrait,
-  projekte,
+  stuecke,
 }) => {
   const [active, setActive] = useState(false);
+
+  const aboutSection = useRef(null);
+
+  const scrollDown = () => {
+    window.scrollTo({
+      top: aboutSection.current.offsetTop,
+      behavior: "smooth",
+    });
+  };
+
+  const open = () => {
+    setActiveIndex(index), 
+    setTimeout(scrollDown, 200)
+  }
 
   useEffect(() => {
     index === activeIndex ? setActive(true) : setActive(false);
   }, [activeIndex]);
 
   return (
-    <div>
+    <div ref={aboutSection}>
       <h1
         className="armdHeadline"
         onClick={
-          active ? () => setActiveIndex(null) : () => setActiveIndex(index)
+          active
+            ? () => setActiveIndex(null)
+            : () => open()
         }
       >
         {name}
@@ -59,25 +75,25 @@ const ArmadaPerson = ({
             <PortableText value={text} />
 
             <div className="armdReferenceWrapper">
-              {/* {projekte.map((projekt, i) =>
-                projekt.beteiligte.map((member, i) =>
-                  member ? (
-                    member.name == name ? (
-                      <>
-                        <h2>
-                          <a href={`/projekte/${projekt.slug.current}`}>
-                            {projekt.titel}
-                          </a>
-                        </h2>
-                      </>
-                    ) : (
-                      ""
-                    )
-                  ) : (
-                    ""
-                  )
-                )
-              )} */}
+              <div className="armdReferenceHeader">
+                {stuecke ? "Mit der Aramada" : ""}
+              </div>
+              {stuecke ? (
+                <>
+                  {stuecke.map((stueck, i) => (
+                    <>
+                      {console.log(stueck)}
+                      <h2>
+                        <a href={`/projekte/${stueck.slug.current}`}>
+                          {stueck.titel}
+                        </a>
+                      </h2>
+                    </>
+                  ))}
+                </>
+              ) : (
+                ""
+              )}
 
               <div className="armdReferenceHeader">
                 {contact ? "Kontakt" : ""}
