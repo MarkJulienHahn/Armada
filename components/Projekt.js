@@ -42,8 +42,6 @@ const Projekt = ({
     };
   }, [value]);
 
-  console.log(projekt.passwort, value)
-
   return (
     <div className="projSingleWrapper">
       <CrossingImageBallon
