@@ -1,10 +1,14 @@
+import { useState, useEffect } from "react";
+
 import { useRouter } from "next/router";
 import Nav from "../components/Nav";
+
+import * as ga from '../lib/ga'
 
 import { AnimatePresence, motion } from "framer-motion";
 
 import "../styles/globals.css";
-import { useState, useEffect } from "react";
+
 import RunningTitle from "../components/RunningTitle";
 import RunningTitleDouble from "../components/RunningTitleDouble";
 import Cookies from "../components/Cookies";
@@ -27,6 +31,21 @@ function MyApp({ Component, pageProps }) {
       acceptCookie(data);
     }
   }, []);
+
+  useEffect(() => {
+    const handleRouteChange = (url) => {
+      ga.pageview(url)
+    }
+    //When the component is mounted, subscribe to router changes
+    //and log those page views
+    location.events.on('routeChangeComplete', handleRouteChange)
+
+    // If the component is unmounted, unsubscribe
+    // from the event with the `off` method
+    return () => {
+      location.events.off('routeChangeComplete', handleRouteChange)
+    }
+  }, [location.events])
 
   return (
     <>

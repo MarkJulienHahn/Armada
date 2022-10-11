@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 
 import { PortableText } from "@portabletext/react";
 
@@ -18,6 +18,12 @@ const Projekt = ({
   setRunningTitle,
   setRunningTitleDouble,
 }) => {
+  const [value, setValue] = useState();
+
+  const updateValue = () => {
+    setValue(value);
+  };
+
   function formatPrimitive(value) {
     return new Date(value)[Symbol.toPrimitive]("number");
   }
@@ -28,6 +34,13 @@ const Projekt = ({
       setRunningTitleDouble(null);
     };
   }, []);
+
+  useEffect(() => {
+    updateValue();
+    return () => {
+      setValue({});
+    };
+  }, [value]);
 
   return (
     <div className="projSingleWrapper">
@@ -173,7 +186,16 @@ const Projekt = ({
               <div className="projSingleDataCol">
                 {projekt.aufTour.map((content, i) => (
                   <span key={i} className="projSingleInner">
-                    <p>{content.location} {content.link ? <a href={content.link} target="_blank" rel="noreferrer">Mehr Infos</a> : ""}</p>
+                    <p>
+                      {content.location}{" "}
+                      {content.link ? (
+                        <a href={content.link} target="_blank" rel="noreferrer">
+                          Mehr Infos
+                        </a>
+                      ) : (
+                        ""
+                      )}
+                    </p>
                   </span>
                 ))}
               </div>
@@ -237,6 +259,66 @@ const Projekt = ({
               </SwiperSlide>
             ))}
           </Swiper>
+        </div>
+      ) : (
+        ""
+      )}
+
+      {projekt.downloadsPrivat && projekt.passwort ? (
+        <div className="projPasswort">
+          <p>Passwortgeschützter Bereich</p>
+          {projekt.passwort == value ? (
+            <div className="projPasswortCol">
+              {projekt.downloadsPrivat.map((content, i) => (
+                <span key={i} className="projDownloadlink">
+                  {content.file && (
+                    <a href={content.file.url} target="_blank" rel="noreferrer">
+                      <p>{content.filename}</p>
+                    </a>
+                  )}
+
+                  {content.image && (
+                    <div className="projPasswortImage">
+                      <Image
+                        placeholder="blur"
+                        blurDataURL="../public/images/image.jpg"
+                        src={content.image.url}
+                        width={content.image.metadata.width}
+                        height={content.image.metadata.height}
+                      />
+                      <a
+                        href={content.image.url}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        Herunterladen (Volle Auflösung)
+                      </a>
+                    </div>
+                  )}
+
+                  {content.videolink && (
+                    <div className="projPasswortLink">
+                      <a
+                        href={content.videolink}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        <p>{content.filename}</p>
+                      </a>
+                    </div>
+                  )}
+                </span>
+              ))}
+            </div>
+          ) : (
+            <div className="projPasswortCol">
+              <input
+                placeholder="Passwort"
+                value={value}
+                onChange={(e) => setValue(e.target.value)}
+              ></input>
+            </div>
+          )}
         </div>
       ) : (
         ""

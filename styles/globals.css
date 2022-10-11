@@ -611,7 +611,7 @@ ul {
 
 .projLogos {
   padding: var(--margin-L);
-  width: 100vw;
+  width: 100%;
   height: auto;
   display: flex;
   justify-content: space-evenly;
@@ -643,6 +643,32 @@ ul {
 }
 
 .projWeitereProjekte p {
+  padding-bottom: var(--margin-M);
+}
+
+.projPasswortCol input {
+  font-size: var(--fontSmallSize);
+  font-family: "Giallo";
+  border: 0;
+  text-align: center;
+}
+
+.projPasswort {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: var(--margin-XL);
+  width: 100%;
+}
+
+.projPasswortCol {
+  padding-top: var(--margin-M);
+}
+
+.projPasswortImage,
+.projPasswortLink {
+  width: 50% !important;
   padding-bottom: var(--margin-M);
 }
 
@@ -1059,6 +1085,16 @@ ul {
   padding: var(--margin-M);
 }
 
+.imprLogos {
+  padding: var(--margin-XL) 0;
+}
+
+.imprLogos p {
+  font-size: var(--fontXSmallSize);
+  line-height: var(--fontXSmallLineHeight);
+  letter-spacing: var(--fontXSmallLetterSpacing);
+}
+
 /* CROSSING */
 
 .crossingWrapperNilpferd {
@@ -1250,4 +1286,8 @@ ul {
     top: var(--margin-L);
     bottom: unset;
   }
+}
+
+.datenschutzWrapper {
+  padding-bottom: var(--margin-XL);
 }

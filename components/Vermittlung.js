@@ -8,11 +8,6 @@ import ProjectSwiperImage from "../components/ProjectSwiperImage";
 import Footer from "../components/Footer";
 
 const Vermittlung = ({ vermittlung, projekte, setRunningTitle }) => {
-  function blocksToText(blocks) {
-    return blocks.map((block) =>
-      block.children.map((child) => child.text).join("")
-    );
-  }
 
   useEffect(() => {
     setRunningTitle("Vermittlung");
@@ -64,6 +59,7 @@ const Vermittlung = ({ vermittlung, projekte, setRunningTitle }) => {
             </SwiperSlide>
           ))}
         </Swiper>
+
       </div>
       <div className="mainWrapper">
         <Footer />

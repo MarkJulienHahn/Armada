@@ -24,6 +24,7 @@ export async function getStaticProps(context) {
   {..., 
     "beteiligte": beteiligte[]{"position": position, "member": beteiligte[]->{name}, "externe": externe}, 
     "downloads": downloads[]{"filename": filename, "file": file.asset->{url}},
+    "downloadsPrivat": downloadsPrivat[]{"filename": filename, "file": file.asset->{url}, "image": image.asset->{"url": url, "metadata": metadata.dimensions}, "videolink": videolink},
     "fotos": fotos[]{"foto": foto.asset->{url, "metadata": metadata.dimensions}, "bildunterschrift": bildunterschrift},
     "vorschaubild": vorschaubild.asset->{url,metadata},
     "logos": logos[]{"data": asset->{url, metadata}},
