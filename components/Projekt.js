@@ -55,7 +55,7 @@ const Projekt = ({
       {projekt.videolink ? (
         <div className="embed-container">
           <iframe
-            src={`${projekt.videolink}?h=0c14f6783f`}
+            src={`https://vimeo.com/${projekt.videolink}`}
             width="640"
             height="360"
             frameBorder="0"
