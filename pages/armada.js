@@ -25,7 +25,7 @@ const armada = ({ teammembers, armadaIntro, projekte, setRunningTitle }) => {
 
 export async function getStaticProps() {
   const teammembers = await client.fetch(`
-  *[_type == "dieArmada"]{...,
+  *[_type == "dieArmada"] | order(order asc) {...,
     name, "biografie": biografie, "bild": bild.asset->, email, "stuecke": stuecke[]->{"titel": titel, "slug": slug}
   }   
   `);

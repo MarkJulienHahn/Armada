@@ -286,6 +286,7 @@ const Projekt = ({
                         width={content.image.metadata.width}
                         height={content.image.metadata.height}
                       />
+                      {content.filename}<br/>
                       <a
                         href={content.image.url}
                         target="_blank"
@@ -293,6 +294,7 @@ const Projekt = ({
                       >
                         Herunterladen (Volle Auflösung)
                       </a>
+
                     </div>
                   )}
 

@@ -7,7 +7,7 @@ import image02 from "../../public/images/Atommüll_Stufe-01.gif";
 import image03 from "../../public/images/Atommüll_Stufe-02.gif";
 import image04 from "../../public/images/Atommüll_Stufe-03.gif";
 
-// import sound01 from "../../public/sounds/atommuell-stufe-01.mp3";
+// import sound01 from "../../public/sounds/Barbie_Phase 01.mp3";
 // import sound02 from "../../public/sounds/atommuell-stufe-02.mp3";
 // import sound03 from "../../public/sounds/atommuell-stufe-03.mp3";
 
