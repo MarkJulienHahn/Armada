@@ -26,7 +26,7 @@ const Jeep = () => {
 
   return (
     <>
-      <ReactHowler playing={playing} src={["/sounds/Barbie_01.mp3"]} />
+      <ReactHowler playing={playing} loop="true" src={["/sounds/Barbie_01.mp3"]} />
       <ReactHowler
         onEnd={() => setPlaying2(false)}
         playing={playing2}
