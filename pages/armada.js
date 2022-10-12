@@ -5,7 +5,6 @@ import Footer from "../components/Footer";
 import { CrossingImageNilpferd } from "../components/imageComponents/CrossingImageNilpferd";
 
 const armada = ({ teammembers, armadaIntro, projekte, setRunningTitle }) => {
-  console.log(teammembers)
   return (
     <div className="mainWrapper">
       <CrossingImageNilpferd />

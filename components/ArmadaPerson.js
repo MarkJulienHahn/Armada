@@ -82,7 +82,6 @@ const ArmadaPerson = ({
                 <>
                   {stuecke.map((stueck, i) => (
                     <>
-                      {console.log(stueck)}
                       <h2>
                         <a href={`/projekte/${stueck.slug.current}`}>
                           {stueck.titel}

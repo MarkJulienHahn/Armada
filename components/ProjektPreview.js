@@ -4,8 +4,6 @@ import Image from "next/image";
 
 const ProjektPreview = ({ titel, kurzbeschreibung, bild  }) => {
 
-  console.log(titel, bild)
-
   return (
     <div className="projPost">
       <div className="projImageWrapper">
