@@ -26,7 +26,7 @@ const Impressum = ({ setRunningTitle }) => {
         <br />
         Gestaltung und Programmierung
         <br />
-        <a href="https://stereo-typefaces.com" target="_blank" rel="noreferrer">
+        <a href="https://stereotypefaces.com" target="_blank" rel="noreferrer">
           Stereo Typefaces
         </a>
         <br />
@@ -34,7 +34,7 @@ const Impressum = ({ setRunningTitle }) => {
         Schriftarten
         <br />
         Giallo Roman&nbsp;
-        <a href="https://stereo-typefaces.com" target="_blank" rel="noreferrer">
+        <a href="https://stereotypefaces.com" target="_blank" rel="noreferrer">
           (Stereo Typefaces)
         </a>
       </p>

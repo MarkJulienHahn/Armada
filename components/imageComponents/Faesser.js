@@ -31,8 +31,6 @@ const Faesser = () => {
 
   const images = [image01, image02, image03, image04];
 
-  console.log(iteration)
-
   return (
     <>
       <ReactHowler
