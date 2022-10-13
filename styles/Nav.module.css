@@ -74,6 +74,12 @@
   }
 }
 
+@-moz-document url-prefix() {
+  .navList {
+    background: rgba(255, 255, 255, 0.9);
+  }
+}
+
 @media only screen and (max-width: 800px) {
   .navButtons {
     width: 100%;
@@ -96,6 +102,6 @@
     padding: var(--margin-L);
     position: fixed;
     bottom: 0;
-    width: 100%
+    width: 100%;
   }
 }

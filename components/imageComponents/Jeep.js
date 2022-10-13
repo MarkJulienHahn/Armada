@@ -37,15 +37,16 @@ const Jeep = () => {
       </div>
 
       <div
-        onClick={() => {
-          setActive(true), pauseSound(), playSound2();
-        }}
+
       >
         {!active ? (
           <Image
             onMouseEnter={() => playSound()}
             onMouseLeave={() => pauseSound()}
             src={image01}
+            onClick={() => {
+              setActive(true), pauseSound(), playSound2();
+            }}
           />
         ) : (
           <>
