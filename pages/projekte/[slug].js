@@ -1,3 +1,5 @@
+import Head from "next/head";
+
 import Projekt from "../../components/Projekt";
 import client from "../../client";
 import Footer from "../../components/Footer";
@@ -44,6 +46,8 @@ export async function getStaticProps(context) {
   };
 }
 
+
+
 const projektSingle = ({
   projekte,
   links,
@@ -52,6 +56,10 @@ const projektSingle = ({
 }) => {
   return (
     <>
+      <Head>
+        <title>Armada Theater | {projekte[0].titel}</title>
+        <meta name="keywords" content="web" />
+      </Head>
       <div className="mainWrapper">
         <Projekt
           projekt={projekte[0]}

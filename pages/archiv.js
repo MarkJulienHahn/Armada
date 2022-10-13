@@ -1,3 +1,5 @@
+import Head from "next/head";
+
 import Footer from "../components/Footer";
 import client from "../client";
 import Archiv from "../components/Archiv";
@@ -6,6 +8,10 @@ import { CrossingImageSturm } from "../components/imageComponents/CrossingImageS
 const archiv = ({ archiv, setRunningTitle }) => {
   return (
     <div className="mainWrapper">
+      <Head>
+        <title>Armada Theater | Archiv</title>
+        <meta name="keywords" content="web" />
+      </Head>
       <CrossingImageSturm />
       <Archiv archiv={archiv} setRunningTitle={setRunningTitle} />
       <Footer />

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 
 import { useRouter } from "next/router";
+import Head from "next/head";
 import Nav from "../components/Nav";
 
 import * as ga from '../lib/ga'
@@ -50,6 +51,11 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       {cookieActive ? <Cookies setCookieActive={acceptCookie} /> : ""}
+
+      <Head>
+        <title>Armada Theater</title>
+        <meta name='description' content='Armada Theater is an independent theatre-collective from Germany. It represents unconventional theater-productions for kids, adolescents and grown-ups.'/>
+      </Head>
 
       <Nav />
 

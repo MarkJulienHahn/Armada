@@ -1,14 +1,17 @@
+import Head from "next/head";
+
 import client from "../client";
 
 import Footer from "../components/Footer";
 import Aktuelles from "../components/Aktuelles";
 
 const aktuelles = ({ aktuelles, aktuellesHighlight, setRunningTitle }) => {
-
-
   return (
     <div className="mainWrapper">
-
+      <Head>
+        <title>Armada Theater | Aktuelles</title>
+        <meta name="keywords" content="web" />
+      </Head>
 
       <Aktuelles
         aktuelles={aktuelles}

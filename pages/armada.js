@@ -1,3 +1,5 @@
+import Head from "next/head";
+
 import client from "../client";
 
 import Armada from "../components/Armada";
@@ -7,6 +9,10 @@ import { CrossingImageNilpferd } from "../components/imageComponents/CrossingIma
 const armada = ({ teammembers, armadaIntro, projekte, setRunningTitle }) => {
   return (
     <div className="mainWrapper">
+      <Head>
+        <title>Armada Theater | Die Armada</title>
+        <meta name="keywords" content="web" />
+      </Head>
       <CrossingImageNilpferd />
       <Armada
         teammembers={teammembers}
@@ -19,8 +25,6 @@ const armada = ({ teammembers, armadaIntro, projekte, setRunningTitle }) => {
     </div>
   );
 };
-
-
 
 export async function getStaticProps() {
   const teammembers = await client.fetch(`

@@ -1,4 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
+
+import Head from "next/head";
 
 import client from "../client";
 
@@ -9,6 +11,10 @@ import { CrossingImageFisch } from "../components/imageComponents/CrossingImageF
 const projekte = ({ projekte, setRunningTitle }) => {
   return (
     <div className="mainWrapper">
+      <Head>
+        <title>Armada Theater | Projekte</title>
+        <meta name="keywords" content="web" />
+      </Head>
       <CrossingImageFisch />
       <ProjektOverview projekte={projekte} setRunningTitle={setRunningTitle} />
 

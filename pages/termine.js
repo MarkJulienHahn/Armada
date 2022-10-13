@@ -1,3 +1,5 @@
+import Head from "next/head";
+
 import Footer from "../components/Footer";
 
 import client from "../client";
@@ -6,6 +8,10 @@ import Termine from "../components/Termine";
 const termine = ({ projekte, setRunningTitle }) => {
   return (
     <div className="mainWrapper">
+      <Head>
+        <title>Armada Theater | Termine</title>
+        <meta name="keywords" content="web" />
+      </Head>
       <Termine projekte={projekte} setRunningTitle={setRunningTitle} />
       <Footer />
     </div>

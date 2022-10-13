@@ -1,13 +1,22 @@
+import Head from "next/head";
+
 import React from "react";
 import client from "../client";
 import Datenschutz from "../components/Datenschutz";
 
-import Footer from "../components/Footer"
+import Footer from "../components/Footer";
 
-const datenschutz = ( {setRunningTitle, datenschutz} ) => {
+const datenschutz = ({ setRunningTitle, datenschutz }) => {
   return (
     <div className="mainWrapper">
-      <Datenschutz setRunningTitle={setRunningTitle} datenschutz={datenschutz[0]}/>
+      <Head>
+        <title>Armada Theater | Datenschutz</title>
+        <meta name="keywords" content="web" />
+      </Head>
+      <Datenschutz
+        setRunningTitle={setRunningTitle}
+        datenschutz={datenschutz[0]}
+      />
       <Footer />
     </div>
   );

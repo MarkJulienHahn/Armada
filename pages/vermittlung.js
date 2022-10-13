@@ -1,3 +1,5 @@
+import Head from "next/head";
+
 import Vermittlung from "../components/Vermittlung";
 import client from "../client";
 import { CrossingImageCan } from "../components/imageComponents/CrossingImageCan";
@@ -5,6 +7,10 @@ import { CrossingImageCan } from "../components/imageComponents/CrossingImageCan
 const vermittlung = ({ vermittlung, projekte, setRunningTitle }) => {
   return (
     <>
+      <Head>
+        <title>Armada Theater | Vermittlung</title>
+        <meta name="keywords" content="web" />
+      </Head>
       <CrossingImageCan />
       <Vermittlung
         vermittlung={vermittlung}

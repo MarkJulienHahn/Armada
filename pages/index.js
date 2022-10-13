@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Head from "next/head";
 
 import Jeep from "../components/imageComponents/Jeep";
 import Faesser from "../components/imageComponents/Faesser";
@@ -33,7 +34,6 @@ export default function Home({ setRunningTitle }) {
     position: "fixed",
     bottom: y * 0.08,
     left: x * -0.15,
-
   };
 
   const row1 = {
@@ -88,36 +88,33 @@ export default function Home({ setRunningTitle }) {
 
   return (
     <>
+      <Head>
+        <title>Armada Theater</title>
+        <meta name="keywords" content="web" />
+      </Head>
       <h2 className={"homeHome"}>Home</h2>
       <CrossingImageNilpferd />
       <CrossingImagePapagai />
-
       <div className={"homeImageRow0"} style={row0}>
         <div className={"homeImageFisch"}>{imagesArray[arrayPos[0]]}</div>
       </div>
-
       <div className={"homeImageRow1"} style={row1}>
         <div className={"homeImageJeep"}>{imagesArray[arrayPos[1]]}</div>
       </div>
-
       <div className={"homeImageRow2"} style={row2}>
         <div className={"homeImageFaesser"}>{imagesArray[arrayPos[2]]}</div>
       </div>
-
       <div className={"homeImageRow3"} style={row4}>
         <div className={"homeImageFernseher"}>{imagesArray[arrayPos[3]]}</div>
       </div>
-
       <div className={"homeImageRow4"} style={row5}>
         <div className={"homeImageVogel"}>{imagesArray[arrayPos[4]]}</div>
       </div>
-
       <div className={"homeLogo"} style={row3}>
         Armada
         <br />
         Theater
       </div>
-
       <div className={"homeLegals"}>
         <Footer />
       </div>
