@@ -17,7 +17,7 @@ const AktuellesPost = ({
       <h2>{titel}</h2>
       <p>{haupttext}</p>
       <p className="aktSubline">{subtext}</p>
-      <div className={bild.metadata.dimensions.aspectRatio < 1 ? "aktImageHochkant" : "aktImageQuerformat" }>
+      {bild?.metadata ? <div className={bild.metadata.dimensions.aspectRatio < 1 ? "aktImageHochkant" : "aktImageQuerformat" }>
         {bild ? (
           <Image
             placeholder="blur"
@@ -30,7 +30,8 @@ const AktuellesPost = ({
         ) : (
           ""
         )}
-      </div>
+      </div> : ""}
+      
       <p className="aktSubline">{bildunterschrift}</p>
     </div>
   );
