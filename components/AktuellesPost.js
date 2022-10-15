@@ -28,7 +28,7 @@ const AktuellesPost = ({
             height={bild.metadata.dimensions.height}
           />
         ) : (
-          ""
+          " "
         )}
       </div> : ""}
       
