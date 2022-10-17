@@ -44,5 +44,7 @@ export async function getStaticProps(context) {
       vermittlung,
       projekte,
     },
+    revalidate: 10,
   };
+  
 }

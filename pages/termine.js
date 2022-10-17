@@ -33,5 +33,6 @@ export async function getStaticProps(context) {
     props: {
       projekte,
     },
+    revalidate: 10,
   };
 }

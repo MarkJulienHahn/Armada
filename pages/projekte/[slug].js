@@ -43,6 +43,7 @@ export async function getStaticProps(context) {
       projekte,
       links,
     },
+    revalidate: 10,
   };
 }
 

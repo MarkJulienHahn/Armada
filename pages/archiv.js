@@ -34,5 +34,6 @@ export async function getStaticProps(context) {
     props: {
       archiv,
     },
+    revalidate: 10,
   };
 }

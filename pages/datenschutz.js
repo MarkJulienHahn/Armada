@@ -32,5 +32,6 @@ export async function getStaticProps() {
     props: {
       datenschutz,
     },
+    revalidate: 10,
   };
 }
