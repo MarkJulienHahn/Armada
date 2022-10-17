@@ -38,6 +38,7 @@ export async function getStaticProps(context) {
       aktuelles,
       aktuellesHighlight,
     },
+    revalidate: 10,
   };
 }
 
