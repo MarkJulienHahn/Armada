@@ -398,7 +398,7 @@ ul {
 .aktPost {
   width: 40vw;
   margin-bottom: var(--margin-L);
-  margin-right: 8vw;
+  margin-right: 50px;
 }
 
 .aktSubline {
@@ -1210,7 +1210,7 @@ ul {
 
 .playmo {
   position: fixed;
-  bottom: -20vh;
+  bottom: -40vh;
   left: 40%;
   z-index: 10;
   transition: transform 0.5s ease;
