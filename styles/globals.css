@@ -32,7 +32,7 @@ body {
   --fontXSmallLetterSpacing: 0;
 
   --fontSmallSize: 35px;
-  --fontSmallLineHeight: 44px;
+  --fontSmallLineHeight: 40px;
   --fontSmallLetterSpacing: -0.6px;
   --fontSmallWordSpacing: -0.6px;
 
@@ -399,6 +399,11 @@ ul {
   width: 40vw;
   margin-bottom: var(--margin-L);
   margin-right: 50px;
+}
+
+.aktPost h2 {
+  margin-bottom: 12px;
+  margin-top: 7px;
 }
 
 .aktSubline {
@@ -875,15 +880,12 @@ ul {
   left: 0;
   height: 100vh;
   z-index: 500;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  pointer-events: none;
+
 }
 
 .lightboxInner {
-  pointer-events: auto;
-  width: auto;
+  position: fixed; top: 0;
+  height: "100vw"; position: "relative"; min-width: "50vw"
 }
 
 @media only screen and (max-width: 800px) {
