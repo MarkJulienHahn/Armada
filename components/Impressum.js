@@ -5,7 +5,7 @@ import Image from "next/image";
 import Logo1 from "../public/images/AK_Kultur_Logo.png";
 import Logo2 from "../public/images/LFDK_Logo_4f.jpg";
 
-const Impressum = ({ setRunningTitle }) => {
+const Impressum = ({ kontakt, setRunningTitle }) => {
   useEffect(() => {
     setRunningTitle("Impressum");
   }, []);
@@ -18,10 +18,11 @@ const Impressum = ({ setRunningTitle }) => {
         <br />
         ARMADA GbR <br />
         Clara Gohmert <br />
-        Kuhstraße 31
-        <br /> 42555 Velbert
-        <br />{" "}
-        <a href="mailto:info@armada-theater.de">info@armada-theater.de</a>
+        {kontakt.strasse}
+        <br />
+        {kontakt.postleitzahl} {kontakt.ort}
+        <br />
+        <a href={`mailto:${kontakt.email}`}>{kontakt.email}</a>
         <br />
         <br />
         Gestaltung und Programmierung

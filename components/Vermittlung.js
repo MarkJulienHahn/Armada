@@ -8,7 +8,6 @@ import ProjectSwiperImage from "../components/ProjectSwiperImage";
 import Footer from "../components/Footer";
 
 const Vermittlung = ({ vermittlung, projekte, setRunningTitle }) => {
-
   useEffect(() => {
     setRunningTitle("Vermittlung");
   }, []);
@@ -24,17 +23,37 @@ const Vermittlung = ({ vermittlung, projekte, setRunningTitle }) => {
         </div>
         <div className="vermInfo">
           <h2>Zum Mitnehmen</h2>
-          {projekte.map((projekt, i) => (
+          {projekte.map(
+            (projekt, i) =>
+              projekt.downloads && (
+                <div className="vermMitnehmenSingle" key={i}>
+                  <div>
+                    <p>{projekt.titel}</p>
+                  </div>
+                  <div>
+                    {projekt.downloads?.map((content, i) => (
+                      <p key={i}>
+                        <a
+                          href={content.url.url}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          {content.filename}
+                        </a>
+                      </p>
+                    ))}
+                  </div>
+                </div>
+              )
+          )}
+          {vermittlung[0].files?.map((file, i) => (
             <div className="vermMitnehmenSingle" key={i}>
               <div>
-                <p>{projekt.titel}</p>
-              </div>
-              <div>
-                {projekt.downloads?.map((content, i) => (
-                  <p key={i}>
-                    <a href={content.url.url} target="_blank" rel="noreferrer">{content.filename}</a>
-                  </p>
-                ))}
+                <p>
+                  <a href={file.files.url} target="_blank" rel="noreferrer">
+                    {file.filename}
+                  </a>
+                </p>
               </div>
             </div>
           ))}
@@ -59,7 +78,6 @@ const Vermittlung = ({ vermittlung, projekte, setRunningTitle }) => {
             </SwiperSlide>
           ))}
         </Swiper>
-
       </div>
       <div className="mainWrapper">
         <Footer />

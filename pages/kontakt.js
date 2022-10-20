@@ -2,11 +2,13 @@ import Head from "next/head";
 
 import React from "react";
 
+import client from "../client";
+
 import { CrossingImageDino } from "../components/imageComponents/CrossingImageDino";
 import Kontakt from "../components/Kontakt";
 import Footer from "../components/Footer";
 
-const kontakt = ({ setRunningTitle }) => {
+const kontakt = ({ kontakt, setRunningTitle }) => {
   return (
     <div className="kontaktWrapper">
       <Head>
@@ -14,7 +16,7 @@ const kontakt = ({ setRunningTitle }) => {
         <meta name="keywords" content="web" />
       </Head>
       <CrossingImageDino />
-      <Kontakt setRunningTitle={setRunningTitle} />
+      <Kontakt kontakt={kontakt[0]} setRunningTitle={setRunningTitle} />
 
       <div className="kontaktFooter">
         <Footer />
@@ -24,3 +26,15 @@ const kontakt = ({ setRunningTitle }) => {
 };
 
 export default kontakt;
+
+export async function getStaticProps() {
+  const kontakt = await client.fetch(`
+  *   [_type == "kontakt"]{...}`);
+  return {
+    props: {
+      kontakt,
+    },
+    revalidate: 10,
+  };
+}
+

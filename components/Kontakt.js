@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 
-const Kontakt = ({ setRunningTitle }) => {
+const Kontakt = ({ kontakt, setRunningTitle }) => {
+
+  console.log(kontakt)
   useEffect(() => {
     setRunningTitle("Kontakt");
   }, []);
@@ -9,11 +11,11 @@ const Kontakt = ({ setRunningTitle }) => {
       <h2>Armada Theater</h2>
       <p>
         Armada GbR <br />
-        Kuhstraße 31
+        {kontakt.strasse}
         <br />
-        42555 Velbert
+        {kontakt.postleitzahl} {kontakt.ort}
         <br />
-        <a href="mailto:info@armada-theater.com">info@armada-theater.com</a>
+        <a href={`mailto:${kontakt.email}`}>{kontakt.email}</a>
       </p>
     </div>
   );
