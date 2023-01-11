@@ -21,11 +21,12 @@ const archiv = ({ archiv, setRunningTitle }) => {
 
 export default archiv;
 
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
   const archiv = await client.fetch(`
   *   [_type == "archiv"]
   {  "projekt": projekt->{titel, "slug": slug.current}, 
      "titel": titel,
+     links,
      "datum": datum,
      "fotos": fotos[]{"foto": foto.asset->{url, "metadata": metadata.dimensions}, "bildunterschrift": bildunterschrift},
   }
@@ -34,6 +35,5 @@ export async function getStaticProps(context) {
     props: {
       archiv,
     },
-    revalidate: 10,
   };
 }

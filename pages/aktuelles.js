@@ -6,6 +6,9 @@ import Footer from "../components/Footer";
 import Aktuelles from "../components/Aktuelles";
 
 const aktuelles = ({ aktuelles, aktuellesHighlight, setRunningTitle }) => {
+
+  console.log
+
   return (
     <div className="mainWrapper">
       <Head>
@@ -24,10 +27,10 @@ const aktuelles = ({ aktuelles, aktuellesHighlight, setRunningTitle }) => {
   );
 };
 
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
   const aktuelles = await client.fetch(`
   *[_type == "aktuelles"]{
-    title, "haupttext": haupttext[0].children[0].text, "subtext": subtext[0].children[0].text, bildunterschrift, veroeffentlichungsdatum, "bild": bild.asset->
+    title, "haupttext": haupttext[0].children[0].text, links, "subtext": subtext[0].children[0].text, bildunterschrift, veroeffentlichungsdatum, "bild": bild.asset->
   }   
   `);
   const aktuellesHighlight = await client.fetch(`
@@ -38,7 +41,6 @@ export async function getStaticProps(context) {
       aktuelles,
       aktuellesHighlight,
     },
-    revalidate: 10,
   };
 }
 

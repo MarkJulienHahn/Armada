@@ -25,6 +25,8 @@ const Archiv = ({ archiv, setRunningTitle }) => {
 
   archiv.sort(compare);
 
+  console.log(archiv)
+
   return (
     <>
       <Lightbox image={image} setImage={setImage} />
@@ -39,6 +41,14 @@ const Archiv = ({ archiv, setRunningTitle }) => {
                 </a>
               </p>
               <p>{post.titel}</p>
+
+              {post.links
+                ? post.links.map((link, i) => (
+                    <p key={i}>
+                      <a href={link.link} target="_blank" rel="noreferrer">{link.linkbeschreibung}</a>
+                    </p>
+                  ))
+                : ""}
             </div>
 
             {post.fotos.map((foto, i) => (
