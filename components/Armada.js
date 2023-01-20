@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
+import PortableText from "react-portable-text";
 
 import Image from "next/image";
+
 
 import ArmadaPerson from "../components/ArmadaPerson";
 
@@ -10,12 +12,16 @@ const Armada = ({ teammembers, armadaIntro, projekte, setRunningTitle }) => {
   useEffect(() => {
     setRunningTitle("Die Armada");
   }, []);
+
+  console.log(armadaIntro)
+
   return (
     <>
       <div className="armdWrapper">
         <div className="armdIntro">
           <h2>Armada Theater</h2>
-          <p>{armadaIntro.description}</p>
+          <PortableText content={armadaIntro.description} />
+          {/* <p>{armadaIntro.description}</p> */}
           <Image
             src={armadaIntro.gruppenbild.url}
             width={armadaIntro.gruppenbild.metadata.dimensions.width}

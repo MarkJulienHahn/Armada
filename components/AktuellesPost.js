@@ -11,7 +11,7 @@ const AktuellesPost = ({
   datum,
   links,
 }) => {
-  console.log(links);
+
   return (
     <div className="aktPost">
       <p>{datum}</p>

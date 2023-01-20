@@ -119,6 +119,7 @@ h1 {
   letter-spacing: var(--fontLargeLetterSpacing);
   margin: 0;
   font-weight: normal;
+  hyphens: auto;
 }
 
 h2 {
@@ -127,6 +128,7 @@ h2 {
   letter-spacing: var(--fontMediumLetterSpacing);
   margin: 0;
   font-weight: normal;
+  hyphens: auto;
 }
 
 ul {
@@ -729,8 +731,12 @@ ul {
   padding-bottom: 10px;
 }
 
-.armdIntro p {
+.armdIntro div {
   margin-bottom: var(--margin-XXL);
+}
+
+.armdIntro p {
+  padding-bottom: 20px;
 }
 
 .armdListe {
@@ -798,6 +804,9 @@ ul {
 
   .armdPersonWrapper {
     padding: 0;
+  }
+  .armdIntro p {
+    padding-bottom: 10px;
   }
 }
 

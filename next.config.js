@@ -4,7 +4,11 @@ const nextConfig = {
   swcMinify: true,
   images: {
     domains: ["cdn.sanity.io"]
-  }
+  },
+  i18n: {
+    locales: ["de"],
+    defaultLocale: "de",
+  },
 }
 
 
