@@ -8,7 +8,7 @@ import { CrossingImageDino } from "../components/imageComponents/CrossingImageDi
 import Kontakt from "../components/Kontakt";
 import Footer from "../components/Footer";
 
-const kontakt = ({ kontakt, setRunningTitle, showNewsletter }) => {
+const KontaktPage = ({ kontakt, setRunningTitle, showNewsletter }) => {
   useEffect(() => {
     showNewsletter(true);
   }, []);
@@ -28,7 +28,7 @@ const kontakt = ({ kontakt, setRunningTitle, showNewsletter }) => {
   );
 };
 
-export default kontakt;
+export default KontaktPage;
 
 export async function getStaticProps() {
   const kontakt = await client.fetch(`
