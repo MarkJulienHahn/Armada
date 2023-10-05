@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import Head from "next/head";
 import Nav from "../components/Nav";
 
-import * as ga from '../lib/ga'
+import * as ga from "../lib/ga";
 
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -13,10 +13,12 @@ import "../styles/globals.css";
 import RunningTitle from "../components/RunningTitle";
 import RunningTitleDouble from "../components/RunningTitleDouble";
 import Cookies from "../components/Cookies";
+import Newsletter from "../components/Newsletter";
 
 function MyApp({ Component, pageProps }) {
   const location = useRouter();
 
+  const [newsletter, showNewsletter] = useState(true);
   const [runningTitle, setRunningTitle] = useState("");
   const [runningTitleDouble, setRunningTitleDouble] = useState("");
 
@@ -24,9 +26,9 @@ function MyApp({ Component, pageProps }) {
 
   const acceptCookie = () => {
     setCookieActive(false), localStorage.setItem("cookieSeen", "true");
-  }
+  };
 
-  useEffect( () => {
+  useEffect(() => {
     const data = localStorage.getItem("cookieSeen");
     if (data) {
       acceptCookie(data);
@@ -35,26 +37,30 @@ function MyApp({ Component, pageProps }) {
 
   useEffect(() => {
     const handleRouteChange = (url) => {
-      ga.pageview(url)
-    }
+      ga.pageview(url);
+    };
     //When the component is mounted, subscribe to router changes
     //and log those page views
-    location.events.on('routeChangeComplete', handleRouteChange)
+    location.events.on("routeChangeComplete", handleRouteChange);
 
     // If the component is unmounted, unsubscribe
     // from the event with the `off` method
     return () => {
-      location.events.off('routeChangeComplete', handleRouteChange)
-    }
-  }, [location.events])
+      location.events.off("routeChangeComplete", handleRouteChange);
+    };
+  }, [location.events]);
 
   return (
     <>
+      <Newsletter newsletter={newsletter} showNewsletter={showNewsletter} />
       {cookieActive ? <Cookies setCookieActive={acceptCookie} /> : ""}
 
       <Head>
         <title>Armada Theater</title>
-        <meta name='description' content='Armada Theater is an independent theatre-collective from Germany. It represents unconventional theater-productions for kids, adolescents and grown-ups.'/>
+        <meta
+          name="description"
+          content="Armada Theater is an independent theatre-collective from Germany. It represents unconventional theater-productions for kids, adolescents and grown-ups."
+        />
       </Head>
 
       <Nav />
@@ -78,6 +84,7 @@ function MyApp({ Component, pageProps }) {
             {...pageProps}
             setRunningTitle={setRunningTitle}
             setRunningTitleDouble={setRunningTitleDouble}
+            showNewsletter={showNewsletter}
           />
         </motion.div>
       </AnimatePresence>

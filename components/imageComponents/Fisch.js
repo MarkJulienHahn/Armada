@@ -3,8 +3,8 @@ import React, { useState } from "react";
 import Image from "next/image";
 import ReactHowler from "react-howler";
 
-import image01 from "../../public/images/Fisch_Sequenz_01.gif";
-import image02 from "../../public/images/Fisch_Sequenz_02.gif";
+import image01 from "../../public/images/Fridge_01.gif";
+import image02 from "../../public/images/Fridge_02.gif";
 
 const Fisch = () => {
   const [active, setActive] = useState(false);
@@ -24,8 +24,8 @@ const Fisch = () => {
         playing={playing}
         loop="true"
         src={[
-          !active ? "/sounds/Fischglas_01.mp3" : "",
-          active == 1 && "/sounds/Fischglas_02.mp3",
+          !active ? "/sounds/Fridge_01.mp4" : "",
+          active == 1 && "/sounds/Fridge_02.mp4",
         ]}
       />
       <div className="homePreloader">

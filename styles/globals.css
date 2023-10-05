@@ -889,12 +889,14 @@ ul {
   left: 0;
   height: 100vh;
   z-index: 500;
-
 }
 
 .lightboxInner {
-  position: fixed; top: 0;
-  height: "100vw"; position: "relative"; min-width: "50vw"
+  position: fixed;
+  top: 0;
+  height: "100vw";
+  position: "relative";
+  min-width: "50vw";
 }
 
 @media only screen and (max-width: 800px) {
@@ -1302,3 +1304,117 @@ ul {
 .datenschutzWrapper {
   padding-bottom: var(--margin-XL);
 }
+
+/* NEWSLETTER */
+
+@keyframes slideIn {
+  0% {
+    transform: translateX(550px);
+  }
+  100% {
+    transform: translateX(-0px);
+  }
+}
+
+.newsletterWrapper {
+  position: fixed;
+  display: flex;
+  /* flex-direction: column;
+  align-items: center; */
+  /* padding: 20px; */
+  right: 0;
+  bottom: 0;
+  /* background: rgba(255, 255, 255, 0.5); */
+  width: 400px;
+  height: 400px;
+  z-index: 1000;
+  /* border-radius: 20px; */
+  /* backdrop-filter: blur(20px); */
+  animation: slideIn 0.5s 2s ease;
+  animation-fill-mode: forwards;
+  transform: translateX(550px);
+  transition: all 0.5s ease;
+}
+
+.newsletterInner {
+  position: absolute;
+  width: 240px;
+  height: 210px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  top: 100px;
+  left: 73px;
+}
+
+.newsletterWrapper p {
+  font-size: var(--fontXSmallSize);
+  line-height: var(--fontXSmallLineHeight);
+  letter-spacing: var(--fontXSmallLetterSpacing);
+  text-align: center;
+}
+
+.newsletterWrapper form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 25px;
+}
+
+.newsletterWrapper input,
+.newsletterWrapper input::placeholder,
+.newsletterWrapper input:focus {
+  border: 0;
+  border-bottom: 2px solid black;
+  outline: 0;
+  background: none;
+  margin: var(--spaceSmall);
+  text-align: center;
+  font-family: "Giallo";
+  font-size: 22.5px;
+  color: black;
+  opacity: 1;
+}
+
+.newsletterWrapper button {
+  border: 0;
+  outline: 0;
+  font-size: 22.5px;
+  background: none;
+  cursor: pointer;
+  font-family: "Giallo";
+  font-variation-settings: "wght" 400;
+  transition: all 0.2s ease;
+}
+
+.newsletterWrapper button:hover {
+  font-variation-settings: "wght" 700;
+}
+
+.newsletterClose {
+  position: absolute;
+  left: 30px;
+  top: 37px;
+  width: 30px;
+  height: 30px;
+  border-radius: 100px;
+  background: black;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.newsletterClose:hover {
+  color: black;
+  background: white;
+  border: 1.5px solid black;
+}
+
+/* @media only screen and (max-width: 800px) {
+  .newsletterWrapper {
+    width: calc(100vw - 2 * var(--margin-M));
+  }
+} */

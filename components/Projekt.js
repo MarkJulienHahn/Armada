@@ -161,7 +161,7 @@ const Projekt = ({
             )}
           </div>
 
-          <p>Förderer:innen</p>
+          <p>Förderer/Förderinnen</p>
 
           <div>
             {projekt.kooperationspartner?.map((partner, i) => (
@@ -171,13 +171,13 @@ const Projekt = ({
             ))}
           </div>
 
-          <div>
+          {/* <div>
             {projekt.foerderer?.map((foerderer, i) => (
               <div className="projSingleInner" key={i}>
                 <p>{foerderer.name}</p>
               </div>
             ))}
-          </div>
+          </div> */}
 
           {projekt.aufTour ? (
             <>

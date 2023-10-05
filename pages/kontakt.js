@@ -1,6 +1,6 @@
 import Head from "next/head";
 
-import React from "react";
+import { useEffect } from "react";
 
 import client from "../client";
 
@@ -8,7 +8,10 @@ import { CrossingImageDino } from "../components/imageComponents/CrossingImageDi
 import Kontakt from "../components/Kontakt";
 import Footer from "../components/Footer";
 
-const kontakt = ({ kontakt, setRunningTitle }) => {
+const kontakt = ({ kontakt, setRunningTitle, showNewsletter }) => {
+  useEffect(() => {
+    showNewsletter(true);
+  }, []);
   return (
     <div className="kontaktWrapper">
       <Head>
@@ -37,4 +40,3 @@ export async function getStaticProps() {
     revalidate: 10,
   };
 }
-
