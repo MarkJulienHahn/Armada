@@ -40,8 +40,6 @@ const Aktuelles = ({ aktuelles, aktuellesHighlight, setRunningTitle }) => {
     setRunningTitle("Aktuelles");
   }, []);
 
-  console.log(aktuelles)
-
   return (
     <div className="aktWrapper">
       <div className={gif ? "playmo playmoActive" : "playmo playmoGone"}>

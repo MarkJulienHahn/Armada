@@ -7,7 +7,7 @@ import Aktuelles from "../components/Aktuelles";
 
 const aktuelles = ({ aktuelles, aktuellesHighlight, setRunningTitle }) => {
 
-  console.log
+  console.log(aktuelles)
 
   return (
     <div className="mainWrapper">
@@ -29,7 +29,7 @@ const aktuelles = ({ aktuelles, aktuellesHighlight, setRunningTitle }) => {
 
 export async function getServerSideProps(context) {
   const aktuelles = await client.fetch(`
-  *[_type == "aktuelles"]{
+  *[_type == "aktuelles"]| order((veroeffentlichungsdatum) asc){
     title, "haupttext": haupttext[0].children[0].text, links, "subtext": subtext[0].children[0].text, bildunterschrift, veroeffentlichungsdatum, "bild": bild.asset->
   }   
   `);
