@@ -64,7 +64,7 @@ const Aktuelles = ({ aktuelles, aktuellesHighlight, setRunningTitle }) => {
                 &nbsp;*** Achtung Achtung ***{" "}
               </span>
               {aktuellesHighlight[0].meldung}&nbsp;
-              {aktuellesHighlight[0]?.link.externerLink && (
+              {aktuellesHighlight[0].link?.externerLink && (
                 <a
                   href={aktuellesHighlight[0]?.link.externerLink}
                   target="blank"
@@ -73,14 +73,14 @@ const Aktuelles = ({ aktuelles, aktuellesHighlight, setRunningTitle }) => {
                   {aktuellesHighlight[0]?.link.text}&nbsp;
                 </a>
               )}
-              {aktuellesHighlight[0]?.link.referenz && (
+              {aktuellesHighlight[0].link?.referenz && (
                 <Link
                   href={`/projekte/${aktuellesHighlight[0]?.link.referenz.slug.current}`}
                 >
                   {`${aktuellesHighlight[0]?.link.text} `}
                 </Link>
               )}
-              {aktuellesHighlight[0]?.link.datei && (
+              {aktuellesHighlight[0]?.link?.datei && (
                 <a href={aktuellesHighlight[0]?.link.datei.asset.url} download>
                   {aktuellesHighlight[0]?.link.text}&nbsp;
                 </a>
