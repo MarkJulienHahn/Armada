@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 
 import Marquee from "react-fast-marquee";
+import Link from "next/link";
 
 import { Playmobil } from "../components/imageComponents/Playmobil";
 
@@ -51,36 +52,47 @@ const Aktuelles = ({ aktuelles, aktuellesHighlight, setRunningTitle }) => {
         onMouseEnter={() => setGif(true)}
         onMouseLeave={() => setGif(false)}
       >
-        <Marquee gradient={false} speed={150}>
-          <h2>
-            <span style={{ color: "blue" }}> *** Achtung Achtung *** </span>
-            Premiere von&nbsp;
-            {aktuellesHighlight[0].projekt.termine.map((proj, i) =>
-              proj.premiere ? (
-                <>
-                  <a
-                    href={`projekte/${aktuellesHighlight[0].projekt.slug.current}`}
-                  >
-                    {aktuellesHighlight[0].projekt.titel}
-                  </a>
-                  &nbsp;am&nbsp;
-                  {formatMyDate(proj.datum)}. Ort:&nbsp;
-                  <a href={proj.spielortlink} target="_blank" rel="noreferrer">
-                    {proj.spielort}
-                  </a>
-                  &nbsp;
-                </>
-              ) : (
-                ""
-              )
-            )}
-          </h2>
-        </Marquee>
+        {aktuellesHighlight[0].meldung && (
+          <Marquee
+            gradient={false}
+            speed={150}
+            pauseOnHover={true}
+            style={{ cursor: "default" }}
+          >
+            <h2>
+              <span style={{ color: "blue" }}>
+                &nbsp;*** Achtung Achtung ***{" "}
+              </span>
+              {aktuellesHighlight[0].meldung}&nbsp;
+              {aktuellesHighlight[0]?.link.externerLink && (
+                <a
+                  href={aktuellesHighlight[0]?.link.externerLink}
+                  target="blank"
+                  rel="_noreferrer"
+                >
+                  {aktuellesHighlight[0]?.link.text}&nbsp;
+                </a>
+              )}
+              {aktuellesHighlight[0]?.link.referenz && (
+                <Link
+                  href={`/projekte/${aktuellesHighlight[0]?.link.referenz.slug.current}`}
+                >
+                  {`${aktuellesHighlight[0]?.link.text} `}
+                </Link>
+              )}
+              {aktuellesHighlight[0]?.link.datei && (
+                <a href={aktuellesHighlight[0]?.link.datei.asset.url} download>
+                  {aktuellesHighlight[0]?.link.text}&nbsp;
+                </a>
+              )}
+            </h2>
+          </Marquee>
+        )}
       </div>
       <div className="aktFeed">
         {sorted.map(
           (post, i) =>
-            post.veroeffentlichungsdatum <= heute  && (
+            post.veroeffentlichungsdatum <= heute && (
               <AktuellesPost
                 key={i}
                 titel={post.title}

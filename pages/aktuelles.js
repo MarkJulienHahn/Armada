@@ -7,8 +7,6 @@ import Aktuelles from "../components/Aktuelles";
 
 const aktuelles = ({ aktuelles, aktuellesHighlight, setRunningTitle }) => {
 
-  console.log(aktuelles)
-
   return (
     <div className="mainWrapper">
       <Head>
@@ -34,7 +32,7 @@ export async function getServerSideProps(context) {
   }   
   `);
   const aktuellesHighlight = await client.fetch(`
-  *[_type == "aktuellesHighlight"]{..., "projekt": projekt->{"slug": slug, "titel": titel, "termine": termine}}
+  *[_type == "aktuellesHighlight"]{..., "link": link{..., "referenz": referenz->{slug}, "datei": datei{asset->{url}}}, "projekt": projekt->{"slug": slug, "titel": titel, "termine": termine}}
   `);
   return {
     props: {
