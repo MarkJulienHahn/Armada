@@ -4,24 +4,9 @@ import Projekt from "../../components/Projekt";
 import client from "../../client";
 import Footer from "../../components/Footer";
 
-export async function getStaticPaths() {
-  const res = await client.fetch(`*[_type == "projekte"]`);
-  const data = await res;
-
-  const paths = data.map((projekt) => {
-    return { params: { slug: projekt.slug.current.toString() } };
-  });
-
-  return {
-    paths,
-    fallback: false,
-  };
-}
-
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
   const slug = context.params.slug;
   const projekte = await client.fetch(`
-
   *[slug.current == "${slug}"]
   {..., 
     "beteiligte": beteiligte[]{"position": position, "member": beteiligte[]->{name}, "externe": externe}, 
@@ -43,11 +28,8 @@ export async function getStaticProps(context) {
       projekte,
       links,
     },
-    revalidate: 10,
   };
 }
-
-
 
 const projektSingle = ({
   projekte,

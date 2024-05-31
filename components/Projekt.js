@@ -333,9 +333,9 @@ const Projekt = ({
               <Image
                 placeholder="blur"
                 blurDataURL="../public/images/image.jpg"
-                src={logo.logo.url}
-                width={logo.logo.dimensions.width}
-                height={logo.logo.dimensions.height}
+                src={logo?.logo?.url}
+                width={logo?.logo?.dimensions.width}
+                height={logo?.logo?.dimensions.height}
               />
             </div>
           ))}
