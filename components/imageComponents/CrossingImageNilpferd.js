@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import Image from "next/image";
 
-import nilpferd from "../../public/images/Nur-ein-Tier.gif";
+import nilpferd from "../../public/images/Einhorn.gif";
 
 export const CrossingImageNilpferd = () => {
   const [x, setX] = useState();

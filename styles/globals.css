@@ -192,7 +192,7 @@ ul {
   z-index: 100;
   width: 100vw;
   pointer-events: none;
-  transform: scale(120%);
+  transform: scale(100%);
 }
 
 .homeImageRow2 {
@@ -1112,7 +1112,7 @@ ul {
 
 .crossingWrapperNilpferd {
   position: fixed;
-  top: 50%;
+  top: 70%;
   right: 0;
   animation: rtl 30s linear;
   pointer-events: none;
