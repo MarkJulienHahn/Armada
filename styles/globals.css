@@ -1112,7 +1112,7 @@ ul {
 
 .crossingWrapperNilpferd {
   position: fixed;
-  top: 70%;
+  top: 90%;
   right: 0;
   animation: rtl 30s linear;
   pointer-events: none;
