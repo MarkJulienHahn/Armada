@@ -1112,13 +1112,14 @@ ul {
 
 .crossingWrapperNilpferd {
   position: fixed;
-  top: 90%;
+  top: 30%;
   right: 0;
   animation: rtl 30s linear;
-  pointer-events: none;
   animation-fill-mode: forwards;
   animation-delay: 0s;
   z-index: 50;
+  width: 40vw;
+  height: 60vh;
 }
 
 .crossingWrapperDino {
@@ -1133,13 +1134,13 @@ ul {
 
 @keyframes rtl {
   0% {
-    transform: translateX(0);
+    transform: translateX(40vw);
   }
   /* 20% {
     transform: translateX(0)
   } */
   100% {
-    transform: translateX(-250vw);
+    transform: translateX(-120vw);
   }
 }
 

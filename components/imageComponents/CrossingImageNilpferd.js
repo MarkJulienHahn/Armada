@@ -1,12 +1,24 @@
 import React, { useEffect, useState } from "react";
 
 import Image from "next/image";
+import ReactHowler from "react-howler";
 
 import nilpferd from "../../public/images/Einhorn.gif";
 
 export const CrossingImageNilpferd = () => {
   const [x, setX] = useState();
   const [y, setY] = useState();
+
+  const [playing, setPlaying] = useState(false);
+
+  const pauseSound = () => {
+    setPlaying(false);
+  };
+
+  const playSound = async () => {
+    await setPlaying(true);
+  };
+
   useEffect(() => {
     const update = (e) => {
       setX(e.x);
@@ -20,7 +32,6 @@ export const CrossingImageNilpferd = () => {
     };
   }, [setX, setY]);
 
-
   const row3 = {
     position: "fixed",
     bottom: y * 0.01,
@@ -28,10 +39,17 @@ export const CrossingImageNilpferd = () => {
   };
 
   return (
-    <div className="crossingWrapperNilpferd">
-      <div className={"homeImageRow1"} style={row3}>
-        <Image src={nilpferd} />
+    <>
+      <ReactHowler playing={playing} loop="true" src={["/sounds/Elfe.mp3"]} />
+      <div
+        className="crossingWrapperNilpferd"
+        onMouseEnter={() => playSound()}
+        onMouseLeave={() => pauseSound()}
+      >
+        <div className={"homeImageRow1"} style={row3}>
+          <Image src={nilpferd} />
+        </div>
       </div>
-    </div>
+    </>
   );
 };
