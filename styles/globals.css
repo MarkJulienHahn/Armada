@@ -117,6 +117,10 @@ p + p {
   margin-top:1em
 }
 
+strong {
+  font-variation-settings: "wght" 800;
+}
+
 h1 {
   font-size: var(--fontLargeSize);
   line-height: var(--fontLargeLineHeight);
