@@ -41,7 +41,7 @@ const Aktuelles = ({ aktuelles, aktuellesHighlight, setRunningTitle }) => {
     setRunningTitle("Aktuelles");
   }, []);
 
-  console.log(aktuellesHighlight[0]?.link)
+  console.log(aktuellesHighlight[0].text);
 
   return (
     <div className="aktWrapper">
@@ -66,22 +66,22 @@ const Aktuelles = ({ aktuelles, aktuellesHighlight, setRunningTitle }) => {
                 &nbsp;*** Achtung Achtung ***{" "}
               </span>
               {aktuellesHighlight[0].meldung}&nbsp;
-              {aktuellesHighlight[0].link?.externerLink && (
+              {/* {aktuellesHighlight[0].link?.externerLink && (
                 <a
                   href={aktuellesHighlight[0]?.link.externerLink}
                   target="blank"
                   rel="_noreferrer"
                 >
-                  {aktuellesHighlight[0]?.link.text}&nbsp;
+                  {aktuellesHighlight[0]?.text}&nbsp;
                 </a>
-              )}
-              {aktuellesHighlight[0].link?.referenz && (
-                <Link
-                  href={`/projekte/${aktuellesHighlight[0]?.link.referenz.slug.current}`}
-                >
-                  {`${aktuellesHighlight[0]?.link.text} `}
-                </Link>
-              )}
+              )} */}
+              {/* {aktuellesHighlight[0].link?.referenz && ( */}
+              <Link
+                href={`/projekte/${aktuellesHighlight[0]?.projekt.slug.current}`}
+              >
+                {`${aktuellesHighlight[0].text} `}
+              </Link>
+              {/* )} */}
               {aktuellesHighlight[0]?.link?.datei && (
                 <a href={aktuellesHighlight[0]?.link.datei.asset.url} download>
                   {aktuellesHighlight[0]?.link.text}&nbsp;
