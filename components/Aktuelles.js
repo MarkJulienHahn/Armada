@@ -77,7 +77,7 @@ const Aktuelles = ({ aktuelles, aktuellesHighlight, setRunningTitle }) => {
               )} */}
               {/* {aktuellesHighlight[0].link?.referenz && ( */}
               <Link
-                href={`/projekte/${aktuellesHighlight[0]?.projekt.slug.current}`}
+                href={`/projekte/${aktuellesHighlight[0]?.projekt?.slug.current}`}
               >
                 {`${aktuellesHighlight[0].text} `}
               </Link>
