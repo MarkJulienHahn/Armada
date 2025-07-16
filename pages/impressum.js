@@ -6,6 +6,9 @@ import Impressum from "../components/Impressum";
 import Footer from "../components/Footer";
 
 const impressum = ({ kontakt, setRunningTitle }) => {
+
+  console.log(kontakt)
+
   return (
     <div className="mainWrapper">
       <Head>
