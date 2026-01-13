@@ -21,9 +21,9 @@ const CustomForm = ({ english, status, message, onValidated }) => {
             onChange={(e) => setEmail(e.target.value)}
             type="email"
             value={email}
-            isRequired
+            required
           ></input>
-          <button type="submit" formVales={[email]}>
+          <button type="submit">
             Anmelden
           </button>
         </>
