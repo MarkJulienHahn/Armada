@@ -45,7 +45,7 @@ const Archiv = ({ archiv, setRunningTitle }) => {
               {post.links
                 ? post.links.map((link, i) => (
                     <p key={i}>
-                      <a href={link.link} target="_blank" rel="noreferrer">{link.linkbeschreibung}</a>
+                      <a href={link.link} target="_blank" rel="noreferrer">{link.text || link.linkbeschreibung}</a>
                     </p>
                   ))
                 : ""}
