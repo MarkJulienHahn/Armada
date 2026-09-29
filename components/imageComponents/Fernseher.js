@@ -8,6 +8,7 @@ import image02 from "../../public/images/TV_Logo.gif";
 import image03 from "../../public/images/TV_Bobby.gif";
 import image04 from "../../public/images/TV_Schlagerfutzi.gif";
 import image05 from "../../public/images/TV-Diamantwasserstab.gif";
+import image06 from "../../public/images/TV_Logo-2.gif";
 
 const Fernseher = () => {
   const [iteration, setIteration] = useState(0);
@@ -19,16 +20,16 @@ const Fernseher = () => {
       : setIteration(0);
   };
 
-  const images = [image01, image02, image03, image04, image05];
+  const images = [image01, image06, image03, image04, image05, image02];
 
   const playSound = () => {
-    setPlaying(true)
+    setPlaying(true);
   };
 
   const pauseSound = () => {
     setPlaying(false);
   };
-  
+
   return (
     <>
       <ReactHowler
@@ -36,10 +37,11 @@ const Fernseher = () => {
         loop="true"
         src={[
           iteration == 0 ? "/sounds/TV_Fuchs.mp3" : "",
-          iteration == 1 && "/sounds/TV_Logo.mp3",
+          iteration == 1 && "/sounds/Hallo-lumina.mp3",
           iteration == 2 && "/sounds/TV_Barbie.mp3",
           iteration == 3 && "/sounds/TV_Schlagerfutzi.mp3",
           iteration == 4 && "/sounds/TV_Diamantenwasserstab.mp3",
+          iteration == 5 && "/sounds/TV_Logo.mp3",
         ]}
       />
 

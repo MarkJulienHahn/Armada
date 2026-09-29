@@ -113,6 +113,14 @@ p {
   margin: 0;
 }
 
+p + p {
+  margin-top:1em
+}
+
+strong {
+  font-variation-settings: "wght" 800;
+}
+
 h1 {
   font-size: var(--fontLargeSize);
   line-height: var(--fontLargeLineHeight);
@@ -192,7 +200,7 @@ ul {
   z-index: 100;
   width: 100vw;
   pointer-events: none;
-  transform: scale(120%);
+  transform: scale(100%);
 }
 
 .homeImageRow2 {
@@ -1112,13 +1120,14 @@ ul {
 
 .crossingWrapperNilpferd {
   position: fixed;
-  top: 50%;
+  top: 30%;
   right: 0;
   animation: rtl 30s linear;
-  pointer-events: none;
   animation-fill-mode: forwards;
   animation-delay: 0s;
   z-index: 50;
+  width: 40vw;
+  height: 60vh;
 }
 
 .crossingWrapperDino {
@@ -1133,13 +1142,13 @@ ul {
 
 @keyframes rtl {
   0% {
-    transform: translateX(0);
+    transform: translateX(40vw);
   }
   /* 20% {
     transform: translateX(0)
   } */
   100% {
-    transform: translateX(-250vw);
+    transform: translateX(-120vw);
   }
 }
 

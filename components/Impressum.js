@@ -23,21 +23,6 @@ const Impressum = ({ kontakt, setRunningTitle }) => {
         {kontakt.postleitzahl} {kontakt.ort}
         <br />
         <a href={`mailto:${kontakt.email}`}>{kontakt.email}</a>
-        <br />
-        <br />
-        Gestaltung und Programmierung
-        <br />
-        <a href="https://stereotypefaces.com" target="_blank" rel="noreferrer">
-          Stereo Typefaces
-        </a>
-        <br />
-        <br />
-        Schriftarten
-        <br />
-        Giallo Roman&nbsp;
-        <a href="https://stereotypefaces.com" target="_blank" rel="noreferrer">
-          (Stereo Typefaces)
-        </a>
       </p>
       <div className="imprLogos">
         <p>

@@ -99,7 +99,7 @@ export default function Home({ setRunningTitle }) {
         <div className={"homeImageFisch"}>{imagesArray[arrayPos[0]]}</div>
       </div>
       <div className={"homeImageRow1"} style={row1}>
-        <div className={"homeImageJeep"}>{imagesArray[arrayPos[1]]}</div>
+        <div className={"homeImageJeep"}>{imagesArray[arrayPos[1]]}</div> 
       </div>
       <div className={"homeImageRow2"} style={row2}>
         <div className={"homeImageFaesser"}>{imagesArray[arrayPos[2]]}</div>
