@@ -5,7 +5,7 @@ import { CrossingImageStift } from "./imageComponents/CrossingImageStift";
 import TermineYears from "./TermineYears";
 import TermineYearsVergangen from "./TermineYearsVergangen";
 
-const Termine = ({ projekte, setRunningTitle }) => {
+const Termine = ({ projekte, workshops = [], setRunningTitle }) => {
   const [active, setActive] = useState(true);
 
   useEffect(() => {
@@ -39,22 +39,40 @@ const Termine = ({ projekte, setRunningTitle }) => {
 
   var weekdays = ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"];
 
+  const toRow = (date) => ({
+    timestamp: formatPrimitive(date.datum),
+    fullDate: formatMyDate(date.datum),
+    time: formatMyTime(date.datum),
+    day: outputDay(date.datum),
+    dayWord: weekdays[outputDay(date.datum)],
+    date: outputDate(date.datum),
+    month: outputMonth(date.datum),
+    year: outputYear(date.datum),
+    location: date.spielort,
+    spielortlink: date.spielortlink,
+    premiere: date.premiere,
+    Schulvorfuehrung: date.schulvorfuehrung,
+  });
+
   const dates = projekte.map((projekt) =>
-    projekt.termine.map((date) => ({
+    (projekt.termine || []).map((date) => ({
+      ...toRow(date),
       titel: projekt.titel,
-      slug: projekt.slug,
-      timestamp: formatPrimitive(date.datum),
-      fullDate: formatMyDate(date.datum),
-      time: formatMyTime(date.datum),
-      day: outputDay(date.datum),
-      dayWord: weekdays[outputDay(date.datum)],
-      date: outputDate(date.datum),
-      month: outputMonth(date.datum),
-      year: outputYear(date.datum),
-      location: date.spielort,
-      spielortlink: date.spielortlink,
-      premiere: date.premiere,
-      Schulvorfuehrung: date.schulvorfuehrung,
+      href: `/projekte/${projekt.slug?.current}`,
+    }))
+  );
+
+  // Workshops: Link aufs Projekt, sonst zur Anmeldung, sonst zur Vermittlung
+  const workshopDates = workshops.map((workshop) =>
+    (workshop.termine || []).map((date) => ({
+      ...toRow(date),
+      titel: workshop.titel,
+      workshop: true,
+      zielgruppe: workshop.zielgruppe,
+      href: workshop.projektSlug
+        ? `/projekte/${workshop.projektSlug}`
+        : workshop.anmeldelink || "/vermittlung#workshops",
+      extern: !workshop.projektSlug && !!workshop.anmeldelink,
     }))
   );
 
@@ -70,7 +88,7 @@ const Termine = ({ projekte, setRunningTitle }) => {
     return 0;
   }
 
-  const merged = [].concat(...dates);
+  const merged = [].concat(...dates, ...workshopDates);
   const sorted = merged.sort(compare);
 
   const currentYear = new Date().getFullYear();

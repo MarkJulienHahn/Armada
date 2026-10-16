@@ -4,7 +4,7 @@ import Vermittlung from "../components/Vermittlung";
 import client from "../client";
 import { CrossingImageCan } from "../components/imageComponents/CrossingImageCan";
 
-const vermittlung = ({ vermittlung, projekte, setRunningTitle }) => {
+const vermittlung = ({ vermittlung, projekte, workshops, setRunningTitle }) => {
   return (
     <>
       <Head>
@@ -15,6 +15,7 @@ const vermittlung = ({ vermittlung, projekte, setRunningTitle }) => {
       <Vermittlung
         vermittlung={vermittlung}
         projekte={projekte}
+        workshops={workshops}
         setRunningTitle={setRunningTitle}
       />
     </>
@@ -39,10 +40,21 @@ export async function getStaticProps(context) {
      "slug": slug.current,
      "downloads": downloads[]{"url": file.asset->{url}, "filename": filename}
   }`);
+  const workshops = await client.fetch(`
+
+  *   [_type == "workshop"]
+  {  "titel": titel,
+     "beschreibung": beschreibung,
+     "zielgruppe": zielgruppe,
+     "anmeldelink": anmeldelink,
+     "termine": termine,
+     "projektSlug": projekt->slug.current
+  }`);
   return {
     props: {
       vermittlung,
       projekte,
+      workshops,
     },
     revalidate: 10,
   };

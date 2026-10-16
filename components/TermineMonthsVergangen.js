@@ -21,7 +21,22 @@ const TermineMonthsVergangen = ({ sorted, month, monthNmbr }) => {
                 </h1>
                 <p className="termineLocation">{row.time} Uhr</p>
                 <h2 className="termineTitle">
-                  <a href={`/projekte/${row.slug}`}>{row.titel}</a>
+                  <a
+                    href={row.href}
+                    {...(row.extern
+                      ? { target: "_blank", rel: "noreferrer" }
+                      : {})}
+                  >
+                    {row.titel}
+                  </a>
+                  {row.workshop ? (
+                    <span className="termineWorkshop">
+                      <br />
+                      Workshop{row.zielgruppe ? ` · ${row.zielgruppe}` : ""}
+                    </span>
+                  ) : (
+                    ""
+                  )}
                   {row.Schulvorfuehrung ? (
                     <span style={{ color: "green" }}>
                       <br />

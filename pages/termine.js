@@ -5,14 +5,18 @@ import Footer from "../components/Footer";
 import client from "../client";
 import Termine from "../components/Termine";
 
-const termine = ({ projekte, setRunningTitle }) => {
+const termine = ({ projekte, workshops, setRunningTitle }) => {
   return (
     <div className="mainWrapper">
       <Head>
         <title>Armada Theater | Termine</title>
         <meta name="keywords" content="web" />
       </Head>
-      <Termine projekte={projekte} setRunningTitle={setRunningTitle} />
+      <Termine
+        projekte={projekte}
+        workshops={workshops}
+        setRunningTitle={setRunningTitle}
+      />
       <Footer />
     </div>
   );
@@ -29,9 +33,20 @@ export async function getStaticProps(context) {
     "slug": slug
   }
   `);
+  const workshops = await client.fetch(`
+
+  *   [_type == "workshop"]
+  {  "titel": titel,
+     "zielgruppe": zielgruppe,
+     "anmeldelink": anmeldelink,
+     "termine": termine,
+     "projektSlug": projekt->slug.current
+  }
+  `);
   return {
     props: {
       projekte,
+      workshops,
     },
     revalidate: 10,
   };
