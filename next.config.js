@@ -9,6 +9,11 @@ const nextConfig = {
     locales: ["de"],
     defaultLocale: "de",
   },
+  experimental: {
+    // Node 24 auf Vercel: @portabletext/toolkit liefert ESM in .js-Dateien,
+    // deshalb Server-Pakete per require (CommonJS) laden
+    esmExternals: false,
+  },
 }
 
 
