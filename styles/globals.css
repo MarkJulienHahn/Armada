@@ -287,6 +287,160 @@ ul {
   cursor: pointer;
 }
 
+/* MOPSSTATUE */
+
+.mopsStatueWrapper {
+  position: relative;
+  container-type: inline-size;
+}
+
+.mopsBeutel {
+  position: absolute;
+  z-index: 3;
+  width: 7%;
+  aspect-ratio: 1;
+  border-radius: 50% 50% 46% 46% / 62% 62% 38% 38%;
+  background: radial-gradient(circle at 35% 30%, #ff6a6a, #c40018 60%, #7a0010);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  animation: mopsBeutelWurf 0.35s ease-in forwards;
+}
+
+@keyframes mopsBeutelWurf {
+  0% {
+    left: 110%;
+    top: 100%;
+    transform: translate(-50%, -50%) rotate(0deg) scale(1.6);
+    opacity: 1;
+  }
+  95% {
+    opacity: 1;
+  }
+  100% {
+    left: 56.5%;
+    top: 17.4%;
+    transform: translate(-50%, -50%) rotate(-280deg) scale(1);
+    opacity: 0;
+  }
+}
+
+.mopsSplat {
+  position: absolute;
+  z-index: 2;
+  left: 56.5%;
+  top: 17.4%;
+  width: 26%;
+  transform: translate(-50%, -42%);
+  pointer-events: none;
+}
+
+.mopsSplatSvg {
+  width: 100%;
+  overflow: visible;
+  transform-origin: 50% 40%;
+  animation: mopsSplatPop 0.3s cubic-bezier(0.2, 1.6, 0.4, 1) 0.33s both;
+}
+
+@keyframes mopsSplatPop {
+  0% {
+    transform: scale(0.1);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.mopsDrip {
+  transform-box: fill-box;
+  transform-origin: top;
+  animation: mopsDrip 1.8s ease-in both;
+}
+
+@keyframes mopsDrip {
+  0% {
+    transform: scaleY(0);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
+
+.mopsStatueWrapper > span {
+  z-index: 1;
+}
+
+.mopsSchildClip {
+  position: absolute;
+  inset: 0;
+  /* nur unten abschneiden (Schild fährt von unten hoch), seitlich/oben frei */
+  clip-path: inset(-100% -100% 0 -100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.mopsSchild {
+  position: absolute;
+  left: 5%;
+  bottom: 4%;
+  width: 30%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform-origin: 50% 100%;
+  animation: mopsSchildHoch 0.4s cubic-bezier(0.3, 1.4, 0.5, 1) 0.45s both,
+    mopsSchildWackeln 0.5s ease-in-out 0.85s infinite alternate;
+}
+
+.mopsSchildTafel {
+  width: 100%;
+  padding: 8% 6%;
+  box-sizing: border-box;
+  background: #d2b48a
+    repeating-linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.04) 0 2px,
+      transparent 2px 7px
+    );
+  border: 1px solid #a88a5f;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
+  font-family: "Giallo";
+  font-size: 1.55vw;
+  font-size: 4.4cqw;
+  line-height: 1.05;
+  text-align: center;
+  text-transform: uppercase;
+  color: #b30016;
+  transform: rotate(-3deg);
+}
+
+.mopsSchildStab {
+  width: 6%;
+  flex: 1;
+  margin-top: -2px;
+  background: linear-gradient(90deg, #8a5a2b, #b98348 45%, #7a4c22);
+}
+
+@keyframes mopsSchildHoch {
+  0% {
+    transform: translateY(110%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes mopsSchildWackeln {
+  0% {
+    transform: rotate(-4deg);
+  }
+  100% {
+    transform: rotate(3deg);
+  }
+}
+
 .homeLegals {
   position: fixed;
   bottom: 0;

@@ -46,6 +46,7 @@ const Projekt = ({
     <div className="projSingleWrapper">
       <CrossingImageBallon
         ab4={projekt.ab4}
+        ab6={projekt.ab6}
         ab8={projekt.ab8}
         ab12={projekt.ab12}
       />

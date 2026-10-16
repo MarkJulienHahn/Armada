@@ -3,10 +3,11 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 
 import vierJahre from "../../public/images/ab_4_ballon.gif";
+import sechsJahre from "../../public/images/ab_6_flugzeug.gif";
 import achtJahre from "../../public/images/ab_8_ballon.gif";
 import zwoelfJahre from "../../public/images/ab_12_ballon.gif";
 
-export const CrossingImageBallon = ({ ab4, ab8, ab12 }) => {
+export const CrossingImageBallon = ({ ab4, ab6, ab8, ab12 }) => {
   const [x, setX] = useState();
   const [y, setY] = useState();
   const [alter, setAlter] = useState(null);
@@ -26,6 +27,8 @@ export const CrossingImageBallon = ({ ab4, ab8, ab12 }) => {
   useEffect(() => {
     if (ab4) {
       setAlter(0);
+    } else if (ab6) {
+      setAlter(3);
     } else if (ab8) {
       setAlter(1);
     } else if (ab12) {
@@ -41,7 +44,7 @@ export const CrossingImageBallon = ({ ab4, ab8, ab12 }) => {
     left: x * -0.02,
   };
 
-  const images = [vierJahre, achtJahre, zwoelfJahre];
+  const images = [vierJahre, achtJahre, zwoelfJahre, sechsJahre];
 
   return (
     <div className="crossingWrapperBallon">

@@ -3,7 +3,7 @@ import Head from "next/head";
 
 import Jeep from "../components/imageComponents/Jeep";
 import Faesser from "../components/imageComponents/Faesser";
-import Vogel from "../components/imageComponents/Vogel";
+import Mopsstatue from "../components/imageComponents/Mopsstatue";
 import Fernseher from "../components/imageComponents/Fernseher";
 import Fisch from "../components/imageComponents/Fisch";
 
@@ -69,7 +69,7 @@ export default function Home({ setRunningTitle }) {
   const imagesArray = [
     <Jeep key={1} />,
     <Faesser key={2} />,
-    <Vogel key={3} />,
+    <Mopsstatue key={3} />,
     <Fernseher key={4} />,
     <Fisch key={5} />,
   ];
