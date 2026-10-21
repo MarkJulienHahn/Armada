@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "./Image";
 import Link from "next/link"
 
 import cookies from "../public/images/Cookies.gif";

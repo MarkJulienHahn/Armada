@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import Image from "next/image";
+import Image from "../Image";
 
 import vierJahre from "../../public/images/ab_4_ballon.gif";
 import sechsJahre from "../../public/images/ab_6_flugzeug.gif";

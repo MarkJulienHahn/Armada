@@ -21,7 +21,7 @@ const archiv = ({ archiv, setRunningTitle }) => {
 
 export default archiv;
 
-export async function getServerSideProps(context) {
+export async function getStaticProps(context) {
   const archiv = await client.fetch(`
   *   [_type == "archiv"]
   {  "projekt": projekt->{titel, "slug": slug.current}, 
@@ -35,5 +35,6 @@ export async function getServerSideProps(context) {
     props: {
       archiv,
     },
+    revalidate: 60,
   };
 }

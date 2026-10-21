@@ -24,7 +24,7 @@ const aktuelles = ({ aktuelles, aktuellesHighlight, setRunningTitle }) => {
   );
 };
 
-export async function getServerSideProps(context) {
+export async function getStaticProps(context) {
   const aktuelles = await client.fetch(`
   *[_type == "aktuelles"]| order((veroeffentlichungsdatum) asc){
     title, "haupttext": haupttext[0].children[0].text, links, "subtext": subtext[0].children[0].text, bildunterschrift, veroeffentlichungsdatum, "bild": bild.asset->
@@ -46,6 +46,7 @@ export async function getServerSideProps(context) {
       aktuelles,
       aktuellesHighlight,
     },
+    revalidate: 60,
   };
 }
 

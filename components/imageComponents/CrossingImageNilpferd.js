@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import Image from "next/image";
+import Image from "../Image";
 import ReactHowler from "react-howler";
 
 import nilpferd from "../../public/images/Einhorn.gif";

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import Image from "next/image";
+import Image from "../Image";
 
 import papagei from "../../public/images/Papagei_500px.gif";
 

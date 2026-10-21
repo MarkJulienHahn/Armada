@@ -7,7 +7,7 @@ import ProjectSwiperImage from "../components/ProjectSwiperImage";
 import Datum from "./Datum";
 import { CrossingImageBallon } from "./imageComponents/CrossingImageBallon";
 
-import Image from "next/image";
+import Image from "./Image";
 import Link from "next/link";
 
 import "swiper/css";

@@ -1,7 +1,7 @@
 import React from "react";
 import { useSwiper } from "swiper/react";
 
-import Image from "next/image";
+import Image from "./Image";
 
 const ProjectSwiperImage = ({ foto }) => {
   const swiper = useSwiper();

@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "./Image";
 
 const Lightbox = ({ image, setImage }) => {
   return (

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import Image from "next/image";
+import Image from "../Image";
 import { Howl } from "howler";
 
 import statue from "../../public/images/Mopsstatue.png";

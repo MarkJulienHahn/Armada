@@ -56,7 +56,7 @@ export async function getStaticProps(context) {
       projekte,
       workshops,
     },
-    revalidate: 10,
+    revalidate: 60,
   };
   
 }

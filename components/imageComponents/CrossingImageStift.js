@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import Image from "next/image";
+import Image from "../Image";
 
 import stift from "../../public/images/Spielkalender_Stift.gif";
 

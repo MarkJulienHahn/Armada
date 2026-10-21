@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import Image from "next/image";
+import Image from "../Image";
 
 import playmobil from "../../public/images/Aktuelles_Megafon.gif";
 

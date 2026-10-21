@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import Image from "next/image";
+import Image from "../Image";
 import ReactHowler from "react-howler";
 
 import image01 from "../../public/images/Jeep_Leerlauf.gif";

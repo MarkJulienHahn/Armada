@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 
 import { PortableText } from "@portabletext/react";
 
-import Image from "next/image";
+import Image from "./Image";
 
 const ArmadaPerson = ({
   setActiveIndex,

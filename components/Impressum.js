@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-import Image from "next/image";
+import Image from "./Image";
 
 import Logo1 from "../public/images/AK_Kultur_Logo.png";
 import Logo2 from "../public/images/LFDK_Logo_4f.jpg";

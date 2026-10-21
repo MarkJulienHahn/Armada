@@ -4,10 +4,14 @@ import Projekt from "../../components/Projekt";
 import client from "../../client";
 import Footer from "../../components/Footer";
 
-export async function getServerSideProps(context) {
+export async function getStaticPaths() {
+  return { paths: [], fallback: "blocking" };
+}
+
+export async function getStaticProps(context) {
   const slug = context.params.slug;
   const projekte = await client.fetch(`
-  *[slug.current == "${slug}"]
+  *[slug.current == $slug]
   {..., 
     "beteiligte": beteiligte[]{"position": position, "member": beteiligte[]->{name}, "externe": externe}, 
     "downloads": downloads[]{"filename": filename, "file": file.asset->{url}},
@@ -17,7 +21,11 @@ export async function getServerSideProps(context) {
     "logos": logos[]{"data": asset->{url, metadata}},
     "foerderer": foerderer[]{"logo": logo.asset->{url, "dimensions": metadata.dimensions}, "name": foerderer },
   }
-  `);
+  `, { slug });
+
+  if (!projekte.length) {
+    return { notFound: true, revalidate: 60 };
+  }
 
   const links = await client.fetch(`  *[_type == "projekte"]  {
     titel, slug, erstauffuehrung
@@ -28,6 +36,7 @@ export async function getServerSideProps(context) {
       projekte,
       links,
     },
+    revalidate: 60,
   };
 }
 

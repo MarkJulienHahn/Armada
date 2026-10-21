@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import MailchimpSubscribe from "react-mailchimp-subscribe";
-import Image from "next/image";
+import Image from "./Image";
 
 import CustomForm from "./CustomForm";
 import image from "../public/images/note-newsletter.png";

@@ -30,6 +30,6 @@ export async function getStaticProps() {
     props: {
       kontakt,
     },
-    revalidate: 10,
+    revalidate: 60,
   };
 }

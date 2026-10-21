@@ -45,7 +45,7 @@ export async function getStaticProps() {
       armadaIntro,
       projekte,
     },
-    revalidate: 10,
+    revalidate: 60,
   };
 }
 

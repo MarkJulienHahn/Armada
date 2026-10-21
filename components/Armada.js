@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import PortableText from "react-portable-text";
 
-import Image from "next/image";
+import Image from "./Image";
 
 
 import ArmadaPerson from "../components/ArmadaPerson";
