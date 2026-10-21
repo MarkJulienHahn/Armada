@@ -22,7 +22,13 @@ const Newsletter = ({ newsletter, showNewsletter }) => {
   return (
     <div
       className="newsletterWrapper"
-      style={{ opacity: newsletter ? "1" : "0" }}
+      style={{
+        // geschlossen: unsichtbar UND nicht mehr klickbar, sonst blockiert
+        // der Zettel die Objekte unten rechts auf der Startseite
+        opacity: newsletter ? "1" : "0",
+        pointerEvents: newsletter ? "auto" : "none",
+        visibility: newsletter ? "visible" : "hidden",
+      }}
     >
       <Image src={image} fill />
       <div className="newsletterClose" onClick={hideNewsletter}>
