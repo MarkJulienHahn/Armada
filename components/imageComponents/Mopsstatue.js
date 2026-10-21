@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 
 import Image from "next/image";
+import { Howl } from "howler";
 
 import statue from "../../public/images/Mopsstatue.png";
+import schildText from "../../public/images/Mops_Schild_Text.png";
+import schildMops from "../../public/images/Mops_Schild_Durchgestrichen.png";
 
 // Farbklecks (generiert), viewBox 0 0 200 200
 const SPLAT_PATH =
@@ -30,14 +33,26 @@ const Splat = () => (
 
 const Mopsstatue = () => {
   const [hit, setHit] = useState(false);
+  const [farbe] = useState(() =>
+    typeof window !== "undefined"
+      ? new Howl({ src: ["/sounds/Mops_Farbe.mp3"] })
+      : null
+  );
+
+  const toggle = () => {
+    if (!hit && farbe) farbe.play();
+    setHit(!hit);
+  };
 
   return (
-    <div className="mopsStatueWrapper" onClick={() => setHit(!hit)}>
+    <div className="mopsStatueWrapper" onClick={toggle}>
       {hit && (
         <div className="mopsSchildClip">
-          <div className="mopsSchild">
-            <div className="mopsSchildTafel">Nieder mit dem Mops!</div>
-            <div className="mopsSchildStab" />
+          <div className="mopsSchild mopsSchildLinks">
+            <Image src={schildText} layout="responsive" />
+          </div>
+          <div className="mopsSchild mopsSchildRechts">
+            <Image src={schildMops} layout="responsive" />
           </div>
         </div>
       )}

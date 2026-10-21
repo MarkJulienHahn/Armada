@@ -382,45 +382,24 @@ ul {
 
 .mopsSchild {
   position: absolute;
-  left: 5%;
-  bottom: 4%;
-  width: 30%;
-  height: 80%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   transform-origin: 50% 100%;
   animation: mopsSchildHoch 0.4s cubic-bezier(0.3, 1.4, 0.5, 1) 0.45s both,
     mopsSchildWackeln 0.5s ease-in-out 0.85s infinite alternate;
 }
 
-.mopsSchildTafel {
-  width: 100%;
-  padding: 8% 6%;
-  box-sizing: border-box;
-  background: #d2b48a
-    repeating-linear-gradient(
-      90deg,
-      rgba(0, 0, 0, 0.04) 0 2px,
-      transparent 2px 7px
-    );
-  border: 1px solid #a88a5f;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
-  font-family: "Giallo";
-  font-size: 1.55vw;
-  font-size: 4.4cqw;
-  line-height: 1.05;
-  text-align: center;
-  text-transform: uppercase;
-  color: #b30016;
-  transform: rotate(-3deg);
+.mopsSchildLinks {
+  left: -2%;
+  bottom: -8%;
+  width: 34%;
 }
 
-.mopsSchildStab {
-  width: 6%;
-  flex: 1;
-  margin-top: -2px;
-  background: linear-gradient(90deg, #8a5a2b, #b98348 45%, #7a4c22);
+/* steht hinter der Statue, kommt etwas später und wackelt gegenläufig */
+.mopsSchildRechts {
+  right: 2%;
+  bottom: 4%;
+  width: 23.3%;
+  animation-delay: 0.65s, 1.05s;
+  animation-direction: normal, alternate-reverse;
 }
 
 @keyframes mopsSchildHoch {
