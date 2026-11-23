@@ -7,7 +7,7 @@ import Mopsstatue from "../components/imageComponents/Mopsstatue";
 import Fernseher from "../components/imageComponents/Fernseher";
 import Fisch from "../components/imageComponents/Fisch";
 
-import { CrossingImagePapagai } from "../components/imageComponents/CrossingImagePapagai";
+import { CrossingImageWilbi } from "../components/imageComponents/CrossingImageWilbi";
 import { CrossingImageNilpferd } from "../components/imageComponents/CrossingImageNilpferd";
 
 import Footer from "../components/Footer";
@@ -94,7 +94,7 @@ export default function Home({ setRunningTitle }) {
       </Head>
       <h2 className={"homeHome"}>Home</h2>
       <CrossingImageNilpferd />
-      <CrossingImagePapagai />
+      <CrossingImageWilbi />
       <div className={"homeImageRow0"} style={row0}>
         <div className={"homeImageFisch"}>{imagesArray[arrayPos[0]]}</div>
       </div>

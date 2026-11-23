@@ -1306,6 +1306,55 @@ ul {
   transform: translate(-50vw, 0vh);
 }
 
+/* Wilbi am Fallschirm (ersetzt den Papagei) */
+.crossingWrapperWilbi {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 15vw;
+  min-width: 140px;
+  z-index: 1000;
+  pointer-events: none;
+  animation: wilbiFall 32s linear 2s both;
+}
+
+@keyframes wilbiFall {
+  0% {
+    transform: translate(6vw, -110%);
+  }
+  100% {
+    transform: translate(68vw, 110vh);
+  }
+}
+
+/* sanftes Hin- und Hersegeln, in die Flugrichtung geneigt (Drehpunkt oben am Schirm) */
+.wilbiSchwung {
+  transform-origin: 50% 0;
+  animation: wilbiSchwung 8s ease-in-out infinite;
+}
+
+@keyframes wilbiSchwung {
+  0%,
+  100% {
+    transform: translateX(-5vw) rotate(0deg);
+  }
+  25% {
+    transform: translateX(0) rotate(7deg);
+  }
+  50% {
+    transform: translateX(5vw) rotate(0deg);
+  }
+  75% {
+    transform: translateX(0) rotate(-7deg);
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .crossingWrapperWilbi {
+    width: 32vw;
+  }
+}
+
 .crossingWrapperFisch {
   position: fixed;
   top: 80%;
